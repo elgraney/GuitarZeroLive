@@ -25,30 +25,10 @@ public class ModeTemplate extends JFrame {
         this.add(container);
     }
 
-    private void tempEscapeExit(){
-        addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke) {  // handler
-                if(ke.getKeyCode() == ke.VK_ESCAPE) {
-                    System.out.println("escaped ?");
-                    ModeTemplate.this.dispose();
-                }
-                else {
-                    System.out.println("not escaped");
-                }
-            }
-        });
-    }
+
 
     public ModeTemplate() {
-        setTitle( "Guitar Zero Live" );
-
-        setContentPane( new com.RD.GUI.BackgroundImage("assets/betterHighway.png"));
-        setLayout( null );
-
         setUpCarousel();
-
-        tempEscapeExit();
-
 
     }
 
