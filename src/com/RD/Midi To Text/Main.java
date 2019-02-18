@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiMessage;
@@ -18,7 +20,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "MamaDo.mid";
+    final static String FILE = "MidiFile.mid";
 
     /**
      * Returns the name of nth instrument in the current MIDI soundbank.
@@ -59,6 +61,7 @@ public class Main {
     public static void displayTrack( Track trk ){
         File file = new File ("C:/Users/840/Desktop/file.txt");
         PrintWriter printWriter = null;
+        List<Integer> guitarlist = new ArrayList<>();
         try {
             printWriter = new PrintWriter("file.txt");
         } catch (FileNotFoundException e) {
@@ -75,17 +78,23 @@ public class Main {
                 final int chan = smsg.getChannel();
                 final int cmd = smsg.getCommand();
                 final int dat1 = smsg.getData1();
-
                 switch (cmd) {
                     case 192:
-                        printWriter.println();
                         printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
+                        if (dat1 > 24 && dat1 < 33) {
+                            guitarlist.add(chan);
+                        }
+                        printWriter.println("" + guitarlist + dat1);
                         break;
                     case 144:
+                        if (guitarlist.contains(chan)){
                         printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note on:  " + noteName(dat1));
+                            }
                         break;
                     case 128:
-                        printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note off: " + noteName(dat1));
+                        if(guitarlist.contains(chan)) {
+                            printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note off: " + noteName(dat1));
+                        }
                         break;
                     default:
                         break;
