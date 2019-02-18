@@ -1,6 +1,7 @@
 package com.RD.GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -31,6 +32,7 @@ public class SetUpGUI extends JFrame {
 
         tempEscapeExit();
 
-        ModeTemplate modeTest = new ModeTemplate(); //will be instance of play menu in future, when implemented
+        ModeTemplate modeTest = new ModeTemplate(this); //will be instance of play menu in future, when implemented
     }
+
 }
