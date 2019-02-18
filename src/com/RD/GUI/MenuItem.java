@@ -9,20 +9,18 @@ public class MenuItem {
     private Image image;
     private String title;
 
+    public MenuItem(Image image, String title){
+        this.image = image;
+        this.title = title;
+    }
+
 
     public Image getImage() {
         return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }
