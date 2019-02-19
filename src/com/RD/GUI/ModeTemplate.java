@@ -22,16 +22,16 @@ import static javafx.scene.input.KeyCode.T;
  * Created by Matthew 2 on 15/02/2019.
  */
 public class ModeTemplate extends JFrame {
-    Frame frame;
-    ArrayList<MenuItem> options;
-    MenuItem[] viewOptions;
+    private Frame frame;
+    private ArrayList<MenuItem> allOptions;
+    private MenuItem[] viewOptions = new MenuItem[5];
 
     public ArrayList<MenuItem> getOptions() {
-        return options;
+        return allOptions;
     }
 
     public void setOptions(ArrayList<MenuItem> options) {
-        this.options = options;
+        this.allOptions = options;
     }
 
     public MenuItem[] getViewOptions() {
@@ -40,6 +40,13 @@ public class ModeTemplate extends JFrame {
 
     public void setViewOptions(MenuItem[] viewOptions) {
         this.viewOptions = viewOptions;
+    }
+
+    public void innitMenu(ArrayList<MenuItem> options){
+        setOptions(options);
+        for(int i=0; i<5; i++){
+            viewOptions[i] = options.get(i);
+        }
     }
 
     private JPanel setUpOption(String imagePath, String text){
@@ -66,11 +73,11 @@ public class ModeTemplate extends JFrame {
 
         JPanel container = new JPanel();
 
-        JPanel option1 = setUpOption("assets/red.png", "Hey look new line works 2 lines before getting weird");
-        JPanel option2 = setUpOption("assets/green.png", "placeholder2");
-        JPanel option3 = setUpOption("assets/blue.png", "placeholder3");
-        JPanel option4 = setUpOption("assets/yellow.png", "placeholder4");
-        JPanel option5 = setUpOption("assets/orange.png", "placeholder5");
+        JPanel option1 = setUpOption(viewOptions[0].getImage(),viewOptions[0].getTitle());
+        JPanel option2 = setUpOption(viewOptions[1].getImage(),viewOptions[1].getTitle());
+        JPanel option3 = setUpOption(viewOptions[2].getImage(),viewOptions[2].getTitle());
+        JPanel option4 = setUpOption(viewOptions[3].getImage(),viewOptions[3].getTitle());
+        JPanel option5 = setUpOption(viewOptions[4].getImage(),viewOptions[4].getTitle());
 
         option1.setBorder( BorderFactory.createLineBorder(Color.WHITE,5));
 
@@ -107,11 +114,6 @@ public class ModeTemplate extends JFrame {
 
     public ModeTemplate(Frame frame) {
         this.frame = frame;
-        try {
-            setUpCarousel();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

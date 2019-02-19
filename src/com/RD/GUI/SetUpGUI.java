@@ -32,7 +32,7 @@ public class SetUpGUI extends JFrame {
 
         tempEscapeExit();
 
-        ModeTemplate modeTest = new ModeTemplate(this); //will be instance of play menu in future, when implemented
+        ModeTemplate modeTest = new SlashMode(this); //will be instance of play menu in future, when implemented
     }
 
 }
