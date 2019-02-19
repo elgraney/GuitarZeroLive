@@ -10,14 +10,18 @@ import java.awt.event.KeyListener;
 public class GUIControls implements KeyListener {
     private JFrame frame;
     private ModeTemplate template;
+
     public GUIControls(JFrame frame, ModeTemplate template){
         this.frame = frame;
         this.template = template;
     }
 
+    public void UpdateMode(ModeTemplate template){
+        this.template = template;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println("key typed");
     }
 
     @Override
@@ -35,12 +39,14 @@ public class GUIControls implements KeyListener {
                 System.out.println("right");
                 template.right();
                 break;
+            case KeyEvent.VK_ENTER:
+                System.out.println("Enter");
+                template.onSelect();
         }
     }
 
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        System.out.println("key released");
+    public void keyReleased(KeyEvent e){
     }
 }

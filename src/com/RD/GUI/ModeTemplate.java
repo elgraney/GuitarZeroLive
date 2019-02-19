@@ -9,16 +9,19 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by Matthew 2 on 15/02/2019.
  */
 public class ModeTemplate extends JFrame{
-    private Frame frame;
+    protected JFrame frame;
+    protected SetUpGUI base;
+
     private ArrayList<MenuItem> allOptions;
     private MenuItem[] viewOptions = new MenuItem[5];
     private int startIndex = 0;
-    JPanel container;
+    private JPanel container;
 
     public ArrayList<MenuItem> getOptions() {
         return allOptions;
@@ -52,7 +55,6 @@ public class ModeTemplate extends JFrame{
         for(int i=0, j=startIndex; i<5; i++, j++){
             viewOptions[i] = allOptions.get(j%allOptions.size());;
         }
-
         frame.remove(container);
         try {
             setUpCarousel();
@@ -70,7 +72,6 @@ public class ModeTemplate extends JFrame{
         for(int i=0, j=startIndex; i<5; i++, j++){
             viewOptions[i] = allOptions.get(j%allOptions.size());;
         }
-
         frame.remove(container);
         try {
             setUpCarousel();
@@ -78,6 +79,15 @@ public class ModeTemplate extends JFrame{
             e.printStackTrace();
         }
         frame.revalidate();
+    }
+
+
+    public void onSelect(){}
+
+
+    public void tearDown(){
+        frame.remove(container);
+        base.removeListener();
     }
 
 
@@ -140,7 +150,8 @@ public class ModeTemplate extends JFrame{
     }
 
 
-    public ModeTemplate(Frame frame) {
+    public ModeTemplate(JFrame frame, SetUpGUI base) {
         this.frame = frame;
+        this.base = base;
     }
 }
