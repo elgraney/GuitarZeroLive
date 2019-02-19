@@ -15,8 +15,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 import static java.awt.SystemColor.text;
-import static javafx.scene.input.KeyCode.J;
-import static javafx.scene.input.KeyCode.T;
+//import static javafx.scene.input.KeyCode.J;
+//import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by Matthew 2 on 15/02/2019.
