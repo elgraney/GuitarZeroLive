@@ -43,7 +43,6 @@ public class BackgroundImage extends JPanel{
             Rectangle r = this.getBounds();
             int height = r.height;
             float multiplier = (float) height / (float) baseHeight;
-            System.out.println(multiplier);
             int width = Math.round(baseWidth*multiplier);
             g.drawImage(img2, (getWidth()/2) - (width/2), 0, width, getHeight(), null);
         }
