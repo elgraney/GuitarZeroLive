@@ -29,7 +29,7 @@ public class GUIControls implements KeyListener {
         switch(e.getKeyCode()){
             case KeyEvent.VK_ESCAPE:
                 System.out.println("escaped?");
-                frame.dispose();
+                template.onEscape();
                 //call method within subclassed called escape (each do a different thing)
 
                 break;

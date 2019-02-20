@@ -84,6 +84,8 @@ public class ModeTemplate extends JFrame{
 
     public void onSelect(){}
 
+    public void onEscape(){}
+
 
     public void tearDown(){
         frame.remove(container);

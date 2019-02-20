@@ -57,4 +57,10 @@ public class SlashMode extends ModeTemplate {
         }
         frame.revalidate();
     }
+
+    public void onEscape() {
+        System.out.println("End Program");
+        frame.dispose();
+    }
+
 }

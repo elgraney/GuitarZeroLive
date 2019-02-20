@@ -27,4 +27,12 @@ public class SelectMode extends ModeTemplate {
             e.printStackTrace();
         }
     }
+    public void onEscape() {
+        getContentPane().removeAll();
+        System.out.println("Go back to main");
+        tearDown();
+        ModeTemplate slashMode = new SlashMode(frame, base);
+        frame.addKeyListener(new GUIControls(frame, slashMode));
+        frame.revalidate();
+    }
 }
