@@ -1,7 +1,6 @@
 package com.RD;
 
 import com.RD.GUI.ModeTemplate;
-import com.RD.GUI.SetUpGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,22 +9,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class Main {
 
     public static void main(String[] args) {
-        JFrame frame = new SetUpGUI();
+        System.out.println("Test works?");
+        JFrame frame = new ModeTemplate();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1920, 1080);
         frame.setMinimumSize(new Dimension(800, 400));
-        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //frame.setUndecorated(true);
-        frame.setFocusable(true);
+        frame.setResizable(true);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(true);
         frame.setVisible(true);
-
-        //have guitar highway set aspect ratio locked, to fit screen vertically, centered
-        //have high res background image
-        //have container holding 5 things locked center, relative size.
     }
 
 }
