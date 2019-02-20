@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static javafx.scene.input.KeyCode.G;
-
 /**
  * Created by Matthew 2 on 18/02/2019.
  */

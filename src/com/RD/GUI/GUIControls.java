@@ -30,6 +30,8 @@ public class GUIControls implements KeyListener {
             case KeyEvent.VK_ESCAPE:
                 System.out.println("escaped?");
                 frame.dispose();
+                //call method within subclassed called escape (each do a different thing)
+
                 break;
             case KeyEvent.VK_LEFT:
                 System.out.println("left");
