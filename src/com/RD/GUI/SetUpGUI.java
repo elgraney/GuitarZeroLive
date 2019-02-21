@@ -13,7 +13,7 @@ public  class SetUpGUI extends JFrame {
     public SetUpGUI(){
         setTitle( "Guitar Zero Live" );
 
-        setContentPane( new com.RD.GUI.BackgroundImage("assets/background1.png", "assets/betterHighway.png"));
+        setContentPane( new BackgroundImage("assets/background1.png", "assets/betterHighway.png"));
         setLayout( null );
 
 

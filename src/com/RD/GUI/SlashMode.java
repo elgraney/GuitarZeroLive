@@ -42,14 +42,14 @@ public class SlashMode extends ModeTemplate {
                 System.out.println("Goto Select mode");
                 tearDown();
                 ModeTemplate selectMode = new SelectMode(frame, base);
-                frame.addKeyListener(new GUIControls(frame, selectMode));
+                base.setListener(new GUIControls(frame, selectMode));
                 break;
 
             case "Store":
                 System.out.println("Goto store mode");
                 tearDown();
                 ModeTemplate storeMode = new StoreMode(frame, base);
-                frame.addKeyListener(new GUIControls(frame, storeMode));
+                base.setListener(new GUIControls(frame, storeMode));
                 break;
 
             case "Tutorial":
