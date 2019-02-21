@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 /**
  * Created by Matthew 2 on 19/02/2019.
+ * Edited by Joe 20/02/2019
  */
 public class StoreMode extends ModeTemplate {
     public StoreMode(JFrame frame, SetUpGUI base) {
@@ -26,6 +27,14 @@ public class StoreMode extends ModeTemplate {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onEscape() {
+        System.out.println("Go back to main");
+        tearDown();
+        ModeTemplate slashMode = new SlashMode(frame, base);
+        base.setListener(new GUIControls(this, slashMode));
+        frame.revalidate();
     }
 
 }
