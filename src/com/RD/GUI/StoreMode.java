@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Matthew 2 on 19/02/2019.
+ * Created by Matthew on 19/02/2019.
  * Edited by Joe 20/02/2019
+ * All content by Joe
  */
 public class StoreMode extends ModeTemplate {
     public StoreMode(JFrame frame, SetUpGUI base) {

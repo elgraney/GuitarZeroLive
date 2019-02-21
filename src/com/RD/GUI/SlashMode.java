@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Matthew 2 on 18/02/2019.
+ * Created by Matthew on 18/02/2019.
+ * All content by Matthew
  */
 public class SlashMode extends ModeTemplate {
     public SlashMode(JFrame frame, SetUpGUI base) {
         super(frame, base);
-
+        //initializing carousel with fixed menu options
         ArrayList<MenuItem> slashModeOptions = new ArrayList<>(Arrays.asList(
                 new MenuItem("assets/Exit.png", "Exit"),
                 new MenuItem("assets/Play.png", "Play"),
@@ -26,6 +27,8 @@ public class SlashMode extends ModeTemplate {
             e.printStackTrace();
         }
     }
+
+    //controls action taken when select is pressed for each menu item
     public void onSelect(){
         MenuItem selected = getViewOptions()[2];
         switch (selected.getTitle()){

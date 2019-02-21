@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Matthew 2 on 15/02/2019.
+ * Created by Matthew on 15/02/2019.
+ * All content by Matthew
  */
 public class BackgroundImage extends JPanel{
     private int baseWidth;
@@ -13,10 +14,13 @@ public class BackgroundImage extends JPanel{
         private Image img1;
         private Image img2;
 
+        //initializes images
         public  BackgroundImage(String img1, String img2) {
             this(new ImageIcon(img1).getImage(), new ImageIcon(img2).getImage());
         }
 
+        //sets default background images size and position
+        //img1 is a background image, img2 is the highway
         public  BackgroundImage(Image img1, Image img2) {
             this.img1 = img1;
             Dimension size = new Dimension(img1.getWidth(null), img1.getHeight(null));
@@ -37,6 +41,8 @@ public class BackgroundImage extends JPanel{
             setLayout(null);
         }
 
+
+        //Redraws background images to fit screen resolution
         public void paintComponent(Graphics g) {
             g.drawImage(img1, 0, 0, getWidth(), getHeight(), null);
 

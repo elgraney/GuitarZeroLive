@@ -1,7 +1,8 @@
 package com.RD.GUI;
 
 /**
- * Created by Matthew 2 on 18/02/2019.
+ * Created by Matthew on 18/02/2019.
+ * All content by Matthew
  */
 public class MenuItem {
     private String imagePath;
@@ -11,7 +12,6 @@ public class MenuItem {
         this.imagePath = imagePath;
         this.title = title;
     }
-
 
     public String getImage() {
         return imagePath;

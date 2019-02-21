@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Matthew 2 on 19/02/2019.
+ * Created by Matthew on 19/02/2019.
  * Edited by Joe on 20/02/2019
+ * Content by Joe
  */
 public class SelectMode extends ModeTemplate {
     public SelectMode(JFrame frame, SetUpGUI base) {
