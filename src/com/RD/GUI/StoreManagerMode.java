@@ -1,10 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.RD.GUI;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
  * @author Jordan
  */
 public class StoreManagerMode extends javax.swing.JFrame {
+    private String bundleTitle;
+    private String bundleCoverArt;
+    private String bundleMusic;
+
 
     /**
      * Creates new form Screen1
@@ -51,10 +74,30 @@ public class StoreManagerMode extends javax.swing.JFrame {
         jLabelMusic.setText("Music:");
 
         jButtonBrowse_title.setText("Browse");
+        jButtonBrowse_title.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBrowse_titleMouseClicked(evt);
+            }
+        });
+        jButtonBrowse_title.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBrowse_titleActionPerformed(evt);
+            }
+        });
 
         jButtonBrowse_CoverArt.setText("Browse");
+        jButtonBrowse_CoverArt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBrowse_CoverArtActionPerformed(evt);
+            }
+        });
 
         jButtonBrowse_Music.setText("Browse");
+        jButtonBrowse_Music.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBrowse_MusicActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDetailsEntryLayout = new javax.swing.GroupLayout(jPanelDetailsEntry);
         jPanelDetailsEntry.setLayout(jPanelDetailsEntryLayout);
@@ -199,13 +242,87 @@ public class StoreManagerMode extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {
+        // Create Zip of three files and save to Bundles file
+        //Check that text boxes are not empty
+        if (jTextFieldTitle.getText() == null || jTextFieldCoverArt.getText() ==null || jTextFieldMusic.getText() ==null  ){
+            JOptionPane.showMessageDialog(this, "Please enter relevant files");
+        } else {
+            try {
+                addToZip(bundleTitle, bundleCoverArt, bundleMusic);
+                jTextFieldTitle.setText("");
+                jTextFieldCoverArt.setText("");
+                jTextFieldMusic.setText("");
+                JOptionPane.showMessageDialog(this, "Bundle saved!");
+            } catch (IOException ex) {
+                Logger.getLogger(StoreManagerMode.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    private void jButtonBrowse_titleActionPerformed(java.awt.event.ActionEvent evt) {
+        // Open file explorer to find MIDI files
+        JFileChooser fileChooser = new JFileChooser();
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            File chosenFile = fileChooser.getSelectedFile();
+            //Check that it is a MIDI file
+            if (chosenFile.toString().endsWith(".mid")){
+                bundleTitle = chosenFile.toString();
+                jTextFieldTitle.setText(bundleTitle.substring(chosenFile.toString().lastIndexOf("\\") + 1));
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Choose a MIDI file");
+            }
+            System.out.println("bundleTitle = " + bundleTitle);
+
+        }
+
+    }
+
+    private void jButtonBrowse_titleMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
+
+    }
+
+    private void jButtonBrowse_CoverArtActionPerformed(java.awt.event.ActionEvent evt) {
+        //File PNG files
+        JFileChooser fileChooser = new JFileChooser();
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            File chosenFile = fileChooser.getSelectedFile();
+            //Check that it is a PNG file
+            if (chosenFile.toString().endsWith(".png")){
+                bundleCoverArt = chosenFile.toString();
+                jTextFieldCoverArt.setText(bundleCoverArt.substring(chosenFile.toString().lastIndexOf("\\") + 1));
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Choose a PNG file");
+            }
+            System.out.println("bundleCoverArt = " + bundleCoverArt);
+
+        }
+    }
+
+    private void jButtonBrowse_MusicActionPerformed(java.awt.event.ActionEvent evt) {
+
+        //FInd Notes files saved in txt files
+        JFileChooser fileChooser = new JFileChooser();
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            File chosenFile = fileChooser.getSelectedFile();
+            //Check that it is a MIDI file
+            if (chosenFile.toString().endsWith(".txt")){
+                bundleMusic = chosenFile.toString();
+                jTextFieldMusic.setText(bundleMusic.substring(chosenFile.toString().lastIndexOf("\\") + 1));
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Choose a text file");
+            }
+            System.out.println("bundleMusic = " + bundleMusic);
+
+        }
     }
 
     /**
      * @param args the command line arguments
      */
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -228,6 +345,14 @@ public class StoreManagerMode extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StoreManagerMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -262,4 +387,38 @@ public class StoreManagerMode extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldMusic;
     private javax.swing.JTextField jTextFieldTitle;
     // End of variables declaration
+
+    private void addToZip(String bundleTitle, String bundleCoverArt, String bundleMusic) throws FileNotFoundException, IOException{
+        byte[] buffer = new byte[1024];
+        //The archive bundle is saved as the title of the song.
+        String BundlesPath = "assets\\Bundles\\";
+        FileOutputStream fos = new FileOutputStream(BundlesPath + bundleTitle.substring(bundleTitle.lastIndexOf("\\") + 1, bundleTitle.lastIndexOf(".mid"))+".zip");
+        ZipOutputStream zos = new ZipOutputStream(fos);
+
+
+        ZipEntry title = new ZipEntry(jTextFieldTitle.getText());
+        zos.putNextEntry(title);
+        ZipEntry coverArt = new ZipEntry(jTextFieldCoverArt.getText());
+        zos.putNextEntry(coverArt);
+        ZipEntry music = new ZipEntry(jTextFieldMusic.getText());
+        zos.putNextEntry(music);
+
+
+
+
+        FileInputStream in = new FileInputStream(bundleTitle);
+        FileInputStream in2 = new FileInputStream(bundleCoverArt);
+        FileInputStream in3 = new FileInputStream(bundleMusic);
+
+        int len;
+        while ((len = in.read(buffer)) > 0){
+            zos.write(buffer, 0, len);
+        }
+
+        in.close();
+        in2.close();
+        in3.close();
+        zos.closeEntry();
+        zos.close();
+    }
 }
