@@ -1,7 +1,5 @@
 package com.RD;
 
-import com.RD.GUI.SetUpGUI;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,7 +14,5 @@ public class tempView {
         frame.setFocusable(true);
         frame.setVisible(true);
 
-
-        //add listener here
     }
 }
