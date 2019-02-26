@@ -1,6 +1,8 @@
 package com.RD.GUI;
 
+import com.RD.Game.GuitarController;
 import com.RD.Game.Model;
+import com.RD.Game.TimeController;
 import com.RD.Game.View;
 
 import javax.swing.*;
@@ -44,7 +46,9 @@ public class SlashMode extends ModeTemplate {
                 System.out.println("Play- NOT IMPLEMENTED");
                 tearDown();
                 Model model = new Model(frame, "MidiFile.mid", "Placeholder");
-                //new controller
+                GuitarController guitarController =  new GuitarController(model);
+                base.setListener(guitarController);
+                TimeController timeController = new TimeController(model);
                 View view = new View(model);
                 break;
 

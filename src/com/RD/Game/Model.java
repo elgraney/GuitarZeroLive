@@ -7,9 +7,12 @@ import javax.sound.midi.Sequencer;
 import javax.swing.*;
 import java.io.*;
 
+import static com.RD.Game.Model.InputState.NORMAL;
+
 /**
  * Created by Matthew 2 on 26/02/2019.
  */
+
 public class Model {
     //stores data only
     //must not depend on controller or view
@@ -17,6 +20,16 @@ public class Model {
     private String notesPath;
     private String midiPath;
     private JFrame frame;
+    private InputState state;
+
+    public InputState getState() {
+        return state;
+    }
+
+    public enum InputState{
+        NORMAL, ZERO_POWER, DISABLED
+
+    }
 
     public JFrame getFrame() {
         return frame;
@@ -38,6 +51,7 @@ public class Model {
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
             //DO SOMETHING ELSE
+
         }
 
 
@@ -45,6 +59,7 @@ public class Model {
 
     public void begin() throws MidiUnavailableException, IOException, InvalidMidiDataException {
         //REMEMBER implement error handling for these errors ^
+        state = NORMAL;
         Sequencer sequencer = MidiSystem.getSequencer();
         sequencer.open();
         InputStream is = new BufferedInputStream(new FileInputStream(new File("Midi/Undertale_-_Megalovania.mid")));
@@ -58,4 +73,13 @@ public class Model {
 
         //do notes file
     }
+
+    public void hitNote(){
+
+    }
+    //or
+    public void missNote(){
+
+    }
+    //i guess i never missNote, huh
 }
