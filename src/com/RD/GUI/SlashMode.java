@@ -1,5 +1,8 @@
 package com.RD.GUI;
 
+import com.RD.Game.Model;
+import com.RD.Game.View;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,6 +42,10 @@ public class SlashMode extends ModeTemplate {
 
             case "Play":
                 System.out.println("Play- NOT IMPLEMENTED");
+                tearDown();
+                Model model = new Model(frame, "MidiFile.mid", "Placeholder");
+                //new controller
+                View view = new View(model);
                 break;
 
             case "Select":

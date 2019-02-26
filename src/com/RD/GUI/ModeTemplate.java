@@ -93,6 +93,8 @@ public class ModeTemplate extends JFrame{
     public void tearDown(){
         frame.remove(container);
         base.removeListener();
+        frame.revalidate();
+        frame.repaint();
     }
 
     //defines the layout of a single menu item in the carousel
