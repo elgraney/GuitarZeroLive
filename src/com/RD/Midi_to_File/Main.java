@@ -1,7 +1,15 @@
+import javax.sound.midi.MetaMessage;
+import javax.sound.midi.MetaEventListener;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequencer;
+import javax.sound.midi.Transmitter;
+
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sound.midi.*;
+import javax.sound.midi.Sequence;
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 
 /**
@@ -92,7 +100,7 @@ public class Main {
         final String[] NAMES =
                 { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         final String[] BUTTONS =
-                { "   1", "   2", "   3", "   4", "   5", "   6"};
+                { "1", "2", "3", "4", "5", "6"};
         final int octave = (n / 12) - 1;
         final int note   = n % 12;
         int button = 0;
@@ -135,6 +143,14 @@ public class Main {
      * Display a MIDI track.
      * Edited By James
      */
+    public void meta( MetaMessage mesg ) {
+        if ( mesg.getType() == 0x51 /* SET_Tempo */ ) {
+            System.out.println(mesg);
+        }
+
+    }
+
+
     public static void displayTrack( Track trk ){
         File file = new File ("C:/Users/840/Desktop/file.txt");
         PrintWriter printWriter = null;
@@ -146,6 +162,20 @@ public class Main {
         }
         printWriter.println (FILE.toString());
 
+        Sequence seq = null;
+
+        try {
+            seq = MidiSystem.getSequence( new File( FILE ) );
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        final int Resolution = seq.getResolution();
+        float ppq = seq.PPQ;
+        //printWriter.println("TPB "+ Resolution  + " ppq "+ ppq);
+
+
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
@@ -155,22 +185,24 @@ public class Main {
                 final int chan = smsg.getChannel();
                 final int cmd = smsg.getCommand();
                 final int dat1 = smsg.getData1();
+
                 switch (cmd) {
                     case 192:
-                        printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
+
                         if (dat1 > 24 && dat1 < 33) {
+                            //printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
                             guitarlist.add(chan);
                         }
-                        printWriter.println("" + guitarlist + dat1);
                         break;
                     case 144:
                         if (guitarlist.contains(chan)){
-                        printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note on:  " + noteName(dat1));
+
+                        printWriter.println("" + tick + "," + noteName(dat1));
                             }
                         break;
                     case 128:
                         if(guitarlist.contains(chan)) {
-                            printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note off: " + noteName(dat1));
+                            //printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note off: " + noteName(dat1));
                         }
                         break;
                     default:
