@@ -17,6 +17,7 @@ public class TimeController{
         timer.schedule( new TimerTask() {
             public void run() {
                 //some method that happens each tick?
+                model.doTick();
             }
         }, 0, Constants.INTERVAL );
     }

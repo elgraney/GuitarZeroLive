@@ -46,6 +46,11 @@ public class GuitarController implements KeyListener {
                 else{
                     model.missNote();
                 }
+            case KeyEvent.VK_ESCAPE :
+                //pause music
+                //pause menu
+                //set state paused
+                model.setState(Model.InputState.PAUSED);
         }
     }
 
