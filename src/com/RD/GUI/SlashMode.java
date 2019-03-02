@@ -45,7 +45,7 @@ public class SlashMode extends ModeTemplate {
             case "Play":
                 System.out.println("Play- NOT IMPLEMENTED");
                 tearDown();
-                Model model = new Model(frame, "MidiFile.mid", "Placeholder");
+                Model model = new Model(frame, "Bohemian_Rhapsody.mid", "Placeholder");
                 GuitarController guitarController =  new GuitarController(model);
                 base.setListener(guitarController);
                 TimeController timeController = new TimeController(model);

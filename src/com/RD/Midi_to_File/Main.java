@@ -1,3 +1,5 @@
+package com.RD.Midi_to_File;
+
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
@@ -23,7 +25,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "MidiFile.mid";
+    final static String FILE = "Midi/Bohemian_Rhapsody.mid";
     /**
      * MinMaxFrequency Written by James
        */
@@ -152,11 +154,11 @@ public class Main {
 
 
     public static void displayTrack( Track trk ){
-        File file = new File ("C:/Users/840/Desktop/file.txt");
+        File file = new File ("notes/file.txt");
         PrintWriter printWriter = null;
         List<Integer> guitarlist = new ArrayList<>();
         try {
-            printWriter = new PrintWriter("file.txt");
+            printWriter = new PrintWriter("notes/file.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -208,10 +210,7 @@ public class Main {
                     default:
                         break;
                 }
-
-
             }
-
         }
         printWriter.close();
     }
