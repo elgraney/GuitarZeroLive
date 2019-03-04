@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static java.awt.Color.*;
 
@@ -22,28 +23,18 @@ import static java.awt.Color.*;
 public class View implements PropertyChangeListener  {
     private Model model;
     private JFrame frame;
-    private JPanel graphicsPanel;
-    private JPanel notesPanel;
 
     private Image whiteNote;
     private Image blackNote;
     private boolean notRunning =true;
     private ArrayList<Pair<Integer, Integer>> displayNotes =  new ArrayList<>();
+    private HashMap<String, NoteObject> imageReferences = new HashMap<String, NoteObject>();
 
     public View(Model model){
         this.model = model;
         frame = model.getFrame();
         frame.setLayout(null);
-        graphicsPanel = new JPanel();
-        notesPanel = new JPanel();
-        notesPanel.setSize(new Dimension(frame.getWidth(), frame.getHeight()));
 
-        notesPanel.setLayout(null);
-        graphicsPanel.setLayout(null);
-        graphicsPanel.add(notesPanel);
-        graphicsPanel.setSize(new Dimension(frame.getWidth(), frame.getHeight()));
-
-        frame.add(graphicsPanel);
         try {
             whiteNote = new ImageIcon(ImageIO.read(new File("assets/whiteNote.png"))).getImage();
             blackNote = new ImageIcon(ImageIO.read(new File("assets/blackNote.png"))).getImage();
@@ -68,60 +59,85 @@ public class View implements PropertyChangeListener  {
         return (note % 3);
     }
 
-    private void drawNote(boolean white, int channel, int time ){
+    private void drawNote(boolean white, int note, int time ){
         Image noteIcon;
+        int channel = mapChannel(note);
         if (white){
             noteIcon = whiteNote;
-
         }
         else{
             noteIcon=blackNote;
         }
         JPanel notePane = new JPanel();
-        notePane.setBackground(BLACK);
+        notePane.add(new JLabel(new ImageIcon(noteIcon)));
         notePane.setSize(new Dimension(100, 100));
+        notePane.setOpaque(false);
 
+        NoteObject noteObject = new NoteObject(time, channel, notePane);
+        setLocation(noteObject);
+        frame.add(notePane);
+        imageReferences.put(Integer.toString(time)+Integer.toString(note), new NoteObject(time, channel, notePane));
+        System.out.println("Added new note Object");
+        System.out.println(noteObject.getTime());
+    }
+
+    private void setLocation(NoteObject note){
+        int channel = note.getChannel();
+        JPanel notePanel =note.getPanel();
+        int timeUntilPlayed = note.getTime() - model.getTime();
         switch (channel){
             case 0:
-                break;
+                notePanel.setLocation(frame.getWidth()/2 -frame.getWidth()/8 - 50, 100);
             case 1:
-                notePane.setBackground(BLACK);
-                notePane.setLocation(200,200 + time/2);
+                double y = (frame.getHeight()*0.55) - ((double) timeUntilPlayed)/2000 * (frame.getHeight()*0.45);
+                notePanel.setLocation(frame.getWidth()/2 - 50, (int) Math.round(y));
+                System.out.println( (((float) timeUntilPlayed)/2000) * (frame.getHeight()*0.45));
                 break;
             case 2:
-                notePane.setBackground(WHITE);
-                notePane.setLocation(400,400 + time/2);
+                notePanel.setLocation(frame.getWidth()/2 +frame.getWidth()/8 - 50, 100);
                 break;
             default:
                 System.out.println("Something has gone horribly wrong somewhere....");
                 break;
         }
-        notesPanel.add(notePane);
-        graphicsPanel.revalidate();
-        graphicsPanel.repaint();
     }
 
     private int timeUntilPlayed(int tick){
         return (tick - model.getTime());
     }
 
-    public void redraw() {
-        displayNotes = model.getHighwayNotes();
+    public void redraw(Pair<Integer, Integer> note) {
+        String key = Integer.toString(note.getKey())+Integer.toString(note.getValue());
+        NoteObject noteObject = imageReferences.get(key);
+        setLocation(noteObject);
+    }
 
-        for(Pair<Integer, Integer> note:displayNotes){
-
-            drawNote(mapNote(note.getValue()), mapChannel(note.getValue()), timeUntilPlayed(note.getKey()));
-        }
-        displayNotes = null;
-
+    private void removeNotes(Pair<Integer, Integer> note){
+        displayNotes.remove(note);
+        String key = Integer.toString(note.getKey())+Integer.toString(note.getValue());
+        NoteObject noteObject = imageReferences.get(key);
+        frame.remove(noteObject.getPanel());
+        imageReferences.remove(key);
     }
 
     public  void propertyChange( PropertyChangeEvent evt ) {
-        if (notRunning){
-            notRunning = false;
-            notesPanel.removeAll();
-            redraw();
-            notRunning = true;
+        ArrayList<Pair<Integer, Integer>> newNotes = model.getHighwayNotes();
+        for (Pair<Integer, Integer> note : newNotes){
+            if (displayNotes.contains(note)){
+               redraw(note);
+            }
+            else{
+               drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
+               displayNotes.add(note);
+           }
         }
+        for(Pair<Integer, Integer> note : displayNotes){
+            if (!newNotes.contains(note)){
+                removeNotes(note);
+           }
+        }
+        System.out.println("paint");
+        frame.revalidate();
+        frame.repaint();
     }
 }
