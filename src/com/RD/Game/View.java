@@ -1,5 +1,6 @@
 package com.RD.Game;
 
+import com.sun.xml.internal.bind.WhiteSpaceProcessor;
 import javafx.util.Pair;
 
 import javax.imageio.ImageIO;
@@ -12,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static java.awt.Color.*;
-import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.waiting;
 
 /**
  * Created by Matthew 2 on 26/02/2019.
@@ -22,6 +22,8 @@ import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStat
 public class View implements PropertyChangeListener  {
     private Model model;
     private JFrame frame;
+    private JPanel graphicsPanel;
+    private JPanel notesPanel;
 
     private Image whiteNote;
     private Image blackNote;
@@ -31,7 +33,17 @@ public class View implements PropertyChangeListener  {
     public View(Model model){
         this.model = model;
         frame = model.getFrame();
-        frame.setLayout(new GridBagLayout());
+        frame.setLayout(null);
+        graphicsPanel = new JPanel();
+        notesPanel = new JPanel();
+        notesPanel.setSize(new Dimension(frame.getWidth(), frame.getHeight()));
+
+        notesPanel.setLayout(null);
+        graphicsPanel.setLayout(null);
+        graphicsPanel.add(notesPanel);
+        graphicsPanel.setSize(new Dimension(frame.getWidth(), frame.getHeight()));
+
+        frame.add(graphicsPanel);
         try {
             whiteNote = new ImageIcon(ImageIO.read(new File("assets/whiteNote.png"))).getImage();
             blackNote = new ImageIcon(ImageIO.read(new File("assets/blackNote.png"))).getImage();
@@ -60,34 +72,33 @@ public class View implements PropertyChangeListener  {
         Image noteIcon;
         if (white){
             noteIcon = whiteNote;
+
         }
         else{
             noteIcon=blackNote;
         }
         JPanel notePane = new JPanel();
         notePane.setBackground(BLACK);
-        frame.add(notePane);
+        notePane.setSize(new Dimension(100, 100));
+
         switch (channel){
             case 0:
-                notePane.setLocation(0,0);
-                System.out.println("0");
                 break;
             case 1:
-                notePane.setLocation(100,0);
-                System.out.println("hello there from 1");
+                notePane.setBackground(BLACK);
+                notePane.setLocation(200,200 + time/2);
                 break;
             case 2:
-                notePane.setLocation(200,0);
-                System.out.println("2");
+                notePane.setBackground(WHITE);
+                notePane.setLocation(400,400 + time/2);
                 break;
             default:
                 System.out.println("Something has gone horribly wrong somewhere....");
                 break;
         }
-        frame.revalidate();
-        frame.repaint();
-
-
+        notesPanel.add(notePane);
+        graphicsPanel.revalidate();
+        graphicsPanel.repaint();
     }
 
     private int timeUntilPlayed(int tick){
@@ -96,7 +107,6 @@ public class View implements PropertyChangeListener  {
 
     public void redraw() {
         displayNotes = model.getHighwayNotes();
-        displayNotes.addAll(model.getPlayNotes());
 
         for(Pair<Integer, Integer> note:displayNotes){
 
@@ -107,14 +117,11 @@ public class View implements PropertyChangeListener  {
     }
 
     public  void propertyChange( PropertyChangeEvent evt ) {
-
         if (notRunning){
-
             notRunning = false;
+            notesPanel.removeAll();
             redraw();
             notRunning = true;
         }
-
     }
-
 }

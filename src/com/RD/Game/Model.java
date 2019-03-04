@@ -13,8 +13,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static com.RD.Game.Model.InputState.NORMAL;
-import static javafx.scene.input.KeyCode.M;
-import static javafx.scene.input.KeyCode.S;
 
 /**
  * Created by Matthew on 26/02/2019.
@@ -35,7 +33,6 @@ public class Model {
     private ArrayList<Pair<Integer, Integer>> originalFutureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>();
-    private ArrayList<Pair<Integer, Integer>> playNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> passedNotes = new ArrayList<>();
 
     private int streak;
@@ -52,10 +49,6 @@ public class Model {
 
     public ArrayList<Pair<Integer, Integer>> getHighwayNotes() {
         return highwayNotes;
-    }
-
-    public ArrayList<Pair<Integer, Integer>> getPlayNotes() {
-        return playNotes;
     }
 
     private PropertyChangeSupport support;
@@ -137,8 +130,6 @@ public class Model {
         sequencer.setSequence(MidiSystem.getSequence( new File("Midi/Bohemian_Rhapsody.mid")));
 
         float tempo =  sequencer.getTempoInBPM();
-        //for some reason the tempo is about half what it should be?
-        //sequencer.setTempoInBPM(150);
 
         sequencer.start();
 
@@ -176,30 +167,16 @@ public class Model {
         int interval = 1; //like the time for each tick
         time += interval;
 
-        if (playNotes.size()>0) {
-            Pair<Integer, Integer> note = playNotes.get(0);
-            while (note.getKey() < time) {
-                passedNotes.add(note);
-
-                playNotes.remove(0);
-
-                if (playNotes.size()>0) {
-                    note = playNotes.get(0);
-                }
-                else{
-                    break;
-                }
-            }
-        }
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
-            while(note.getKey() < time + 200){
+            while(note.getKey() < time - 200){
                 for(Pair<Integer, Integer> notez : highwayNotes){
                     System.out.println("item");
                     System.out.println(notez.getKey());
                 }
                 System.out.println("add to play");
-                playNotes.add(note);
+                passedNotes.add(note);
+                missNote();
                 System.out.println("before");
                 System.out.println(highwayNotes.size());
                 highwayNotes.remove(0);
@@ -229,7 +206,7 @@ public class Model {
             }
         }
 
-        if(highwayNotes.size() > 0 || playNotes.size()>0) {
+        if(highwayNotes.size() > 0) {
             support.firePropertyChange(null, null, null);
         }
 
