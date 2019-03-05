@@ -11,9 +11,13 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 
 import static java.awt.Color.*;
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
+import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.waiting;
 
 /**
  * Created by Matthew 2 on 26/02/2019.
@@ -29,6 +33,7 @@ public class View implements PropertyChangeListener  {
     private boolean notRunning =true;
     private ArrayList<Pair<Integer, Integer>> displayNotes =  new ArrayList<>();
     private HashMap<String, NoteObject> imageReferences = new HashMap<String, NoteObject>();
+    private boolean waiting = true;
 
     public View(Model model){
         this.model = model;
@@ -121,23 +126,35 @@ public class View implements PropertyChangeListener  {
     }
 
     public  void propertyChange( PropertyChangeEvent evt ) {
-        ArrayList<Pair<Integer, Integer>> newNotes = model.getHighwayNotes();
-        for (Pair<Integer, Integer> note : newNotes){
-            if (displayNotes.contains(note)){
-               redraw(note);
+        if (waiting) {
+            waiting=false;
+            ArrayList<Pair<Integer, Integer>> newNotes = model.getHighwayNotes();
+            for (Pair<Integer, Integer> note : newNotes) {
+                if (displayNotes.contains(note)) {
+                    redraw(note);
+                } else {
+                    drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
+                    displayNotes.add(note);
+                }
             }
-            else{
-               drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
-               displayNotes.add(note);
-           }
+            try { //debugging
+                for (Pair<Integer, Integer> note : displayNotes) {
+                    if (!newNotes.contains(note)) {
+                        System.out.println("REMOVE");
+                        removeNotes(note);
+                    }
+                }
+            }
+            catch(ConcurrentModificationException e){
+                for (Pair<Integer, Integer> note : displayNotes) {
+                    System.out.println("DISPLAYNOTES ITEM");
+                    System.out.println(note.getKey());
+                }
+            }
+            System.out.println("paint");
+            frame.revalidate();
+            frame.repaint();
+            waiting=true;
         }
-        for(Pair<Integer, Integer> note : displayNotes){
-            if (!newNotes.contains(note)){
-                removeNotes(note);
-           }
-        }
-        System.out.println("paint");
-        frame.revalidate();
-        frame.repaint();
     }
 }
