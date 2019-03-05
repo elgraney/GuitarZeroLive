@@ -1,5 +1,3 @@
-package com.RD.Midi_to_File;
-
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
@@ -9,7 +7,9 @@ import javax.sound.midi.Transmitter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.sound.midi.*;
 import javax.sound.midi.Sequence;
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
@@ -25,7 +25,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "Midi/Bohemian_Rhapsody.mid";
+    final static String FILE = "MidiFile.mid";
     /**
      * MinMaxFrequency Written by James
        */
@@ -34,6 +34,7 @@ public class Main {
         int Min = 128;
         int Max = 0;
         List<Integer> guitarlist = new ArrayList<>();
+        List<Integer> Channellist = new ArrayList<>();
         List<Integer> MinMax = new ArrayList<>();
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
@@ -47,15 +48,17 @@ public class Main {
                     case 192:
                         if (dat1 > 24 && dat1 < 33) {
                             guitarlist.add(chan);
+
                         }
                         break;
                     case 144:
-                        if (guitarlist.contains(chan)){
-                            if (dat1>Max){
-                                Max=dat1;
+                        if (guitarlist.contains(chan)) {
+                            Channellist.add(chan);
+                            if (dat1 > Max) {
+                                Max = dat1;
                             }
-                            if(dat1<Min){
-                                Min=dat1;
+                            if (dat1 < Min) {
+                                Min = dat1;
                             }
                         }
                         break;
@@ -66,13 +69,36 @@ public class Main {
 
 
             }
-            }
+        }
+
+
+
+
             MinMax.add(Min);
             MinMax.add(Max);
+            MinMax.add(mostFrequent(Channellist));
      return MinMax;
     }
+    public static Integer mostFrequent(List<Integer> list) {
 
+        if (list.isEmpty())
+            return null;
 
+        Map<Integer, Integer> counterMap = new HashMap<Integer, Integer>();
+        Integer maxValue = 0;
+        Integer mostFrequentValue = null;
+
+        for(Integer valueAsKey : list) {
+            Integer counter = counterMap.get(valueAsKey);
+            counterMap.put(valueAsKey, counter == null ? 1 : counter + 1);
+            counter = counterMap.get(valueAsKey);
+            if (counter > maxValue) {
+                maxValue = counter;
+                mostFrequentValue = valueAsKey;
+            }
+        }
+        return mostFrequentValue;
+    }
     /**
      * Returns the name of nth instrument in the current MIDI soundbank.
      *
@@ -145,20 +171,15 @@ public class Main {
      * Display a MIDI track.
      * Edited By James
      */
-    public void meta( MetaMessage mesg ) {
-        if ( mesg.getType() == 0x51 /* SET_Tempo */ ) {
-            System.out.println(mesg);
-        }
 
-    }
 
 
     public static void displayTrack( Track trk ){
-        File file = new File ("notes/file.txt");
+        File file = new File ("C:/Users/840/Desktop/file.txt");
         PrintWriter printWriter = null;
         List<Integer> guitarlist = new ArrayList<>();
         try {
-            printWriter = new PrintWriter("notes/file.txt");
+            printWriter = new PrintWriter("file.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -174,10 +195,10 @@ public class Main {
             e.printStackTrace();
         }
         final int Resolution = seq.getResolution();
-        float ppq = seq.PPQ;
+
         //printWriter.println("TPB "+ Resolution  + " ppq "+ ppq);
 
-
+        final int MainPart = MinMaxFrequency(seq.getTracks()[0]).get(2);
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
@@ -191,16 +212,23 @@ public class Main {
                 switch (cmd) {
                     case 192:
 
-                        if (dat1 > 24 && dat1 < 33) {
-                            //printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
-                            guitarlist.add(chan);
+//                        if (dat1 > 24 && dat1 < 33) {
+                          if(chan == MainPart){
+                              //printWriter.append("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
+                              guitarlist.add(chan);
                         }
                         break;
                     case 144:
-                        if (guitarlist.contains(chan)){
-
-                        printWriter.println("" + tick + "," + noteName(dat1));
-                            }
+                        //if (guitarlist.contains(chan)){
+                           // printWriter.println("" + tick + "," + noteName(dat1));
+                        //}
+                        if (chan == MainPart) {
+                            printWriter.println("" + tick + "," + noteName(dat1));
+                        }
+//                        else{
+//                            printWriter.println("" + tick + "," + noteName(dat1));
+//                        }
+//                            }
                         break;
                     case 128:
                         if(guitarlist.contains(chan)) {
@@ -210,7 +238,13 @@ public class Main {
                     default:
                         break;
                 }
+
+
             }
+
+        }
+        if(guitarlist.size() == 0){
+            printWriter.println("Reject");
         }
         printWriter.close();
     }
@@ -236,6 +270,7 @@ public class Main {
         try {
             Sequence seq = MidiSystem.getSequence( new File( FILE ) );
             displaySequence( seq );
+
 
         } catch ( Exception exn ) {
             System.out.println( exn ); System.exit( 1 );
