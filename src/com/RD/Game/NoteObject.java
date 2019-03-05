@@ -7,13 +7,13 @@ import javax.swing.*;
  */
 public class NoteObject {
     private int time;
-    private int channel;
+    private int chanel;
     private JPanel panel;
 
-    public NoteObject(int time,  int channel, JPanel panel) {
+    public NoteObject(int time,  int chanel, JPanel panel) {
         this.time = time;
 
-        this.channel = channel;
+        this.chanel = chanel;
         this.panel = panel;
     }
 
@@ -25,12 +25,12 @@ public class NoteObject {
         this.time = time;
     }
 
-    public int getChannel() {
-        return channel;
+    public int getChanel() {
+        return chanel;
     }
 
-    public void setChannel(int channel) {
-        this.channel = channel;
+    public void setChanel(int channel) {
+        this.chanel = chanel;
     }
 
     public JPanel getPanel() {

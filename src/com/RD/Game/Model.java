@@ -13,6 +13,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static com.RD.Game.Model.InputState.NORMAL;
+import static javafx.scene.input.KeyCode.L;
+import static javax.sound.midi.Sequence.PPQ;
 
 /**
  * Created by Matthew on 26/02/2019.
@@ -26,20 +28,26 @@ public class Model {
     private String midiPath;
     private JFrame frame;
     private InputState state;
+    private Sequencer sequencer;
 
-
-    private int time = 0;
+    private long time = 0;
 
     private ArrayList<Pair<Integer, Integer>> originalFutureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> passedNotes = new ArrayList<>();
 
-    private int streak;
+    private int streak =0;
     private int score;
-    private int multiplier;
+    private int multiplier = 1;
+    private int currency;
+    private int currencyCounter = 0;
 
-    public int getTime() {
+    private void importCurrency() {
+        //get users currency from wherever it is being stored and set the value of currency to it
+    }
+
+    public long getTime() {
         return time;
     }
 
@@ -81,7 +89,6 @@ public class Model {
         this.frame = frame;
         midiPath = midiFilePath;
 
-
         readNotes();
         //begin won't be here in the future
         try {
@@ -105,12 +112,12 @@ public class Model {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(
-                    "Midi/test.txt"));
+                    "Midi/file.txt"));
             String line = reader.readLine();
             line = reader.readLine();//skip first line
             while (line != null) {
                 System.out.println(line);
-                String[] parts = line.split(", ");
+                String[] parts = line.split(",");
                 futureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
                 originalFutureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
                 line = reader.readLine();
@@ -124,66 +131,66 @@ public class Model {
     public void begin() throws MidiUnavailableException, IOException, InvalidMidiDataException {
         //REMEMBER implement error handling for these errors ^
         state = NORMAL;
-        Sequencer sequencer = MidiSystem.getSequencer();
+        sequencer = MidiSystem.getSequencer();
 
         sequencer.open();
-        sequencer.setSequence(MidiSystem.getSequence( new File("Midi/Bohemian_Rhapsody.mid")));
-
-        float tempo =  sequencer.getTempoInBPM();
+        sequencer.setSequence(MidiSystem.getSequence( new File("Midi/Bon_Jovi_-_Living_on_a_Prayer2.mid")));
 
         sequencer.start();
 
-        System.out.println("tempo");
-        System.out.println(tempo);
-        System.out.println(sequencer.getTempoInBPM());
         //do notes file
     }
 
     private void incrementStreak(){
         streak +=1;
     }
+
     private void resetStreak(){
         streak = 0;
     }
-    private void incrementScore(){
+
+    private void incrementScore() {
         score += multiplier; //assume notes are worth 1 by default
+        currencyCounter += multiplier;
+        if (currencyCounter>=500){
+            currency+=1;
+            if (currency>5){
+                currency = 5;
+            }
+            currencyCounter -=500;
+        }
     }
     private void calculateMultiplier(){
-        multiplier = 2^(streak / 10);
+        int power = (int) ((double) streak / 10);
+        multiplier = (int) Math.pow(2, power);
     }
 
     public void hitNote(){
+        support.firePropertyChange(null, null, null);
         incrementStreak();
         calculateMultiplier();
         incrementScore();
     }
     //or
     public void missNote(){
+        support.firePropertyChange(null, null, null);
         resetStreak();
     }
     //i guess i never missNote, huh
 
     public void doTick(){
-        int interval = 1; //like the time for each tick
-        time += interval;
+        //like the time for each tick
+        time = sequencer.getTickPosition();
+
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
             while(note.getKey() < time - 200){
-                for(Pair<Integer, Integer> notez : highwayNotes){
-                    System.out.println("item");
-                    System.out.println(notez.getKey());
-                }
-                System.out.println("add to play");
                 passedNotes.add(note);
-                missNote();
-                System.out.println("before");
-                System.out.println(highwayNotes.size());
                 highwayNotes.remove(0);
-                System.out.println("after");
-                System.out.println(highwayNotes.size());
+                hitNote();//FOR TESTING - MAKE SURE TO REMOVE!!!!
+                //missNote();
                 if (highwayNotes.size()>0) {
-                    System.out.println("Repeat");
                     note = highwayNotes.get(0);
                 }
                 else{
@@ -194,7 +201,6 @@ public class Model {
         if (futureNotes.size()>0) {
             Pair<Integer, Integer> note = futureNotes.get(0);
             while (note.getKey() < time + 3000) {
-                System.out.println("add to highway");
                 highwayNotes.add(note);
                 futureNotes.remove(0);
                 if (futureNotes.size()>0) {
@@ -209,6 +215,5 @@ public class Model {
         if(highwayNotes.size() > 0) {
             support.firePropertyChange(null, null, null);
         }
-
     }
 }

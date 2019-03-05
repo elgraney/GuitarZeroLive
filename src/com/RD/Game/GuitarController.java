@@ -72,6 +72,8 @@ public class GuitarController implements KeyListener {
         playSound("assets/BruhSoundEffect2.wav");
         /// /find out what notes should be played at this time and compare to note played
         // either call hitNote or missNote
+
+        model.missNote(); //temp
     }
 
 

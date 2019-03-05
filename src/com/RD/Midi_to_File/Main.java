@@ -1,3 +1,5 @@
+package com.RD.Midi_to_File;
+
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
@@ -25,7 +27,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "MidiFile.mid";
+    final static String FILE = "Midi/Bon_Jovi_-_Living_on_a_Prayer2.mid";
     /**
      * MinMaxFrequency Written by James
        */
@@ -175,11 +177,11 @@ public class Main {
 
 
     public static void displayTrack( Track trk ){
-        File file = new File ("C:/Users/840/Desktop/file.txt");
+        File file = new File("notes/file.txt");
         PrintWriter printWriter = null;
         List<Integer> guitarlist = new ArrayList<>();
         try {
-            printWriter = new PrintWriter("file.txt");
+            printWriter = new PrintWriter("notes/file.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -267,13 +269,18 @@ public class Main {
      * @param argv the command line arguments
      */
     public static void main( String[] argv ) {
+
+        Sequence seq = null;
         try {
-            Sequence seq = MidiSystem.getSequence( new File( FILE ) );
+            seq = MidiSystem.getSequence( new File( FILE ) );
             displaySequence( seq );
-
-
-        } catch ( Exception exn ) {
-            System.out.println( exn ); System.exit( 1 );
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
+
     }
 }

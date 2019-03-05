@@ -1,12 +1,11 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+package com.RD.Midi_to_File;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ZeroPowerMode {
-    public static List<String> TextFileToArray(File MidiTxt){
+    public static List<String> TextFileToArray(File MidiTxt) throws IOException {
         List<String> TextFileArray = new ArrayList<>();
         BufferedReader abc = null;
         try {
