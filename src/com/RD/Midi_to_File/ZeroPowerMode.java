@@ -1,5 +1,3 @@
-package com.RD.Midi_to_File;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +14,26 @@ public class ZeroPowerMode {
             System.exit(0);
         }
         List<String> data = new ArrayList<String>();
-        String s;
-        while((s=abc.readLine())!=null) {
-            data.add(s);
-            System.out.println(s);
+        String Line;
+        int n =0;
+        while((Line=abc.readLine())!=null) {
+            if (n!=0) {
+                data.add(Line);
+            }
+            n++;
+
         }
         abc.close();
 
 
-        return TextFileArray;
+        return data;
+    }
+
+    public static void main(String[] args) throws IOException {
+        File file = new File ("C:\\Users\\840\\IdeaProjects\\midi\\src\\file.txt");
+        System.out.println(TextFileToArray(file));
+        System.out.println(TextFileToArray(file).get(0));
+        System.out.println(TextFileToArray(file).get(1));
     }
 
 }

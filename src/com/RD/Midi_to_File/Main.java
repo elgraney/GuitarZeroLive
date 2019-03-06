@@ -1,5 +1,3 @@
-package com.RD.Midi_to_File;
-
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
@@ -126,7 +124,7 @@ public class Main {
      * @param n the note number
      * @return  the note name
      */
-    public static String noteName( int n ) {
+    public static String noteName( int n, Track trk) {
         final String[] NAMES =
                 { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         final String[] BUTTONS =
@@ -139,12 +137,15 @@ public class Main {
             seq = MidiSystem.getSequence( new File( FILE ) );
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
+            System.out.println("invalidMidiData");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("IOexception with Midi get sequence");
         }
         Track[] trks = seq.getTracks();
-        int Min = MinMaxFrequency(trks[0]).get(0);
-        int Max = MinMaxFrequency(trks[0]).get(1);
+
+        int Min = MinMaxFrequency(trk).get(0);
+        int Max = MinMaxFrequency(trk).get(1);
         int ivl = (Max - Min) /6;
         if(Min<n && n<Min + ivl){
             button = 0;
@@ -177,13 +178,14 @@ public class Main {
 
 
     public static void displayTrack( Track trk ){
-        File file = new File("notes/file.txt");
+        File file = new File ("notes/file.txt");
         PrintWriter printWriter = null;
         List<Integer> guitarlist = new ArrayList<>();
         try {
             printWriter = new PrintWriter("notes/file.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            System.out.println("File is not Found Try a different file");
         }
         printWriter.println (FILE.toString());
 
@@ -193,14 +195,15 @@ public class Main {
             seq = MidiSystem.getSequence( new File( FILE ) );
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
+            System.out.println("The Midi File is invalid. Pick a different File");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("IO exception");
         }
         final int Resolution = seq.getResolution();
 
         //printWriter.println("TPB "+ Resolution  + " ppq "+ ppq);
-
-        final int MainPart = MinMaxFrequency(seq.getTracks()[0]).get(2);
+        final int MainPart = MinMaxFrequency(trk).get(2);
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
@@ -225,7 +228,7 @@ public class Main {
                            // printWriter.println("" + tick + "," + noteName(dat1));
                         //}
                         if (chan == MainPart) {
-                            printWriter.println("" + tick + "," + noteName(dat1));
+                            printWriter.println("" + tick + "," + noteName(dat1, trk));
                         }
 //                        else{
 //                            printWriter.println("" + tick + "," + noteName(dat1));
@@ -255,11 +258,33 @@ public class Main {
     /**
      * Display a MIDI sequence.
      */
-    public static void displaySequence( Sequence seq ) throws IOException {
+    public static void displaySequence( Sequence seq ){
         Track[] trks = seq.getTracks();
         for ( int i = 0; i < trks.length; i++ ) {
-            displayTrack( trks[ i ] );
+            try {displayTrack( trks[ i ]);}
+            catch(NullPointerException e){
+                System.out.println("Track " + i + " Doesnt Exist" );
+                continue;
+            }
+            File file = new File ("notes/file.txt");
+            BufferedReader brTest = null;
+            try {
+                brTest = new BufferedReader(new FileReader(file));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace(); System.exit(1);
+            }
+            String text = null;
+            try {
+                text = brTest .readLine();
+            } catch (IOException e) {
+                e.printStackTrace(); System.exit(1);
+            }
 
+            System.out.println("Firstline is : " + text);
+            if(text.contains(FILE)){
+
+                return;
+            }
         }
     }
 
@@ -269,18 +294,15 @@ public class Main {
      * @param argv the command line arguments
      */
     public static void main( String[] argv ) {
-
-        Sequence seq = null;
         try {
-            seq = MidiSystem.getSequence( new File( FILE ) );
+            Sequence seq = MidiSystem.getSequence( new File( FILE ) );
             displaySequence( seq );
-        } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+
+        } catch ( Exception exn ) {
+
+                System.out.println("getSequence of file not working");
+            exn.printStackTrace(); System.exit( 1 );
         }
-
-
-
     }
 }
