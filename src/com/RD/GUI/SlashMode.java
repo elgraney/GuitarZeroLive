@@ -33,7 +33,9 @@ public class SlashMode extends ModeTemplate {
         }
     }
 
-    //controls action taken when select is pressed for each menu item
+    /**
+     * controls action taken when select is pressed for each menu item
+     */
     public void onSelect(){
         MenuItem selected = getViewOptions()[2];
         switch (selected.getTitle()){

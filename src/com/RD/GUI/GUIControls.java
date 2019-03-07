@@ -25,7 +25,10 @@ public class GUIControls implements KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
-    //calls the appropriate method for each button for each type of menu
+    /**
+     * //calls the appropriate method for each button for each type of menu
+     * @param e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()){
