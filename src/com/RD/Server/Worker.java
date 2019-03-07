@@ -1,50 +1,86 @@
 package com.RD.Server;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
 
 /*
  * Worker.
  *
- * @author  David Wakeling
- * @version 1.00, January 2019.
+ * @author  @author Jordan
+
  */
 public class Worker implements Runnable {
-    final static String HTML = "<html>Hello World!</html>";
 
     private Socket sck;
+    private String bundlesDir = Server.bundlesDir;
+    private String coverArtDir = Server.coverArtDir;
 
-    Worker( Socket sck ) {
+
+    Worker(Socket sck ) {
         this.sck = sck;
     }
 
+
     public void run() {
         try {
-            final InputStream  in  = sck.getInputStream();
-            final OutputStream out = sck.getOutputStream();
 
-            final BufferedReader reader =
-                    new BufferedReader( new InputStreamReader( in ) );
-            final PrintWriter    writer =
-                    new PrintWriter( out );
+            final OutputStream os = sck.getOutputStream();
+            final InputStream in = sck.getInputStream();
+            DataOutputStream dataOut = new DataOutputStream(os);
+            DataInputStream dataIn = new DataInputStream(in);
 
-            final String content = HTML;
+            //Find number of image files to be sent
+            File dir = new File(coverArtDir);
+            int noFiles = dir.list().length;
+            dataOut.writeInt(noFiles);
+            dataOut.flush();
 
-            writer.print( "HTTP/1.1 200 OK\r\n" );
-            writer.print( "Content-Type: text/html\r\n" );
-            writer.print( "Content-Length: " + content.length() + "\r\n" );
-            writer.print( "\r\n" );
-            writer.print( content );
-            writer.print( "\n" );
-            writer.flush();
+            for (String coverArtFile: dir.list()){
+                File coverArt_img = new File(coverArtDir+coverArtFile);
+                dataOut.writeUTF(coverArtFile);
 
-//            sck.close();
+                //Send cover arts to Client
+                DataInputStream dataIS = new DataInputStream(new FileInputStream(coverArt_img));
+
+                Long fileSize = coverArt_img.length();
+                dataOut.writeLong(coverArt_img.length());
+
+                byte[] buf = new byte[Server.BUFFER_SIZE];
+                int length;
+                while (fileSize > 0 && (length = dataIS.read(buf,0, (int)Math.min(buf.length, fileSize))) != -1){
+                    dataOut.write(buf,0,length);
+                    fileSize = fileSize - length;
+                }
+                dataIS.close();
+                dataOut.flush();
+
+            }
+
+            //Send zip to Client
+            String bundleTitle = dataIn.readUTF();
+            String bundlePath = bundlesDir + bundleTitle + ".zip";
+            File bundleZip = new File(bundlePath);
+            DataInputStream dataIs = new DataInputStream(new FileInputStream(bundleZip));
+
+            Long fileSize = bundleZip.length();
+            dataOut.writeLong(fileSize);
+
+            byte[] buf = new byte[Server.BUFFER_SIZE];
+
+            System.out.println("Sending bundle zip file: " + bundleZip);
+            int length;
+            while (fileSize > 0 && (length = dataIs.read(buf,0, (int)Math.min(buf.length, fileSize))) != -1){
+                dataOut.write(buf,0,length);
+                fileSize = fileSize - length;
+            }
+
+            dataOut.flush();
+            dataOut.close();
+            dataIn.close();
+            sck.close();
+
+
         } catch ( Exception exn ) {
             System.out.println( exn ); System.exit( 1 );
         }
