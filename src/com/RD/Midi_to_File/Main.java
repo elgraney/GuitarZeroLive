@@ -1,3 +1,5 @@
+package com.RD.Midi_to_File;
+
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
@@ -25,7 +27,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "Midi/Bon_Jovi_-_Living_on_a_Prayer2.mid";
+    final static String FILE = "Midi/GORILLAZ_-_Feel_Good_Inc.mid";
     /**
      * MinMaxFrequency Written by James
        */

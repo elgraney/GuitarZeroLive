@@ -30,7 +30,7 @@ public class Model {
     private InputState state;
     private Sequencer sequencer;
 
-    private long time = 0;
+    private long time;
 
     private ArrayList<Pair<Integer, Integer>> originalFutureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
@@ -134,7 +134,7 @@ public class Model {
         sequencer = MidiSystem.getSequencer();
 
         sequencer.open();
-        sequencer.setSequence(MidiSystem.getSequence( new File("Midi/Bon_Jovi_-_Living_on_a_Prayer2.mid")));
+        sequencer.setSequence(MidiSystem.getSequence( new File("Midi/GORILLAZ_-_Feel_Good_Inc.mid")));
 
         sequencer.start();
 
@@ -194,6 +194,7 @@ public class Model {
                     note = highwayNotes.get(0);
                 }
                 else{
+                    support.firePropertyChange(null, null, null);
                     break;
                 }
             }
@@ -207,6 +208,7 @@ public class Model {
                     note = futureNotes.get(0);
                 }
                 else{
+
                     break;
                 }
             }
