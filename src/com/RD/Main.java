@@ -1,5 +1,6 @@
 package com.RD;
 
+import com.RD.GUI.Guitar;
 import com.RD.GUI.SetUpGUI;
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,9 @@ public class Main {
         //frame.setUndecorated(true);
         frame.setFocusable(true);
         frame.setVisible(true);
+
+        Guitar.run();
+
     }
 
 }
