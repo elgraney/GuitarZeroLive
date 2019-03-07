@@ -28,6 +28,8 @@ public class Main {
     final static String FILE = "Midi/Bon_Jovi_-_Living_on_a_Prayer2.mid";
     /**
      * MinMaxFrequency Written by James
+     * Returns the Lowest frequency and the highest frequency played by a guitar
+     * It also returns the most frequently used guitar channel
        */
 
     public static List<Integer> MinMaxFrequency(Track trk){
@@ -45,13 +47,14 @@ public class Main {
                 final int cmd = smsg.getCommand();
                 final int dat1 = smsg.getData1();
                 switch (cmd) {
-                    case 192:
+                    case ShortMessage.PROGRAM_CHANGE:
+                        //the values between 25 and 32 are all guitars
                         if (dat1 > 24 && dat1 < 33) {
                             guitarlist.add(chan);
 
                         }
                         break;
-                    case 144:
+                    case ShortMessage.NOTE_ON:
                         if (guitarlist.contains(chan)) {
                             Channellist.add(chan);
                             if (dat1 > Max) {
@@ -119,9 +122,10 @@ public class Main {
 
 
     /**
-     * Returns the name of nth note.
-     *
+     * Used to Return the name of nth note.
+     * Now it returns the fret button that is to be pressed
      * @param n the note number
+     * @param trk the current track
      * @return  the note name
      */
     public static String noteName( int n, Track trk) {
@@ -173,6 +177,8 @@ public class Main {
     /**
      * Display a MIDI track.
      * Edited By James
+     * writes into a file the notes to be played next to the ticks
+     * @param trk the current track
      */
 
 
@@ -215,31 +221,18 @@ public class Main {
                 final int dat1 = smsg.getData1();
 
                 switch (cmd) {
-                    case 192:
+                    case ShortMessage.PROGRAM_CHANGE:
 
-//                        if (dat1 > 24 && dat1 < 33) {
                           if(chan == MainPart){
-                              //printWriter.append("@" + tick + ", " + "Channel " + chan + ", " + "Program change: " + instrumentName(dat1));
                               guitarlist.add(chan);
                         }
                         break;
-                    case 144:
-                        //if (guitarlist.contains(chan)){
-                           // printWriter.println("" + tick + "," + noteName(dat1));
-                        //}
+                    case ShortMessage.NOTE_ON:
+
                         if (chan == MainPart) {
                             printWriter.println("" + tick + "," + noteName(dat1, trk));
                         }
-//                        else{
-//                            printWriter.println("" + tick + "," + noteName(dat1));
-//                        }
-//                            }
-                        break;
-                    case 128:
-                        if(guitarlist.contains(chan)) {
-                            //printWriter.println("@" + tick + ", " + "Channel " + chan + ", " + "Note off: " + noteName(dat1));
-                        }
-                        break;
+
                     default:
                         break;
                 }
@@ -257,6 +250,8 @@ public class Main {
 
     /**
      * Display a MIDI sequence.
+     * The song isnt always on Track 0 which took a while to discover so this
+     * makes sure it finds the track the song is on.
      */
     public static void displaySequence( Sequence seq ){
         Track[] trks = seq.getTracks();
