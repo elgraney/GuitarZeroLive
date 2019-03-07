@@ -39,7 +39,9 @@ public class ModeTemplate extends JFrame{
         this.viewOptions = viewOptions;
     }
 
-    //Sets up the 5 starting items for a menu mode
+    /**
+     *  Sets up the 5 starting items for a menu mode
+     */
     void innitMenu(ArrayList<MenuItem> options){
         setOptions(options);
         for(int i=startIndex; i<5; i++){
@@ -47,7 +49,9 @@ public class ModeTemplate extends JFrame{
         }
     }
 
-    //When left key is pressed, change the positions of the menu items and refresh the screen
+    /**
+    *When left key is pressed, change the positions of the menu items and refresh the screen
+    */
     void left(){
         startIndex -=1;
         if (startIndex<0){
@@ -66,7 +70,9 @@ public class ModeTemplate extends JFrame{
 
     }
 
-    //When left key is pressed, change the positions of the menu items and refresh the screen
+    /**
+     *When left key is pressed, change the positions of the menu items and refresh the screen
+     */
     void right(){
         startIndex +=1;
         if (startIndex<0){
@@ -84,12 +90,16 @@ public class ModeTemplate extends JFrame{
         frame.revalidate();
     }
 
-    //Following two methods are overridden in the subclasses so that the appropriate action can be taken
+    /**
+     *Following two methods are overridden in the subclasses so that the appropriate action can be taken
+     */
     public void onSelect(){}
 
     public void onEscape(){}
 
-    //Destroys a menu mode interface and removes its listener
+    /**
+     * Destroys a menu mode interface and removes its listener
+     */
     public void tearDown(){
         frame.remove(container);
         base.removeListener();
@@ -97,7 +107,9 @@ public class ModeTemplate extends JFrame{
         frame.repaint();
     }
 
-    //defines the layout of a single menu item in the carousel
+    /**
+     * Defines the layout of a single menu item in the carousel
+     */
     private JPanel setUpOption(String imagePath, String text){
         JPanel option = new JPanel();
         option.setLayout(new BorderLayout());
@@ -116,7 +128,9 @@ public class ModeTemplate extends JFrame{
         return option;
     }
 
-    //sets the layout of the carousel
+    /**
+     *  sets the layout of the carousel
+     */
     void setUpCarousel() throws IOException {
         container = new JPanel();
         JPanel option1 = setUpOption(viewOptions[0].getImage(),viewOptions[0].getTitle());

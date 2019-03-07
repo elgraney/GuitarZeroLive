@@ -1,6 +1,5 @@
 package com.RD.Game;
 
-import com.sun.xml.internal.bind.WhiteSpaceProcessor;
 import javafx.util.Pair;
 
 import javax.imageio.ImageIO;
@@ -15,15 +14,13 @@ import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 
 import static java.awt.Color.*;
-import static java.awt.SystemColor.text;
-import static java.lang.Thread.currentThread;
+
 import static java.lang.Thread.sleep;
-import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.waiting;
+
 
 /**
  * Created by Matthew on 26/02/2019.
  */
-
 
 public class View implements PropertyChangeListener  {
     private Model model;
@@ -34,11 +31,13 @@ public class View implements PropertyChangeListener  {
 
     private Image whiteNote;
     private Image blackNote;
-    private boolean notRunning =true;
     private ArrayList<Pair<Integer, Integer>> displayNotes =  new ArrayList<>();
     private HashMap<String, NoteObject> imageReferences = new HashMap<String, NoteObject>();
     private boolean waiting = true;
 
+    /**
+     * Set up the graphics and load up images, set the listener and link the Model
+     */
     public View(Model model){
         this.model = model;
         frame = model.getFrame();
@@ -51,13 +50,15 @@ public class View implements PropertyChangeListener  {
             System.out.println("Critical error - unable to load assets");
             //do something else, like crash horribly
         }
-
         setUpGraphics();
 
         model.addPropertyChangeListener( this );
         frame.revalidate();
     }
 
+    /**
+     * Go through and set up all the different UI displays
+     */
     private void setUpGraphics(){
         setUpScore();
         setUpMultiplier();
@@ -66,6 +67,11 @@ public class View implements PropertyChangeListener  {
         setUpZeroPower();
         setUpCurrency();
     }
+
+    /**
+     * Create a textArea to display the score
+     * Currently a placeholder
+     */
     private void setUpScore(){
         scoreArea = new JTextArea();
         scoreArea.setEditable(false);
@@ -84,6 +90,10 @@ public class View implements PropertyChangeListener  {
         scoreArea.setText("Score: "+ Integer.toString(model.getScore()));
     }
 
+    /**
+     * Create a textArea to display the multiplier
+     * Currently a placeholder
+     */
     private void setUpMultiplier(){
         multiplierArea = new JTextArea();
         multiplierArea.setEditable(false);
@@ -102,6 +112,10 @@ public class View implements PropertyChangeListener  {
         multiplierArea.setText("Multiplier: "+ Integer.toString(model.getMultiplier()));
     }
 
+    /**
+     * Create a textArea to display the streak
+     * Currently a placeholder
+     */
     private void setUpStreak(){
         streakArea = new JTextArea();
         streakArea.setEditable(false);
@@ -119,17 +133,32 @@ public class View implements PropertyChangeListener  {
     private void setStreak(){
         streakArea.setText("Streak: "+ Integer.toString(model.getStreak()));
     }
+
+    /**
+     * Create an icon to display if Zero Power mode is on
+     * To be implemented when Zero Power is possible
+     */
     private void setUpZeroPower(){
-        //create icon with visability set to false/greyed out until it is needed
+        //create icon with visibility set to false/greyed out until it is needed
     }
+    /**
+     * Create an image area to show the album art
+     * To be implemented soon
+     */
     private void setUpSongDetails(){
         //put holder for album art and song title in top left
     }
+    /**
+     * Create an area to show a number of icons to represent the currency the user has
+     * To be implemented when currency is implemented
+     */
     private void setUpCurrency(){
         //have 5 icons, make as many visible as needed.
     }
 
-
+    /**
+     * Determines if its a black or white note
+     */
     private boolean mapNote(Integer note){
         if (note>3){
             return true;
@@ -138,6 +167,9 @@ public class View implements PropertyChangeListener  {
             return false;
         }
     }
+    /**
+     * Determines which channel the note is in
+     */
     private int mapChannel(Integer note){
         return (note % 3);
     }

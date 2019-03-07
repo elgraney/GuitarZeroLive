@@ -21,31 +21,35 @@ import static javax.sound.midi.Sequence.PPQ;
  */
 
 public class Model {
-    //stores data only
-    //must not depend on controller or view
-
+    /**
+    Model stores data only
+    Must not depend on controller or view
+    */
     private String notesPath;
     private String midiPath;
     private JFrame frame;
     private InputState state;
     private Sequencer sequencer;
 
-    private long time;
-
     private ArrayList<Pair<Integer, Integer>> originalFutureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> passedNotes = new ArrayList<>();
-
+    private PropertyChangeSupport support;
     private int streak =0;
     private int score;
     private int multiplier = 1;
     private int currency;
     private int currencyCounter = 0;
+    private long time;
 
-    private void importCurrency() {
-        //get users currency from wherever it is being stored and set the value of currency to it
+    /**
+     * Define the state the of the play mode, to determine how inputs are handled
+     */
+    public enum InputState{
+        NORMAL, ZERO_POWER, PAUSED, DISABLED
     }
+
 
     public long getTime() {
         return time;
@@ -59,7 +63,6 @@ public class Model {
         return highwayNotes;
     }
 
-    private PropertyChangeSupport support;
     public int getScore() {
         return score;
     }
@@ -72,25 +75,29 @@ public class Model {
         return state;
     }
 
-    public enum InputState{
-        NORMAL, ZERO_POWER, PAUSED, DISABLED
+    public void setState(InputState state) { this.state = state; }
+
+    public JFrame getFrame() { return frame; }
+
+    /**
+     * Get currency from storage and set value in model
+     */
+    private void importCurrency() {
+        //to be filled
     }
 
-    public void setState(InputState state) {
-        this.state = state;
-    }
 
-    public JFrame getFrame() {
-        return frame;
-    }
 
+    /**
+     * Set up UI and get MIDI and notes ready
+     */
     public Model(JFrame frame, String midiFilePath, String notesFilePath){
         support = new PropertyChangeSupport( this );
         this.frame = frame;
         midiPath = midiFilePath;
 
         readNotes();
-        //begin won't be here in the future
+
         try {
             begin();
         } catch (MidiUnavailableException e) {
@@ -104,17 +111,23 @@ public class Model {
         }
     }
 
+    /**
+     * Set the up listener so that the view can react
+     */
     public void addPropertyChangeListener( PropertyChangeListener pcl ) {
         support.addPropertyChangeListener( pcl );
     }
 
+    /**
+     * Load every note into an array and store with their timestamp of when to play them
+     */
     private void readNotes(){
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(
                     "Midi/file.txt"));
             String line = reader.readLine();
-            line = reader.readLine();//skip first line
+            line = reader.readLine();//skip first line (it doesn't contain useful information)
             while (line != null) {
                 System.out.println(line);
                 String[] parts = line.split(",");
@@ -128,8 +141,11 @@ public class Model {
         }
     }
 
+    /**
+     * play the midi file
+     */
     public void begin() throws MidiUnavailableException, IOException, InvalidMidiDataException {
-        //REMEMBER implement error handling for these errors ^
+        //NOTE: REMEMBER to implement error handling for these errors ^
         state = NORMAL;
         sequencer = MidiSystem.getSequencer();
 
@@ -137,8 +153,6 @@ public class Model {
         sequencer.setSequence(MidiSystem.getSequence( new File("Midi/GORILLAZ_-_Feel_Good_Inc.mid")));
 
         sequencer.start();
-
-        //do notes file
     }
 
     private void incrementStreak(){
@@ -149,6 +163,9 @@ public class Model {
         streak = 0;
     }
 
+    /**
+     * Calculate new score and also work out the currency
+     */
     private void incrementScore() {
         score += multiplier; //assume notes are worth 1 by default
         currencyCounter += multiplier;
@@ -160,28 +177,38 @@ public class Model {
             currencyCounter -=500;
         }
     }
+
     private void calculateMultiplier(){
         int power = (int) ((double) streak / 10);
         multiplier = (int) Math.pow(2, power);
     }
 
+    /**
+     * Trigger a refresh in the View, and update various stats
+     */
     public void hitNote(){
         support.firePropertyChange(null, null, null);
         incrementStreak();
         calculateMultiplier();
         incrementScore();
     }
-    //or
+
+    /**
+     * Trigger a refresh in view and reset the streak
+     */
     public void missNote(){
         support.firePropertyChange(null, null, null);
         resetStreak();
     }
-    //i guess i never missNote, huh
 
+    /**
+     * Caused by the timer in the TimeController
+     * Find and store the current tick in the song
+     * Work out whether a note is on the highway, yet to play, or passed
+     * Trigger the View to show any of these changes
+     */
     public void doTick(){
-        //like the time for each tick
         time = sequencer.getTickPosition();
-
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
@@ -208,12 +235,10 @@ public class Model {
                     note = futureNotes.get(0);
                 }
                 else{
-
                     break;
                 }
             }
         }
-
         if(highwayNotes.size() > 0) {
             support.firePropertyChange(null, null, null);
         }

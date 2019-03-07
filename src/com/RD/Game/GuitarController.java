@@ -15,7 +15,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Matthew 2 on 26/02/2019.
+ * Created by Matthew on 26/02/2019.
+ * Currently almost entirely a stand in for the real guitar controls; for testing.
  */
 public class GuitarController implements KeyListener {
     private Model model;
@@ -32,7 +33,7 @@ public class GuitarController implements KeyListener {
     public void keyPressed( KeyEvent evt ) {
         pressed.add(evt.getKeyCode());
         switch ( evt.getKeyCode() ) {
-            case KeyEvent.VK_SPACE : //standin for strum
+            case KeyEvent.VK_SPACE : //stand-in for strum
                 if (pressed.size() > 1 && (pressed.contains(KeyEvent.VK_1)
                         || pressed.contains(KeyEvent.VK_2)
                         || pressed.contains(KeyEvent.VK_3)
