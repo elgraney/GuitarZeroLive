@@ -23,23 +23,33 @@ public class Guitar {
     static final int DELAY = 150;
     private ModeTemplate template;
 
+    public Guitar(ModeTemplate template) {
+        this.template = template;
+    }
+
+    public void setTemplate(ModeTemplate template){
+        this.template = template;
+    }
     
-    public static void pollForever( Controller ctrl ) {
+    public void pollForever( Controller ctrl ) {
         /**
          * method that takes parameters of a controller which is the guitar
          * and listens for changes in values
          *
-         * Needs to become an instance method in order to call instance methods
-         * within ModeTemplate class
          */
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
         while( true) {
+
             if (ctrl.poll()) {
+
                 for ( int i = 0; i < cmps.length; i = i + 1 ) { /* store */
-                    vals[ i ] = cmps[ i ].getPollData(); }
+                    vals[ i ] = cmps[ i ].getPollData();
+                }
+
                 for ( int i = 0; i < cmps.length; i = i + 1 ) { /* displays */
                     float val = vals[ i ];
+
                      if ( val == 1.0 || val == -1.0 ) {
                         if( i==0 || i == 4 || i == 5) {
                             System.out.println("White note  " + i + "   pressed");
@@ -62,42 +72,39 @@ public class Guitar {
 
                         if (i==10){
                             System.out.println("Escape button pressed");
-                            // template.onEscape();
-                            // call Escape method in ModeTemplate
+                            template.onEscape();
                         }
 
                         if (i ==12) {
                             System.out.println("On/off button pressed");
                         }
 
-                        if(vals[15] == 1){
+                        if(vals[16] == 1){
                             System.out.println("Strum down");
-                            //template.right();
-                            // call method right in ModeTemplate
+                            template.right();
+
                         }
 
-                        else if(vals[15] == -1){
+                        else if(vals[16] == -1){
                             System.out.println("Strum up");
-                            // template.left();
-                            // Call method Left in ModeTemplate
+                            template.left();
                         }
 
                         else if (vals[17]>0.1) {
                             System.out.println("Whammy bar pressed");
                         }
 
-                        else if(i == 16){
-                            System.out.println("Guitar is standing up");
-                        }
                         
                     } else {
                         if (vals[13] == 0.125 || vals[13] == 0.25 || vals[13] == 0.375 || vals[13] == 0.5) {
                             System.out.println("Guitar Strum up");
                             // call function for strummming
+                            template.left();
                         }
                         if (vals[13] == 0.625 || vals[13] == 0.75 || vals[13] == 0.875 || vals[13] == 1.0) {
                             System.out.println("Guitar Strum down");
                             // call function for strummming
+                            template.right();
                         }
                     }
                 }
@@ -112,20 +119,27 @@ public class Guitar {
         }   
     }
     
-    public static void run() {
+    public void run() {
         /**
-         * Static method used to run pollForever
+         * Method used to run pollForever
          */
         ControllerEnvironment cenv  = ControllerEnvironment.getDefaultEnvironment();
         Controller[]          ctrls = cenv.getControllers();
         
         for ( Controller ctrl : ctrls ) {
             if ( ctrl.getName().contains( GUITAR_HERO ) ) {
-                pollForever( ctrl );
+
+                Thread thread = new Thread("New Thread") {
+                    public void run() {
+                        pollForever(ctrl);
+                    }
+                };
+            }
+            else {
+                System.out.println( " controller not found" );
+                System.exit( 1 );
+
             }
         }
-
-        System.out.println( " controller not found" );
-        System.exit( 1 );
     }
 }
