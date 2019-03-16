@@ -5,6 +5,7 @@ package com.RD.GUI;
  * All content by Joe
  */
 public class SongMenuItem extends MenuItem{
+
     private String midiFilePath;
     private String notesFilePath;
 

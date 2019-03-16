@@ -56,6 +56,14 @@ public class SelectMode extends ModeTemplate {
         frame.revalidate();
     }
 
+    public void onSelect(){
+        System.out.println("play song");
+        SongMenuItem currentBundle =(SongMenuItem)getViewOptions()[2];
+        base.setCurrentBundle(currentBundle);
+        onEscape();
+
+    }
+
     /**
      * Find the image path, name, midi file path and the notes file path for use in the carousel.
      * Written by Joe

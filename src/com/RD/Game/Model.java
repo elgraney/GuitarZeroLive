@@ -42,6 +42,7 @@ public class Model {
     private int currency;
     private int currencyCounter = 0;
     private long time;
+    private double tickPerSecond;
 
     /**
      * Define the state the of the play mode, to determine how inputs are handled
@@ -79,6 +80,10 @@ public class Model {
 
     public JFrame getFrame() { return frame; }
 
+    public double getTickPerSecond() {
+        return tickPerSecond;
+    }
+
     /**
      * Get currency from storage and set value in model
      */
@@ -95,7 +100,7 @@ public class Model {
         support = new PropertyChangeSupport( this );
         this.frame = frame;
         midiPath = midiFilePath;
-
+        notesPath = notesFilePath;
         readNotes();
 
         try {
@@ -125,7 +130,7 @@ public class Model {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(
-                    "Midi/file.txt"));
+                    notesPath));
             String line = reader.readLine();
             line = reader.readLine();//skip first line (it doesn't contain useful information)
             while (line != null) {
@@ -139,6 +144,16 @@ public class Model {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void calculateTPS(){
+        double ticks = sequencer.getTickLength();
+        double microseconds = sequencer.getMicrosecondLength();
+        double seconds = microseconds / 1000000;
+        tickPerSecond = ticks/seconds;
+        System.out.println("TPS");
+        System.out.println(tickPerSecond);
     }
 
     /**
@@ -150,9 +165,10 @@ public class Model {
         sequencer = MidiSystem.getSequencer();
 
         sequencer.open();
-        sequencer.setSequence(MidiSystem.getSequence( new File("Midi/GORILLAZ_-_Feel_Good_Inc.mid")));
+        sequencer.setSequence(MidiSystem.getSequence( new File(midiPath)));
 
         sequencer.start();
+        calculateTPS();
     }
 
     private void incrementStreak(){
@@ -212,7 +228,7 @@ public class Model {
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
-            while(note.getKey() < time - 200){
+            while(note.getKey() < time - tickPerSecond *0.2){
                 passedNotes.add(note);
                 highwayNotes.remove(0);
                 hitNote();//FOR TESTING - MAKE SURE TO REMOVE!!!!
@@ -228,7 +244,7 @@ public class Model {
         }
         if (futureNotes.size()>0) {
             Pair<Integer, Integer> note = futureNotes.get(0);
-            while (note.getKey() < time + 3000) {
+            while (note.getKey() < time + tickPerSecond * 3) {
                 highwayNotes.add(note);
                 futureNotes.remove(0);
                 if (futureNotes.size()>0) {

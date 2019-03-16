@@ -5,12 +5,16 @@ package com.RD.GUI;
  * All content by Matthew
  */
 public class MenuItem {
+    private String folder;
     private String imagePath;
     private String title;
 
     public MenuItem(String imagePath, String title){
         this.imagePath = imagePath;
         this.title = title;
+    }
+    public String getFolder() {
+        return folder;
     }
 
     public String getImage() {

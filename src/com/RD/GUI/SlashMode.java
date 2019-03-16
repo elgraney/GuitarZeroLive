@@ -47,7 +47,9 @@ public class SlashMode extends ModeTemplate {
             case "Play":
                 System.out.println("Play- NOT IMPLEMENTED");
                 tearDown();
-                Model model = new Model(frame, "Bohemian_Rhapsody.mid", "Placeholder");
+                String midiPath = base.getCurrentBundle().getMidiFilePath();
+                String notesPath = base.getCurrentBundle().getNotesFilePath();
+                Model model = new Model(frame, midiPath, notesPath);
                 GuitarController guitarController =  new GuitarController(model);
                 base.setListener(guitarController);
                 TimeController timeController = new TimeController(model);

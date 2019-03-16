@@ -27,7 +27,7 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "Midi/GORILLAZ_-_Feel_Good_Inc.mid";
+    final static String FILE = "Midi/MIDIlovania.mid";
     /**
      * MinMaxFrequency Written by James
      * Returns the Lowest frequency and the highest frequency played by a guitar

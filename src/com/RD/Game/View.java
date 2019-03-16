@@ -200,12 +200,13 @@ public class View implements PropertyChangeListener  {
         JPanel notePanel =note.getPanel();
         long timeUntilPlayed = note.getTime() - model.getTime();
         //SIZING IS DONE VERY BADLY - REWORK TO USE PROPORTIONS OF BACKGROUND IMAGE
+        double tps = model.getTickPerSecond();
 
-        double y = (frame.getHeight()*0.55) - ((double) timeUntilPlayed)/2000 * (frame.getHeight()*0.45);
+        double y = (frame.getHeight()*0.55) - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.45);
         double x = frame.getWidth()/2 - notePanel.getComponent(0).getWidth()/2;
         switch (chanel){
             case 0:
-                x += frame.getWidth()/7.5 - ((double) timeUntilPlayed)/2000 * (frame.getHeight()*0.12);
+                x += frame.getWidth()/7.5 - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.12);
                 notePanel.setLocation((int) Math.round(x),(int) Math.round(y));
                 break;
             case 1:
@@ -213,7 +214,7 @@ public class View implements PropertyChangeListener  {
                 break;
             case 2:
 
-                x -= frame.getWidth()/7.5 - ((double) timeUntilPlayed)/2000 * (frame.getHeight()*0.12);
+                x -= frame.getWidth()/7.5 - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.12);
                 notePanel.setLocation ((int) Math.round(x), (int) Math.round(y));
                 break;
             default:
