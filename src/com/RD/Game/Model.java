@@ -1,6 +1,8 @@
 package com.RD.Game;
 
 import javafx.util.Pair;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiSystem;
@@ -202,7 +204,10 @@ public class Model {
     /**
      * Trigger a refresh in the View, and update various stats
      */
-    public void hitNote(){
+    public void hitNote(Pair<Integer, Integer> note){
+        playSound("assets/BruhSoundEffect2.wav");
+        highwayNotes.remove(note);
+        passedNotes.add(note);
         support.firePropertyChange(null, null, null);
         incrementStreak();
         calculateMultiplier();
@@ -213,10 +218,28 @@ public class Model {
      * Trigger a refresh in view and reset the streak
      */
     public void missNote(){
+        playSound("assets/BruhSoundEffect2.wav");
         support.firePropertyChange(null, null, null);
         resetStreak();
     }
 
+    private void playSound(String filename){
+        InputStream in = null;
+        try {
+            in = new FileInputStream(filename);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        AudioStream as = null;
+        try {
+            as = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AudioPlayer.player.start(as);
+    }
     /**
      * Caused by the timer in the TimeController
      * Find and store the current tick in the song
@@ -231,8 +254,8 @@ public class Model {
             while(note.getKey() < time - tickPerSecond *0.2){
                 passedNotes.add(note);
                 highwayNotes.remove(0);
-                hitNote();//FOR TESTING - MAKE SURE TO REMOVE!!!!
-                //missNote();
+
+                missNote();
                 if (highwayNotes.size()>0) {
                     note = highwayNotes.get(0);
                 }

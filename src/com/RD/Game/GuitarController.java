@@ -2,6 +2,7 @@ package com.RD.Game;
 
 import com.RD.GUI.GUIControls;
 import javafx.scene.input.KeyCode;
+import javafx.util.Pair;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -11,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,70 +34,80 @@ public class GuitarController implements KeyListener {
     public void keyTyped( KeyEvent evt ) { /* nothing */ }
 
     public void keyPressed( KeyEvent evt ) {
+        System.out.println("Press");
         pressed.add(evt.getKeyCode());
-        switch ( evt.getKeyCode() ) {
-            case KeyEvent.VK_SPACE : //stand-in for strum
-                if (pressed.size() > 1 && (pressed.contains(KeyEvent.VK_1)
-                        || pressed.contains(KeyEvent.VK_2)
-                        || pressed.contains(KeyEvent.VK_3)
-                        || pressed.contains(KeyEvent.VK_4)
-                        || pressed.contains(KeyEvent.VK_5)
-                        || pressed.contains(KeyEvent.VK_6)))
-                { //if strum and holding note (using placeholder keys)
-                    playNote();
-                    break; //will also need to pass other buttons pressed at same time
+        if (model.getState() == Model.InputState.NORMAL) {
+            switch (evt.getKeyCode()) {
+                case KeyEvent.VK_SPACE: //stand-in for strum
+                    if (pressed.size() > 1 && (pressed.contains(KeyEvent.VK_1)
+                            || pressed.contains(KeyEvent.VK_2)
+                            || pressed.contains(KeyEvent.VK_3)
+                            || pressed.contains(KeyEvent.VK_4)
+                            || pressed.contains(KeyEvent.VK_5)
+                            || pressed.contains(KeyEvent.VK_6))) {
+                        String notes = "";
+                        for (Integer key : pressed){
+                            switch (key){
+                                case 49:
+                                    notes += "1";
+                                    break;
+                                case 50:
+                                    notes += "2";
+                                    break;
+                                case 51:
+                                    notes += "3";
+                                    break;
+                                case 52:
+                                    notes += "4";
+                                    break;
+                                case 53:
+                                    notes += "5";
+                                    break;
+                                case 54:
+                                    notes += "6";
+                                    break;
+                            }
+                        }
+                        playNote(notes);
+                        break; //will also need to pass other buttons pressed at same time
+                    } else {
+                        model.missNote();
+                    }
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    //pause music
+                    //pause menu
+                    //set state paused
+                    model.setState(Model.InputState.PAUSED);
+                    break;
+            }
+        }
+        else if(model.getState() == Model.InputState.ZERO_POWER){
+            //MAKE SURE TO ADD ZERO POWER HERE
+        }
+    }
+
+
+    private void playNote(String notes) throws ConcurrentModificationException{
+        // find out what notes should be played at this time and compare to note played
+        // either call hitNote or missNote
+        ArrayList<Pair<Integer, Integer>> highwayNotes = model.getHighwayNotes();
+            for (Pair<Integer, Integer> note : highwayNotes) {
+                if (note.getKey() > model.getTime() - 100 && note.getKey() < model.getTime() + 100) {
+                    if (notes.contains(Integer.toString(note.getValue()))) {
+                        model.hitNote(note);
+                    }
+                    else {
+                        model.missNote();
+                    }
                 }
                 else{
                     model.missNote();
                 }
-            case KeyEvent.VK_ESCAPE :
-                //pause music
-                //pause menu
-                //set state paused
-                model.setState(Model.InputState.PAUSED);
         }
-    }
-
-
-    private void playNote(){
-        Model.InputState state = model.getState();
-        switch(state){
-            case NORMAL:
-                checkNote(); //check against model to see if this note shoul have been played
-                break;
-            case ZERO_POWER:
-                model.missNote(); //act as missed note, break streak etc
-        }
-    }
-
-    private void checkNote(){
-        System.out.println("Note:");
-        System.out.println(pressed);
-        playSound("assets/BruhSoundEffect2.wav");
-        /// /find out what notes should be played at this time and compare to note played
-        // either call hitNote or missNote
-
-        model.missNote(); //temp
     }
 
 
     //in future put sound in own class using observer pattern
-    private void playSound(String filename){
-        InputStream in = null;
-        try {
-            in = new FileInputStream(filename);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
-
-        AudioStream as = null;
-        try {
-            as = new AudioStream(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        AudioPlayer.player.start(as);
-
-    }
 }
