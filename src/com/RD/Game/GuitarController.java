@@ -89,11 +89,11 @@ public class GuitarController implements KeyListener {
 
 
     private void playNote(String notes) throws ConcurrentModificationException{
-        // find out what notes should be played at this time and compare to note played
+        // find out what notes should be played at this time and compare to note played 12
         // either call hitNote or missNote
         ArrayList<Pair<Integer, Integer>> highwayNotes = model.getHighwayNotes();
             for (Pair<Integer, Integer> note : highwayNotes) {
-                if (note.getKey() > model.getTime() - 100 && note.getKey() < model.getTime() + 100) {
+                if (note.getKey() > model.getTime() - model.getTickPerSecond()*0.1 && note.getKey() < model.getTime() + model.getTickPerSecond()*0.1) {
                     if (notes.contains(Integer.toString(note.getValue()))) {
                         model.hitNote(note);
                     }
