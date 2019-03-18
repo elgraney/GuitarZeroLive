@@ -27,7 +27,6 @@ public class ZeroPowerMode {
         }
         abc.close();
 
-
         return data;
     }
 
