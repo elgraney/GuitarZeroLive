@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7868c78d-8426-4b25-9176-189ed17333ab" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java" afterDir="false" />
-    </list>
+    <list default="true" id="7868c78d-8426-4b25-9176-189ed17333ab" name="Default" comment="" />
     <ignored path="GuitarZeroLive.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,79 +20,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="GuitarController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/GuitarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+            <state relative-caret-position="885">
+              <caret line="78" column="32" lean-forward="false" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/Guitar.java">
+      <file leaf-file-name="MenuGuitar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/MenuGuitar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="1695">
+              <caret line="125" column="55" lean-forward="true" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RD/Game/View.java">
+      <file leaf-file-name="PlayGuitar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/PlayGuitar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3281">
-              <caret line="216" column="78" selection-start-line="216" selection-start-column="78" selection-end-line="216" selection-end-column="78" />
+            <state relative-caret-position="1253">
+              <caret line="122" column="13" lean-forward="true" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/blackNote.png">
-          <provider selected="true" editor-type-id="images" />
+      <file leaf-file-name="SetUpGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SetUpGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="197" column="46" lean-forward="true" selection-start-line="197" selection-start-column="46" selection-end-line="197" selection-end-column="46" />
+            <state relative-caret-position="2745">
+              <caret line="197" column="46" lean-forward="false" selection-start-line="197" selection-start-column="46" selection-end-line="197" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="file.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notes/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="135">
+              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="ZeroPowerMode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+            <state relative-caret-position="405">
+              <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="file.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clientzips/MIDIlovania/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+            <state relative-caret-position="945">
+              <caret line="63" column="6" lean-forward="false" selection-start-line="63" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="140" column="22" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+            <state relative-caret-position="1860">
+              <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,11 +112,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="StoreManagerMode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreManagerMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="180">
+              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+              <folding>
+                <element signature="e#1080#1110#0" expanded="true" />
+                <element signature="e#2516#2699#0" expanded="true" />
+                <element signature="e#2698#2699#0" expanded="true" />
+                <element signature="e#2858#2859#0" expanded="true" />
+                <element signature="e#2929#2930#0" expanded="true" />
+                <element signature="e#3153#3154#0" expanded="true" />
+                <element signature="e#3227#3228#0" expanded="true" />
+                <element signature="e#3445#3446#0" expanded="true" />
+                <element signature="e#3516#3517#0" expanded="true" />
+                <element signature="e#8991#8992#0" expanded="true" />
+                <element signature="e#9054#9055#0" expanded="true" />
+                <element signature="e#20230#20231#0" expanded="true" />
+                <element signature="e#20301#20302#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,6 +147,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -154,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/com/RD/Client/Client.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/GUIControls.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/RD/GUI/Guitar.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/SongMenuItem.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/MenuItem.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/SetUpGUI.java" />
@@ -170,6 +199,9 @@
         <option value="$PROJECT_DIR$/src/com/RD/Game/GuitarController.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java" />
         <option value="$PROJECT_DIR$/notes/file.txt" />
+        <option value="$PROJECT_DIR$/src/com/RD/GUI/Guitar.java" />
+        <option value="$PROJECT_DIR$/src/com/RD/GUI/PlayGuitar.java" />
+        <option value="$PROJECT_DIR$/src/com/RD/GUI/MenuGuitar.java" />
       </list>
     </option>
   </component>
@@ -179,19 +211,28 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1056" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="153" />
+    <option name="y" value="23" />
+    <option name="width" value="1472" />
+    <option name="height" value="1023" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,12 +244,6 @@
               <item name="GuitarZeroLive" type="b2602c69:ProjectViewProjectNode" />
               <item name="GuitarZeroLive" type="462c0819:PsiDirectoryNode" />
               <item name="clientzips" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuitarZeroLive" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuitarZeroLive" type="462c0819:PsiDirectoryNode" />
-              <item name="clientzips" type="462c0819:PsiDirectoryNode" />
-              <item name="Bohemian_Rhapsody" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GuitarZeroLive" type="b2602c69:ProjectViewProjectNode" />
@@ -244,6 +279,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,7 +322,152 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.StoreManagerMode">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.RD.Midi_to_File.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.RD.Midi_to_File.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GuitarZeroLive" />
+      <envs />
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.RD.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GuitarZeroLive" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.RD.Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.RD.Server.Server" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GuitarZeroLive" />
+      <envs />
+    </configuration>
+    <configuration name="StoreManagerMode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.RD.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.RD.GUI.StoreManagerMode" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GuitarZeroLive" />
+      <envs />
+    </configuration>
+    <configuration name="tempView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.RD.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.RD.tempView" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GuitarZeroLive" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method>
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method>
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -353,104 +536,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.RD.Midi_to_File.Main" />
-      <module name="GuitarZeroLive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.RD.Midi_to_File.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.RD.Main" />
-      <module name="GuitarZeroLive" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.RD.Server.Server" />
-      <module name="GuitarZeroLive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.RD.Server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StoreManagerMode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.RD.GUI.StoreManagerMode" />
-      <module name="GuitarZeroLive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.RD.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="tempView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.RD.tempView" />
-      <module name="GuitarZeroLive" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.RD.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
       <option name="filePath" />
       <option name="vmParameters" />
@@ -485,31 +570,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG">
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <method />
     </configuration>
-    <list>
-      <item itemvalue="Application.Main (1)" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.tempView" />
-      <item itemvalue="Application.StoreManagerMode" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Server" />
+      <item index="3" class="java.lang.String" itemvalue="Application.tempView" />
+      <item index="4" class="java.lang.String" itemvalue="Application.StoreManagerMode" />
     </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Application.StoreManagerMode" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.tempView" />
-        <item itemvalue="Application.Server" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.StoreManagerMode" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Main (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Application.tempView" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Server" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -523,69 +630,71 @@
       <updated>1550151605785</updated>
       <workItem from="1550759645371" duration="30000" />
       <workItem from="1551971896548" duration="418000" />
+      <workItem from="1552999455736" duration="1498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1882000" />
+    <option name="totallyTimeSpent" value="3380000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1292" height="704" extended-state="0" />
+    <frame x="153" y="23" width="1472" height="1023" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25892857" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Palette&#9;" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32980973" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32867134" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32980973" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Designer" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Maven" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281768" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2090909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24965034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Palette&#9;" order="2" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32980973" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32980973" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32980973" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Designer" order="6" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,11 +708,66 @@
       <collection />
     </option>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientzips/MIDIlovania/file.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="6" lean-forward="false" selection-start-line="63" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreManagerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#1080#1110#0" expanded="true" />
+            <element signature="e#2516#2699#0" expanded="true" />
+            <element signature="e#2698#2699#0" expanded="true" />
+            <element signature="e#2858#2859#0" expanded="true" />
+            <element signature="e#2929#2930#0" expanded="true" />
+            <element signature="e#3153#3154#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3516#3517#0" expanded="true" />
+            <element signature="e#8991#8992#0" expanded="true" />
+            <element signature="e#9054#9055#0" expanded="true" />
+            <element signature="e#20230#20231#0" expanded="true" />
+            <element signature="e#20301#20302#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.931/Main.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.541/Model.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.879/Controller.java" />
@@ -611,21 +775,21 @@
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/TimeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/NoteObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -638,216 +802,174 @@
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/BackgroundImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/GUIControls.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Server/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
-          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+          <caret line="72" column="46" lean-forward="false" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/MenuItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/ModeTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
-          <caret line="113" column="7" selection-start-line="113" selection-start-column="7" selection-end-line="113" selection-end-column="7" />
+          <caret line="113" column="7" lean-forward="false" selection-start-line="113" selection-start-column="7" selection-end-line="113" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SongMenuItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="97" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SetUpGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
+          <caret line="11" column="97" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="97" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SelectMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
-          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+          <caret line="61" column="43" lean-forward="false" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SlashMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Midi/Queen_-_Another_One_Bites_the_Dust.mid">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/clientzips/Layla/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2193" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientzips/SweetChildOMine/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        <state relative-caret-position="-2193">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/clientzips/SweetChildOMine/test.txt" />
     <entry file="file://$PROJECT_DIR$/Midi/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/tempView.java" />
-    <entry file="file://$PROJECT_DIR$/Midi/MIDIlovania.mid">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/clientzips/AnotherOneBitesTheDust/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Midi/file.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="6" selection-end-line="25" />
+          <caret line="11" column="6" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientzips/MoneyForNothing/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientzips/LucyInTheSkyWithDiamonds/file.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="124" column="8" selection-start-line="124" selection-start-column="8" selection-end-line="124" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientzips/AnotherOneBitesTheDust/Queen_-_Another_One_Bites_the_Dust.mid">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/clientzips/MoneyForNothing/test.txt" />
+    <entry file="file://$PROJECT_DIR$/clientzips/LucyInTheSkyWithDiamonds/file.txt" />
     <entry file="file://$PROJECT_DIR$/clientzips/SweetChildOMine2/test.txt" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/com/RD/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/Guitar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3281">
-          <caret line="216" column="78" selection-start-line="216" selection-start-column="78" selection-end-line="216" selection-end-column="78" />
+        <state relative-caret-position="2895">
+          <caret line="216" column="78" lean-forward="false" selection-start-line="216" selection-start-column="78" selection-end-line="216" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/blackNote.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/clientzips/MIDIlovania/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="6" selection-start-line="63" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+        <state relative-caret-position="945">
+          <caret line="63" column="6" lean-forward="false" selection-start-line="63" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/GuitarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+        <state relative-caret-position="885">
+          <caret line="78" column="32" lean-forward="false" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/ZeroPowerMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        <state relative-caret-position="405">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="197" column="46" lean-forward="true" selection-start-line="197" selection-start-column="46" selection-end-line="197" selection-end-column="46" />
+        <state relative-caret-position="2745">
+          <caret line="197" column="46" lean-forward="false" selection-start-line="197" selection-start-column="46" selection-end-line="197" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientzips/Bohemian_Rhapsody/file.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/clientzips/Bohemian_Rhapsody/file.txt" />
     <entry file="file://$PROJECT_DIR$/notes/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        <state relative-caret-position="135">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="140" column="22" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
+        <state relative-caret-position="1860">
+          <caret line="140" column="22" lean-forward="false" selection-start-line="140" selection-start-column="22" selection-end-line="140" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -856,8 +978,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreManagerMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state relative-caret-position="180">
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#1080#1110#0" expanded="true" />
+            <element signature="e#2516#2699#0" expanded="true" />
+            <element signature="e#2698#2699#0" expanded="true" />
+            <element signature="e#2858#2859#0" expanded="true" />
+            <element signature="e#2929#2930#0" expanded="true" />
+            <element signature="e#3153#3154#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3516#3517#0" expanded="true" />
+            <element signature="e#8991#8992#0" expanded="true" />
+            <element signature="e#9054#9055#0" expanded="true" />
+            <element signature="e#20230#20231#0" expanded="true" />
+            <element signature="e#20301#20302#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SetUpGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="66" lean-forward="false" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/PlayGuitar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1253">
+          <caret line="122" column="13" lean-forward="true" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/MenuGuitar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1695">
+          <caret line="125" column="55" lean-forward="true" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
