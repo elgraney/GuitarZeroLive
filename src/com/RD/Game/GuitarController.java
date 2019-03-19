@@ -17,6 +17,8 @@ import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Matthew on 26/02/2019.
  * Currently almost entirely a stand in for the real guitar controls; for testing.
@@ -88,23 +90,21 @@ public class GuitarController implements KeyListener {
     }
 
 
-    private void playNote(String notes) throws ConcurrentModificationException{
+    private void playNote(String notes) {
         // find out what notes should be played at this time and compare to note played 12
         // either call hitNote or missNote
-        ArrayList<Pair<Integer, Integer>> highwayNotes = model.getHighwayNotes();
-            for (Pair<Integer, Integer> note : highwayNotes) {
-                if (note.getKey() > model.getTime() - model.getTickPerSecond()*0.1 && note.getKey() < model.getTime() + model.getTickPerSecond()*0.1) {
-                    if (notes.contains(Integer.toString(note.getValue()))) {
-                        model.hitNote(note);
-                    }
-                    else {
-                        model.missNote();
-                    }
+        ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
+        for (Pair<Integer, Integer> note : highwayNotes) {
+            if (note.getKey() > model.getTime() - model.getTickPerSecond() * 0.1 && note.getKey() < model.getTime() + model.getTickPerSecond() * 0.1) {
+                if (notes.contains(Integer.toString(note.getValue()))) {
+                    model.hitNote(note);
+                    return;
                 }
-                else{
-                    model.missNote();
-                }
+            }
+
+
         }
+        model.missNote();
+        //in future put sound in own class using observer pattern
     }
-    //in future put sound in own class using observer pattern
 }

@@ -33,10 +33,10 @@ public class Model {
     private InputState state;
     private Sequencer sequencer;
 
-    private ArrayList<Pair<Integer, Integer>> originalFutureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> passedNotes = new ArrayList<>();
+    private ArrayList<Pair<Integer, Integer>> removeQueueNotes = new ArrayList<>();
     private PropertyChangeSupport support;
     private int streak =0;
     private int score;
@@ -45,6 +45,7 @@ public class Model {
     private int currencyCounter = 0;
     private long time;
     private double tickPerSecond;
+    private boolean contentChanged = false;
 
     /**
      * Define the state the of the play mode, to determine how inputs are handled
@@ -85,6 +86,7 @@ public class Model {
     public double getTickPerSecond() {
         return tickPerSecond;
     }
+
 
     /**
      * Get currency from storage and set value in model
@@ -139,7 +141,6 @@ public class Model {
                 System.out.println(line);
                 String[] parts = line.split(",");
                 futureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
-                originalFutureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
                 line = reader.readLine();
             }
             reader.close();
@@ -205,10 +206,10 @@ public class Model {
      * Trigger a refresh in the View, and update various stats
      */
     public void hitNote(Pair<Integer, Integer> note){
-        playSound("assets/BruhSoundEffect2.wav");
+        contentChanged = true;
+        playSound("assets/pop.wav");
         highwayNotes.remove(note);
         passedNotes.add(note);
-        support.firePropertyChange(null, null, null);
         incrementStreak();
         calculateMultiplier();
         incrementScore();
@@ -218,8 +219,8 @@ public class Model {
      * Trigger a refresh in view and reset the streak
      */
     public void missNote(){
+        contentChanged = true;
         playSound("assets/BruhSoundEffect2.wav");
-        support.firePropertyChange(null, null, null);
         resetStreak();
     }
 
@@ -247,6 +248,8 @@ public class Model {
      * Trigger the View to show any of these changes
      */
     public void doTick(){
+
+
         time = sequencer.getTickPosition();
 
         if (highwayNotes.size()>0){
@@ -261,6 +264,7 @@ public class Model {
                 }
                 else{
                     support.firePropertyChange(null, null, null);
+                    contentChanged = false;
                     break;
                 }
             }
@@ -280,6 +284,13 @@ public class Model {
         }
         if(highwayNotes.size() > 0) {
             support.firePropertyChange(null, null, null);
+            contentChanged = false;
         }
+        if(contentChanged){
+            System.out.println("contentChanged");
+            support.firePropertyChange(null, null, null);
+        }
+        contentChanged = false;
     }
+
 }

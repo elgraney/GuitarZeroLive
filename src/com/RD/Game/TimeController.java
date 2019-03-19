@@ -4,7 +4,7 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 /**
- * Created by Matthew 2 on 26/02/2019.
+ * Created by Matthew on 26/02/2019.
  */
 public class TimeController{
     private Model model;

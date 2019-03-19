@@ -22,7 +22,7 @@ import static java.lang.Thread.sleep;
  * Created by Matthew on 26/02/2019.
  */
 
-public class View implements PropertyChangeListener  {
+public class View implements PropertyChangeListener {
     private Model model;
     private JFrame frame;
     private JTextArea scoreArea;
@@ -31,14 +31,13 @@ public class View implements PropertyChangeListener  {
 
     private Image whiteNote;
     private Image blackNote;
-    private ArrayList<Pair<Integer, Integer>> displayNotes =  new ArrayList<>();
+    private ArrayList<Pair<Integer, Integer>> displayNotes = new ArrayList<>();
     private HashMap<String, NoteObject> imageReferences = new HashMap<String, NoteObject>();
-    private boolean waiting = true;
 
     /**
      * Set up the graphics and load up images, set the listener and link the Model
      */
-    public View(Model model){
+    public View(Model model) {
         this.model = model;
         frame = model.getFrame();
         frame.setLayout(null);
@@ -52,14 +51,14 @@ public class View implements PropertyChangeListener  {
         }
         setUpGraphics();
 
-        model.addPropertyChangeListener( this );
+        model.addPropertyChangeListener(this);
         frame.revalidate();
     }
 
     /**
      * Go through and set up all the different UI displays
      */
-    private void setUpGraphics(){
+    private void setUpGraphics() {
         setUpScore();
         setUpMultiplier();
         setUpStreak();
@@ -72,7 +71,7 @@ public class View implements PropertyChangeListener  {
      * Create a textArea to display the score
      * Currently a placeholder
      */
-    private void setUpScore(){
+    private void setUpScore() {
         scoreArea = new JTextArea();
         scoreArea.setEditable(false);
         scoreArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -82,19 +81,20 @@ public class View implements PropertyChangeListener  {
         scoreArea.setSize(200, 40);
         scoreArea.setBackground(black);
         scoreArea.setForeground(white);
-        scoreArea.setLocation(200, frame.getHeight()-200);
+        scoreArea.setLocation(200, frame.getHeight() - 200);
         setScore();
         frame.add(scoreArea);
     }
-    private void setScore(){
-        scoreArea.setText("Score: "+ Integer.toString(model.getScore()));
+
+    private void setScore() {
+        scoreArea.setText("Score: " + Integer.toString(model.getScore()));
     }
 
     /**
      * Create a textArea to display the multiplier
      * Currently a placeholder
      */
-    private void setUpMultiplier(){
+    private void setUpMultiplier() {
         multiplierArea = new JTextArea();
         multiplierArea.setEditable(false);
         multiplierArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -104,19 +104,20 @@ public class View implements PropertyChangeListener  {
         multiplierArea.setSize(200, 40);
         multiplierArea.setBackground(black);
         multiplierArea.setForeground(white);
-        multiplierArea.setLocation(200, frame.getHeight()-300);
+        multiplierArea.setLocation(200, frame.getHeight() - 300);
         setMultiplier();
         frame.add(multiplierArea);
     }
-    private void setMultiplier(){
-        multiplierArea.setText("Multiplier: "+ Integer.toString(model.getMultiplier()));
+
+    private void setMultiplier() {
+        multiplierArea.setText("Multiplier: " + Integer.toString(model.getMultiplier()));
     }
 
     /**
      * Create a textArea to display the streak
      * Currently a placeholder
      */
-    private void setUpStreak(){
+    private void setUpStreak() {
         streakArea = new JTextArea();
         streakArea.setEditable(false);
         streakArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -126,62 +127,64 @@ public class View implements PropertyChangeListener  {
         streakArea.setSize(200, 40);
         streakArea.setBackground(black);
         streakArea.setForeground(white);
-        streakArea.setLocation(200, frame.getHeight()-400);
+        streakArea.setLocation(200, frame.getHeight() - 400);
         setStreak();
         frame.add(streakArea);
     }
-    private void setStreak(){
-        streakArea.setText("Streak: "+ Integer.toString(model.getStreak()));
+
+    private void setStreak() {
+        streakArea.setText("Streak: " + Integer.toString(model.getStreak()));
     }
 
     /**
      * Create an icon to display if Zero Power mode is on
      * To be implemented when Zero Power is possible
      */
-    private void setUpZeroPower(){
+    private void setUpZeroPower() {
         //create icon with visibility set to false/greyed out until it is needed
     }
+
     /**
      * Create an image area to show the album art
      * To be implemented soon
      */
-    private void setUpSongDetails(){
+    private void setUpSongDetails() {
         //put holder for album art and song title in top left
     }
+
     /**
      * Create an area to show a number of icons to represent the currency the user has
      * To be implemented when currency is implemented
      */
-    private void setUpCurrency(){
+    private void setUpCurrency() {
         //have 5 icons, make as many visible as needed.
     }
 
     /**
      * Determines if its a black or white note
      */
-    private boolean mapNote(Integer note){
-        if (note>3){
+    private boolean mapNote(Integer note) {
+        if (note > 3) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     /**
      * Determines which channel the note is in
      */
-    private int mapChannel(Integer note){
+    private int mapChannel(Integer note) {
         return (note % 3);
     }
 
-    private void drawNote(boolean white, int note, int time ){
+    private void drawNote(boolean white, int note, int time) {
         Image noteIcon;
         int channel = mapChannel(note);
-        if (white){
+        if (white) {
             noteIcon = whiteNote;
-        }
-        else{
-            noteIcon=blackNote;
+        } else {
+            noteIcon = blackNote;
         }
         JPanel notePane = new JPanel();
         notePane.add(new JLabel(new ImageIcon(noteIcon)));
@@ -191,31 +194,31 @@ public class View implements PropertyChangeListener  {
         NoteObject noteObject = new NoteObject(time, channel, notePane);
         setLocation(noteObject);
         frame.add(notePane);
-        imageReferences.put(Integer.toString(time)+Integer.toString(note), new NoteObject(time, channel, notePane));
+        imageReferences.put(Integer.toString(time) + Integer.toString(note), new NoteObject(time, channel, notePane));
     }
 
-    private void setLocation(NoteObject note){
+    private void setLocation(NoteObject note) {
 
         int chanel = note.getChanel();
-        JPanel notePanel =note.getPanel();
+        JPanel notePanel = note.getPanel();
         long timeUntilPlayed = note.getTime() - model.getTime();
         //SIZING IS DONE VERY BADLY - REWORK TO USE PROPORTIONS OF BACKGROUND IMAGE
         double tps = model.getTickPerSecond();
 
-        double y = (frame.getHeight()*0.55) - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.45);
-        double x = frame.getWidth()/2 - notePanel.getComponent(0).getWidth()/2;
-        switch (chanel){
+        double y = (frame.getHeight() * 0.54) - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.45);
+        double x = frame.getWidth() / 2 - notePanel.getComponent(0).getWidth() / 2;
+        switch (chanel) {
             case 0:
-                x += frame.getWidth()/7.5 - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.12);
-                notePanel.setLocation((int) Math.round(x),(int) Math.round(y));
+                x += frame.getWidth() / 7.5 - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.12);
+                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
                 break;
             case 1:
-                notePanel.setLocation((int)Math.round(x), (int) Math.round(y));
+                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
                 break;
             case 2:
 
-                x -= frame.getWidth()/7.5 - ((double) timeUntilPlayed/(tps*2)) * (frame.getHeight()*0.12);
-                notePanel.setLocation ((int) Math.round(x), (int) Math.round(y));
+                x -= frame.getWidth() / 7.5 - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.12);
+                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
                 break;
             default:
                 System.out.println("Something has gone horribly wrong somewhere....");
@@ -223,58 +226,48 @@ public class View implements PropertyChangeListener  {
         }
     }
 
-    private long timeUntilPlayed(long tick){
+    private long timeUntilPlayed(long tick) {
         return (tick - model.getTime());
     }
 
     public void redraw(Pair<Integer, Integer> note) {
-        String key = Integer.toString(note.getKey())+Integer.toString(note.getValue());
+        String key = Integer.toString(note.getKey()) + Integer.toString(note.getValue());
         NoteObject noteObject = imageReferences.get(key);
         setLocation(noteObject);
     }
 
-    private void removeNotes(Pair<Integer, Integer> note){
+    private void removeNotes(Pair<Integer, Integer> note) {
         displayNotes.remove(note);
-        String key = Integer.toString(note.getKey())+Integer.toString(note.getValue());
+        String key = Integer.toString(note.getKey()) + Integer.toString(note.getValue());
         NoteObject noteObject = imageReferences.get(key);
         frame.remove(noteObject.getPanel());
         imageReferences.remove(key);
     }
 
-    public  void propertyChange( PropertyChangeEvent evt ) {
-        if (waiting) {
-            waiting=false;
-            ArrayList<Pair<Integer, Integer>> newNotes = model.getHighwayNotes();
-            for (Pair<Integer, Integer> note : newNotes) {
-                if (displayNotes.contains(note)) {
-                    redraw(note);
-                } else {
-                    drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
-                    displayNotes.add(note);
-                }
+    public void propertyChange(PropertyChangeEvent evt) {
+        ArrayList<Pair<Integer, Integer>> newNotes = new ArrayList<>(model.getHighwayNotes());
+        for (Pair<Integer, Integer> note : newNotes) {
+            if (displayNotes.contains(note)) {
+                redraw(note);
+            } else {
+                drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
+                displayNotes.add(note);
             }
-            try { //debugging
-                for (Pair<Integer, Integer> note : displayNotes) {
-                    if (!newNotes.contains(note)) {
-                        removeNotes(note);
-                    }
-                }
-            }
-            catch(ConcurrentModificationException e){
-                //DO SOMETHING HERE LIKE WAIT AND TRY AGAIN
-                try {
-                    sleep(10);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-                propertyChange(null);
-            }
-            setScore();
-            setMultiplier();
-            setStreak();
-            frame.revalidate();
-            frame.repaint();
-            waiting=true;
         }
+        for (Pair<Integer, Integer> note : new ArrayList<>(displayNotes)) {
+            if (!newNotes.contains(note)) {
+                removeNotes(note);
+            }
+        }
+        setScore();
+        setMultiplier();
+        setStreak();
+        frame.revalidate();
+        frame.repaint();
+
+
+
     }
 }
+
+
