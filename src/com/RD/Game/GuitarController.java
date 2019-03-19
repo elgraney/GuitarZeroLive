@@ -106,8 +106,5 @@ public class GuitarController implements KeyListener {
                 }
         }
     }
-
-
     //in future put sound in own class using observer pattern
-
 }
