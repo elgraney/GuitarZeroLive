@@ -1,33 +1,27 @@
 package com.RD.Midi_to_File;
 
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Transmitter;
-
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.sound.midi.*;
 import javax.sound.midi.Sequence;
-import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
+
 
 /**
- * Display MIDI file.
+ * Display MIDI file and add in Zero Power Mode.
  *
  * @author  David Wakeling
  * @version 1.00, January 2019.
  *
  * Extended By James To Create the Guitar Button Timings and Selection
+ *
+ * Zero Power mode added and general cleanup by Joe
  */
 public class Main {
 
     // final static String FILE = "midifile.mid";
     final static String FILE = "Midi/MIDIlovania.mid";
+    final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 10;
     /**
      * MinMaxFrequency Written by James
      * Returns the Lowest frequency and the highest frequency played by a guitar
@@ -37,12 +31,18 @@ public class Main {
     public static List<Integer> MinMaxFrequency(Track trk){
         int Min = 128;
         int Max = 0;
+        int guitarFirst = 24;
+        int guitarLast = 33;
+
         List<Integer> guitarlist = new ArrayList<>();
         List<Integer> Channellist = new ArrayList<>();
         List<Integer> MinMax = new ArrayList<>();
+
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
+
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
+
             if (msg instanceof ShortMessage) {
                 final ShortMessage smsg = (ShortMessage) msg;
                 final int chan = smsg.getChannel();
@@ -50,8 +50,9 @@ public class Main {
                 final int dat1 = smsg.getData1();
                 switch (cmd) {
                     case ShortMessage.PROGRAM_CHANGE:
+
                         //the values between 25 and 32 are all guitars
-                        if (dat1 > 24 && dat1 < 33) {
+                        if (dat1 > guitarFirst && dat1 < guitarLast) {
                             guitarlist.add(chan);
 
                         }
@@ -76,14 +77,16 @@ public class Main {
             }
         }
 
-
-
-
             MinMax.add(Min);
             MinMax.add(Max);
             MinMax.add(mostFrequent(Channellist));
+
+
      return MinMax;
     }
+
+
+
     public static Integer mostFrequent(List<Integer> list) {
 
         if (list.isEmpty())
@@ -104,6 +107,8 @@ public class Main {
         }
         return mostFrequentValue;
     }
+
+
     /**
      * Returns the name of nth instrument in the current MIDI soundbank.
      *
@@ -111,12 +116,15 @@ public class Main {
      * @return  the instrument name
      */
     public static String instrumentName( int n ) {
+
         try {
+
             final Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
             final Instrument[] instrs = synth.getAvailableInstruments();
             synth.close();
             return instrs[ n ].getName();
+
         } catch ( Exception exn ) {
             System.out.println( exn ); System.exit( 1 ); return "";
         }
@@ -131,6 +139,7 @@ public class Main {
      * @return  the note name
      */
     public static String noteName( int n, Track trk) {
+
         final String[] NAMES =
                 { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         final String[] BUTTONS =
@@ -139,6 +148,7 @@ public class Main {
         final int note   = n % 12;
         int button = 0;
         Sequence seq = null;
+
         try {
             seq = MidiSystem.getSequence( new File( FILE ) );
         } catch (InvalidMidiDataException e) {
@@ -148,7 +158,6 @@ public class Main {
             e.printStackTrace();
             System.out.println("IOexception with Midi get sequence");
         }
-        Track[] trks = seq.getTracks();
 
         int Min = MinMaxFrequency(trk).get(0);
         int Max = MinMaxFrequency(trk).get(1);
@@ -172,9 +181,9 @@ public class Main {
             button =5;
         }
 
-        //return NAMES[ note ] + octave + BUTTONS[ button ];
         return BUTTONS[ button ];
     }
+
 
     /**
      * Display a MIDI track.
@@ -182,8 +191,6 @@ public class Main {
      * writes into a file the notes to be played next to the ticks
      * @param trk the current track
      */
-
-
 
     public static void displayTrack( Track trk ){
         File file = new File ("notes/file.txt");
@@ -208,14 +215,13 @@ public class Main {
             e.printStackTrace();
             System.out.println("IO exception");
         }
-        final int Resolution = seq.getResolution();
 
-        //printWriter.println("TPB "+ Resolution  + " ppq "+ ppq);
         final int MainPart = MinMaxFrequency(trk).get(2);
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
             if (msg instanceof ShortMessage) {
+
                 final long tick = evt.getTick();
                 final ShortMessage smsg = (ShortMessage) msg;
                 final int chan = smsg.getChannel();
@@ -239,7 +245,6 @@ public class Main {
                         break;
                 }
 
-
             }
 
         }
@@ -256,21 +261,27 @@ public class Main {
      * makes sure it finds the track the song is on.
      */
     public static void displaySequence( Sequence seq ){
+
         Track[] trks = seq.getTracks();
+
         for ( int i = 0; i < trks.length; i++ ) {
             try {displayTrack( trks[ i ]);}
             catch(NullPointerException e){
                 System.out.println("Track " + i + " Doesnt Exist" );
                 continue;
             }
+
             File file = new File ("notes/file.txt");
             BufferedReader brTest = null;
+
             try {
                 brTest = new BufferedReader(new FileReader(file));
             } catch (FileNotFoundException e) {
                 e.printStackTrace(); System.exit(1);
             }
+
             String text = null;
+
             try {
                 text = brTest .readLine();
             } catch (IOException e) {
@@ -285,6 +296,109 @@ public class Main {
         }
     }
 
+    /**
+     * Calculates the Zero Power Mode start and stop times for the notes file.
+     * Content by Joe
+     * @param MidiTxt
+     * @throws IOException
+     */
+
+    public static void ZeroPowerModeCalculator(File MidiTxt) throws IOException {
+
+        //Amount of concurrent notes required to be eligible for a zero power mode section
+        final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 10;
+
+        BufferedReader notesFile = null;
+        try {
+            notesFile = new BufferedReader(new FileReader(MidiTxt));
+
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+            System.out.println("File is not found!");
+            System.exit(0);
+        }
+
+        List<String> temporaryList = new ArrayList<String>();
+        List<String> zeroPowerList = new ArrayList<String>();
+        String line;
+
+        int n =0;
+        String firstLine = notesFile.readLine();
+
+        //Splitting the notes file to find the note being played.
+        while((line=notesFile.readLine())!=null) {
+            if (n!=0) {
+                zeroPowerList.add(line);
+                String[] parts = line.split(",");
+                temporaryList.add(parts[1]);
+            }
+            n++;
+
+        }
+
+        int currentNumber;
+        int currentNumberCount = 0;
+
+        //Creating a list of notes frequency before changing to another note.
+        List<Integer> frequency = new ArrayList<>();
+        for(int i = 0; i < temporaryList.size(); i++){
+            currentNumber = Integer.parseInt(temporaryList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(temporaryList.get(i - 1))){
+                currentNumberCount += 1;
+            }else{
+                frequency.add(currentNumberCount);
+                currentNumberCount = 0;
+            }
+        }
+
+        int maxFreq = Collections.max(frequency);
+
+        //If multiple maximum frequencies of the same number, use the last one to occur.
+        int lastIndex = frequency.lastIndexOf(maxFreq);
+
+        int currentIndex = 0;
+        int startIndexOfNotes = 0;
+
+        for(int i = 0; i < temporaryList.size(); i++){
+            currentNumber = Integer.parseInt(temporaryList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(temporaryList.get(i - 1))) {
+                //do nothing, needed for i==0 and array out of bounds.
+            }else{
+                currentIndex += 1;
+                if(currentIndex == lastIndex){
+                    startIndexOfNotes = i;
+                    break;
+                }
+            }
+        }
+
+        //Adding in a brief period of notes before and after the main zero power mode starts.
+        if(maxFreq > MINIMUM_ZERO_POWER_NOTES_FREQUENCY) {
+            zeroPowerList.add(startIndexOfNotes - 10, "START");
+            zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+        }
+
+        notesFile.close();
+
+        //Recreating the file with the new start and stop.
+        FileWriter writer = new FileWriter("notes\\file.txt");
+        writer.write(firstLine + "\n");
+
+        int size = zeroPowerList.size();
+
+        for (int i=0;i<size;i++) {
+            String str = zeroPowerList.get(i);
+            writer.write(str);
+            if(i < size-1) {
+                writer.write("\n");
+            }
+        }
+
+        writer.close();
+
+    }
+
     /*
      * Main.
      *
@@ -294,7 +408,8 @@ public class Main {
         try {
             Sequence seq = MidiSystem.getSequence( new File( FILE ) );
             displaySequence( seq );
-
+            File file = new File ("notes\\file.txt");
+            ZeroPowerModeCalculator(file);
 
         } catch ( Exception exn ) {
 
