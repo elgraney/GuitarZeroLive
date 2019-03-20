@@ -1,6 +1,5 @@
 package com.RD;
 
-import com.RD.GUI.Guitar;
 import com.RD.GUI.SetUpGUI;
 import javax.swing.*;
 import java.awt.*;

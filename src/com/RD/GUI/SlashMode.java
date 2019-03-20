@@ -15,6 +15,11 @@ import java.util.Arrays;
  * All content by Matthew
  */
 public class SlashMode extends ModeTemplate {
+
+    Model model ;
+    TimeController timeController;
+    View view;
+
     public SlashMode(JFrame frame, SetUpGUI base) {
         super(frame, base);
         //initializing carousel with fixed menu options
@@ -40,31 +45,30 @@ public class SlashMode extends ModeTemplate {
         MenuItem selected = getViewOptions()[2];
         switch (selected.getTitle()){
             case "Exit":
-                System.out.println("Exiting");
                 frame.dispose();
                 break;
 
             case "Play":
-                System.out.println("Play- NOT IMPLEMENTED");
                 tearDown();
                 String midiPath = base.getCurrentBundle().getMidiFilePath();
                 String notesPath = base.getCurrentBundle().getNotesFilePath();
-                Model model = new Model(frame, midiPath, notesPath);
+                model = new Model(frame, midiPath, notesPath);
                 GuitarController guitarController =  new GuitarController(model);
                 base.setListener(guitarController);
-                TimeController timeController = new TimeController(model);
-                View view = new View(model);
+                timeController = new TimeController(model);
+                view = new View(model, this);
+
+                System.out.println("Brave, but foolish my old friend, you're impossibly outnumbered");
+
                 break;
 
             case "Select":
-                System.out.println("Goto Select mode");
                 tearDown();
                 ModeTemplate selectMode = new SelectMode(frame, base);
                 base.setListener(new GUIControls(frame, selectMode));
                 break;
 
             case "Store":
-                System.out.println("Goto store mode");
                 tearDown();
                 ModeTemplate storeMode = new StoreMode(frame, base);
                 base.setListener(new GUIControls(frame, storeMode));
@@ -79,6 +83,18 @@ public class SlashMode extends ModeTemplate {
     public void onEscape() {
         System.out.println("End Program");
         frame.dispose();
+    }
+
+    public void returnToMenu(){
+        base.removeListener();
+        model = null;
+        view = null;
+        timeController = null;
+
+        ModeTemplate selectMode = new SlashMode(frame, base);
+        base.setListener(new GUIControls(frame, selectMode));
+        frame.revalidate();
+        frame.repaint();
     }
 
 }

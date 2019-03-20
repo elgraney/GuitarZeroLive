@@ -165,7 +165,6 @@ public class ModeTemplate extends JFrame{
         frame.add(container, new GridBagConstraints());
     }
 
-
     ModeTemplate(JFrame frame, SetUpGUI base) {
         this.frame = frame;
         this.base = base;

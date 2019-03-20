@@ -1,14 +1,13 @@
 package com.RD.Game;
 
+import com.RD.GUI.SetUpGUI;
 import javafx.util.Pair;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequencer;
+import javax.sound.midi.*;
 import javax.swing.*;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
@@ -41,7 +40,7 @@ public class Model {
     private int streak =0;
     private int score;
     private int multiplier = 1;
-    private int currency;
+    private int currency = 1;
     private int currencyCounter = 0;
     private long time;
     private double tickPerSecond;
@@ -87,6 +86,9 @@ public class Model {
         return tickPerSecond;
     }
 
+    public int getCurrency() {
+        return currency;
+    }
 
     /**
      * Get currency from storage and set value in model
@@ -172,6 +174,15 @@ public class Model {
 
         sequencer.start();
         calculateTPS();
+        sequencer.addMetaEventListener(
+                new MetaEventListener() {
+                    public void meta(MetaMessage event) {
+                        if (event.getType() == 47) {
+                            System.out.println("this party's over");
+                            support.firePropertyChange("end", null, null);
+                        }
+                    }
+                });
     }
 
     private void incrementStreak(){

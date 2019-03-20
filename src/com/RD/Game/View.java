@@ -1,5 +1,9 @@
 package com.RD.Game;
 
+import com.RD.GUI.ModeTemplate;
+import com.RD.GUI.SetUpGUI;
+import com.RD.GUI.SlashMode;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.util.Pair;
 
 import javax.imageio.ImageIO;
@@ -24,6 +28,7 @@ import static java.lang.Thread.sleep;
 
 public class View implements PropertyChangeListener {
     private Model model;
+    private SlashMode origin;
     private JFrame frame;
     private JTextArea scoreArea;
     private JTextArea multiplierArea;
@@ -33,11 +38,13 @@ public class View implements PropertyChangeListener {
     private Image blackNote;
     private ArrayList<Pair<Integer, Integer>> displayNotes = new ArrayList<>();
     private HashMap<String, NoteObject> imageReferences = new HashMap<String, NoteObject>();
+    private JPanel[] currency = new JPanel[5];
 
     /**
      * Set up the graphics and load up images, set the listener and link the Model
      */
-    public View(Model model) {
+    public View(Model model, SlashMode origin) {
+        this.origin = origin;
         this.model = model;
         frame = model.getFrame();
         frame.setLayout(null);
@@ -157,8 +164,31 @@ public class View implements PropertyChangeListener {
      * To be implemented when currency is implemented
      */
     private void setUpCurrency() {
-        //have 5 icons, make as many visible as needed.
+        for (int i = 0; i<5; i++) {
+            currency[i] = new JPanel();
+            currency[i].setSize(new Dimension(50, 50));
+            currency[i].setOpaque(false);
+            JLabel image = new JLabel();
+            try {
+                image = new JLabel(new ImageIcon(ImageIO.read(new File("assets/currency.png"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            currency[i].add(image);
+            currency[i].setLocation(350 -(i*50), frame.getHeight() - 500);
+            currency[i].setVisible(false);
+            frame.add(currency[i]);
+        }
+        setCurrency();
     }
+    private void setCurrency(){
+        int n = model.getCurrency();
+        for (int i = 0; i<n; i++){
+            currency[i].setVisible(true);
+        }
+    }
+
+
 
     /**
      * Determines if its a black or white note
@@ -245,26 +275,42 @@ public class View implements PropertyChangeListener {
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
-        ArrayList<Pair<Integer, Integer>> newNotes = new ArrayList<>(model.getHighwayNotes());
-        for (Pair<Integer, Integer> note : newNotes) {
-            if (displayNotes.contains(note)) {
-                redraw(note);
-            } else {
-                drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
-                displayNotes.add(note);
+        if(evt.getPropertyName() == "end"){
+            System.out.println("This party IS over.");
+            frame.remove(scoreArea);
+            frame.remove(streakArea);
+            frame.remove(multiplierArea);
+            for(int i = 0; i<5; i++){
+                frame.remove(currency[i]);
             }
-        }
-        for (Pair<Integer, Integer> note : new ArrayList<>(displayNotes)) {
-            if (!newNotes.contains(note)) {
-                removeNotes(note);
-            }
-        }
-        setScore();
-        setMultiplier();
-        setStreak();
-        frame.revalidate();
-        frame.repaint();
+            frame.revalidate();
+            frame.repaint();
+            origin.returnToMenu();
 
+
+        }
+        else {
+            ArrayList<Pair<Integer, Integer>> newNotes = new ArrayList<>(model.getHighwayNotes());
+            for (Pair<Integer, Integer> note : newNotes) {
+                if (displayNotes.contains(note)) {
+                    redraw(note);
+                } else {
+                    drawNote(mapNote(note.getValue()), note.getValue(), note.getKey());
+                    displayNotes.add(note);
+                }
+            }
+            for (Pair<Integer, Integer> note : new ArrayList<>(displayNotes)) {
+                if (!newNotes.contains(note)) {
+                    removeNotes(note);
+                }
+            }
+            setScore();
+            setMultiplier();
+            setStreak();
+            setCurrency();
+            frame.revalidate();
+            frame.repaint();
+        }
 
 
     }
