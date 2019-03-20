@@ -1,5 +1,4 @@
 Midi/Here Comes the Sun.mid
-10752,4
 11040,1
 11328,3
 11616,2
@@ -248,6 +247,7 @@ Midi/Here Comes the Sun.mid
 50112,1
 50304,1
 50496,1
+START
 50592,6
 50688,6
 50784,6
@@ -301,6 +301,7 @@ Midi/Here Comes the Sun.mid
 56928,6
 57024,6
 57216,4
+END
 57408,4
 57504,4
 57696,4

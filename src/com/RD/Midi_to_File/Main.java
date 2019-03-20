@@ -16,6 +16,8 @@ import javax.sound.midi.Sequence;
  * Extended By James To Create the Guitar Button Timings and Selection
  *
  * Zero Power mode added and general cleanup by Joe
+ *
+ * Duplicate removing by Joe
  */
 public class Main {
 
@@ -306,7 +308,7 @@ public class Main {
     public static void ZeroPowerModeCalculator(File MidiTxt) throws IOException {
 
         //Amount of concurrent notes required to be eligible for a zero power mode section
-        final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 10;
+        final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 5;
 
         BufferedReader notesFile = null;
         try {
@@ -319,7 +321,8 @@ public class Main {
             System.exit(0);
         }
 
-        List<String> temporaryList = new ArrayList<String>();
+        List<String> notesList = new ArrayList<String>();
+        List<String> ticksList = new ArrayList<String>();
         List<String> zeroPowerList = new ArrayList<String>();
         String line;
 
@@ -331,27 +334,27 @@ public class Main {
             if (n!=0) {
                 zeroPowerList.add(line);
                 String[] parts = line.split(",");
-                temporaryList.add(parts[1]);
+                notesList.add(parts[1]);
+                ticksList.add(parts[0]);
             }
             n++;
 
         }
 
         int currentNumber;
-        int currentNumberCount = 0;
+        int currentNumberCount = 1;
 
         //Creating a list of notes frequency before changing to another note.
         List<Integer> frequency = new ArrayList<>();
-        for(int i = 0; i < temporaryList.size(); i++){
-            currentNumber = Integer.parseInt(temporaryList.get(i));
-            if(i == 0 || currentNumber == Integer.parseInt(temporaryList.get(i - 1))){
+        for(int i = 0; i < notesList.size(); i++){
+            currentNumber = Integer.parseInt(notesList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(notesList.get(i - 1))){
                 currentNumberCount += 1;
             }else{
                 frequency.add(currentNumberCount);
-                currentNumberCount = 0;
+                currentNumberCount = 1;
             }
         }
-
         int maxFreq = Collections.max(frequency);
 
         //If multiple maximum frequencies of the same number, use the last one to occur.
@@ -360,9 +363,9 @@ public class Main {
         int currentIndex = 0;
         int startIndexOfNotes = 0;
 
-        for(int i = 0; i < temporaryList.size(); i++){
-            currentNumber = Integer.parseInt(temporaryList.get(i));
-            if(i == 0 || currentNumber == Integer.parseInt(temporaryList.get(i - 1))) {
+        for(int i = 0; i < notesList.size(); i++){
+            currentNumber = Integer.parseInt(notesList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(notesList.get(i - 1))) {
                 //do nothing, needed for i==0 and array out of bounds.
             }else{
                 currentIndex += 1;
@@ -377,11 +380,29 @@ public class Main {
         if(maxFreq > MINIMUM_ZERO_POWER_NOTES_FREQUENCY) {
             zeroPowerList.add(startIndexOfNotes - 10, "START");
             zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+            System.out.println("Zero Power mode added");
+        }else{
+            System.out.println("Zero Power Mode not added, no high point.");
         }
+
+
+        //Cleanup of file; removing duplicate / too close together notes.
+        for(int i = 1; i < ticksList.size() - 1; i++){
+            if(i + 1> ticksList.size()){
+                break;
+            }
+            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 5 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 5){
+                ticksList.remove(i);
+                zeroPowerList.remove(i);
+            }
+        }
+
+        System.out.println("Duplicates Removed");
+
 
         notesFile.close();
 
-        //Recreating the file with the new start and stop.
+        //Recreating the file with the new start and stop and cleanup.
         FileWriter writer = new FileWriter("notes\\file.txt");
         writer.write(firstLine + "\n");
 
