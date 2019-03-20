@@ -237,17 +237,20 @@ public class View implements PropertyChangeListener {
 
         double y = (frame.getHeight() * 0.54) - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.45);
         double x = frame.getWidth() / 2 - notePanel.getComponent(0).getWidth() / 2;
+        System.out.println(chanel);
         switch (chanel) {
-            case 0:
-                x += frame.getWidth() / 7.5 - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.12);
-                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
-                break;
             case 1:
-                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
-                break;
-            case 2:
 
                 x -= frame.getWidth() / 7.5 - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.12);
+                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
+                break;
+
+            case 2:
+                notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
+                break;
+            
+            case 0:
+                x += frame.getWidth() / 7.5 - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.12);
                 notePanel.setLocation((int) Math.round(x), (int) Math.round(y));
                 break;
             default:
