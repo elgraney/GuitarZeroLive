@@ -23,10 +23,10 @@ import static java.lang.Thread.sleep;
  * Created by Matthew on 26/02/2019.
  * Currently almost entirely a stand in for the real guitar controls; for testing.
  */
-public class GuitarController implements KeyListener {
+public class GuitarKeyController implements KeyListener {
     private Model model;
     private final Set<Integer> pressed = new HashSet<Integer>(); //for multiple buttons (not sure if relevant for guitar or not)
-    public GuitarController(Model model){
+    public GuitarKeyController(Model model){
         this.model = model;
     }
     public void keyReleased( KeyEvent evt ) {
@@ -36,7 +36,6 @@ public class GuitarController implements KeyListener {
     public void keyTyped( KeyEvent evt ) { /* nothing */ }
 
     public void keyPressed( KeyEvent evt ) {
-        System.out.println("Press");
         pressed.add(evt.getKeyCode());
         if (model.getState() == Model.InputState.NORMAL) {
             switch (evt.getKeyCode()) {
@@ -72,8 +71,6 @@ public class GuitarController implements KeyListener {
                         }
                         playNote(notes);
                         break; //will also need to pass other buttons pressed at same time
-                    } else {
-                        model.missNote();
                     }
                     break;
                 case KeyEvent.VK_ESCAPE:

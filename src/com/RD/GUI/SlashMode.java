@@ -1,6 +1,6 @@
 package com.RD.GUI;
 
-import com.RD.Game.GuitarController;
+import com.RD.Game.GuitarKeyController;
 import com.RD.Game.Model;
 import com.RD.Game.TimeController;
 import com.RD.Game.View;
@@ -53,8 +53,8 @@ public class SlashMode extends ModeTemplate {
                 String midiPath = base.getCurrentBundle().getMidiFilePath();
                 String notesPath = base.getCurrentBundle().getNotesFilePath();
                 model = new Model(frame, midiPath, notesPath);
-                GuitarController guitarController =  new GuitarController(model);
-                base.setListener(guitarController);
+                GuitarKeyController guitarKeyController =  new GuitarKeyController(model);
+                base.setListener(guitarKeyController);
                 timeController = new TimeController(model);
                 view = new View(model, this);
 
