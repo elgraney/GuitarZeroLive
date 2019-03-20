@@ -102,6 +102,8 @@ public class ModeTemplate extends JFrame{
      */
     public void tearDown(){
         frame.remove(container);
+        base.getMenuGuitar().disconnect();
+        base.nullMenuGuitar();
         base.removeListener();
         frame.revalidate();
         frame.repaint();

@@ -14,6 +14,7 @@ import net.java.games.input.ControllerEnvironment;
  *
  * @Sophia Wallgren
  * @ edited March 7th
+ * Edited by Matthew Crane
 
  *
  *   $ CLASSPATH=jinput-2.0.9.jar:.
@@ -36,7 +37,7 @@ public class MenuGuitar {
         this.template = template;
     }
 
-    public void pollForeverMenu(Controller ctrl ) {
+    public void pollForeverMenu(Controller ctrl ) throws NullPointerException {
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
         while( true) {
@@ -61,15 +62,17 @@ public class MenuGuitar {
                                 break;
                             case 8:
                                 System.out.println("Select/ Hero Power button pressed");
+                                template.onSelect();
                                 break;
                             case 10:
                                 System.out.println("Escape button pressed");
                                 template.onEscape();
+                                disconnect();
                                 break;
                             case 12:
                                 System.out.println("On/off button pressed");
                                 break;
-                            case 15:
+                            case 16:
                                 if (val == 1) {
                                     System.out.println("Strum down");
                                     template.right();
@@ -78,22 +81,26 @@ public class MenuGuitar {
                                     System.out.println("Strum up");
                                     template.left();
                                 }
+                                checkTemplate();
                                 break;
                             case 17:
                                 System.out.println("Whammy bar pressed");
                                 break;
                         }
-
-                        if (vals[13] == 0.125 || vals[13] == 0.25 || vals[13] == 0.375 || vals[13] == 0.5) {
-                            System.out.println("MenuGuitar Strum up");
-                            // 0.25 up
-                        }
-                        else if (vals[13] == 0.625 || vals[13] == 0.75 || vals[13] == 0.875 || vals[13] == 1.0) {
-                            System.out.println("MenuGuitar Strum down");
-                            // call function for strummming
-                            // 0.75 down
-                        }
                     }
+                    if (vals[13] == 0.125 || vals[13] == 0.25 || vals[13] == 0.375 || vals[13] == 0.5) {
+                        System.out.println("MenuGuitar Strum up");
+                        template.left();
+                        break;
+                        // 0.25 up
+                    } else if (vals[13] == 0.625 || vals[13] == 0.75 || vals[13] == 0.875 || vals[13] == 1.0) {
+                        System.out.println("MenuGuitar Strum down");
+                        template.right();
+                        break;
+                        // call function for strummming
+                        // 0.75 down
+                    }
+
                 }
             }
            
@@ -115,19 +122,36 @@ public class MenuGuitar {
 
                 Thread thread = new Thread("New Thread") {
                     public void run(){
-                        pollForeverMenu( ctrl );
+                        try {
+                            try {
+                                sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            pollForeverMenu(ctrl);
+                        }
+                        catch (NullPointerException e){
+                            System.out.println("loading new menu");
+                            //continue, as its not a serious problem
+                        }
                     }
                 };
 
                 thread.start();
                 System.out.println(thread.getName());
+                break;
             }
             else {
                 System.out.println( " controller not found" );
             }
         }
-        
 
 
+    }
+    public void disconnect(){
+        this.template = null;
+    }
+    public void checkTemplate(){
+        System.out.println(template.getClass().getName());
     }
 }

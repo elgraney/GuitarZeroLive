@@ -20,6 +20,7 @@ public class SetUpGUI extends JFrame {
                                             "clientzips/AnotherOneBitesTheDust/file.txt");
     String backgroundImage = "assets/background1.png";
     String highwayImage = "assets/betterHighway.png";
+    MenuGuitar menuGuitar;
 
     public SetUpGUI(){
         setTitle( "Guitar Zero Live" );
@@ -28,10 +29,23 @@ public class SetUpGUI extends JFrame {
         setLayout( null );
 
         //sets up the carousel and assigns a listener to the frame
-        ModeTemplate modeTest = new SlashMode(this, this);
-        setListener(new GUIControls(this, modeTest));
-        MenuGuitar guitar = new MenuGuitar(modeTest);
-        guitar.run();
+        ModeTemplate slashMode = new SlashMode(this, this);
+        setListener(new GUIControls(this, slashMode));
+        menuGuitar = new MenuGuitar(slashMode);
+        menuGuitar.run();
+    }
+
+    public void nullMenuGuitar() {
+        menuGuitar =null;
+    }
+
+    public void setMenuGuitar(MenuGuitar menuGuitar) {
+        this.menuGuitar = menuGuitar;
+        menuGuitar.run();
+    }
+
+    public MenuGuitar getMenuGuitar() {
+        return menuGuitar;
     }
 
     public SongMenuItem getCurrentBundle() {

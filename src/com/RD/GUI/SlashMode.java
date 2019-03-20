@@ -50,6 +50,7 @@ public class SlashMode extends ModeTemplate {
 
             case "Play":
                 tearDown();
+                base.nullMenuGuitar();
                 String midiPath = base.getCurrentBundle().getMidiFilePath();
                 String notesPath = base.getCurrentBundle().getNotesFilePath();
                 model = new Model(frame, midiPath, notesPath);
@@ -66,12 +67,16 @@ public class SlashMode extends ModeTemplate {
                 tearDown();
                 ModeTemplate selectMode = new SelectMode(frame, base);
                 base.setListener(new GUIControls(frame, selectMode));
+                MenuGuitar selectGuitar = new MenuGuitar(selectMode);
+                base.setMenuGuitar(selectGuitar);
                 break;
 
             case "Store":
                 tearDown();
                 ModeTemplate storeMode = new StoreMode(frame, base);
                 base.setListener(new GUIControls(frame, storeMode));
+                MenuGuitar storeGuitar = new MenuGuitar(storeMode);
+                base.setMenuGuitar(storeGuitar);
                 break;
 
             case "Tutorial":
@@ -83,6 +88,7 @@ public class SlashMode extends ModeTemplate {
     public void onEscape() {
         System.out.println("End Program");
         frame.dispose();
+        System.exit(1);
     }
 
     public void returnToMenu(){

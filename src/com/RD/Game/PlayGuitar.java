@@ -88,7 +88,7 @@ public class PlayGuitar {
                                 case 12:
                                     System.out.println("On/off button pressed");
                                     break;
-                                case 15:
+                                case 16:
                                     if (val == 1) {
                                         System.out.println("Strum down");
 
@@ -159,6 +159,7 @@ public class PlayGuitar {
 
                 thread.start();
                 System.out.println(thread.getName());
+                break;
             }
             else {
                 System.out.println( " controller not found" );
