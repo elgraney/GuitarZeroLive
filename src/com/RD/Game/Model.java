@@ -112,12 +112,12 @@ public class Model {
         try {
             begin();
         } catch (MidiUnavailableException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
             //DO SOMETHING
         } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
             //DO SOMETHING ELSE
         }
     }
@@ -147,7 +147,7 @@ public class Model {
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
 
     }
@@ -239,16 +239,16 @@ public class Model {
         InputStream in = null;
         try {
             in = new FileInputStream(filename);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException exn) {
+            System.out.println(exn); System.exit(1);
         }
 
 
         AudioStream as = null;
         try {
             as = new AudioStream(in);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exn) {
+            System.out.println(exn); System.exit(1);
         }
         AudioPlayer.player.start(as);
     }

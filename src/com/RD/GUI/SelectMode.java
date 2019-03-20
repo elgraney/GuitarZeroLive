@@ -43,7 +43,7 @@ public class SelectMode extends ModeTemplate {
         try {
             setUpCarousel();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
     }
 

@@ -64,7 +64,7 @@ public class ModeTemplate extends JFrame{
         try {
             setUpCarousel();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
         frame.revalidate();
 
@@ -85,7 +85,7 @@ public class ModeTemplate extends JFrame{
         try {
             setUpCarousel();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
         frame.revalidate();
     }
@@ -116,7 +116,7 @@ public class ModeTemplate extends JFrame{
         try {
             option.add(new JLabel(new ImageIcon(ImageIO.read(new File(imagePath)))), BorderLayout.CENTER);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
         JTextArea textArea = new JTextArea(text);
         textArea.setEditable(false);

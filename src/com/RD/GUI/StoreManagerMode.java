@@ -254,7 +254,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
                 jTextFieldMusic.setText("");
                 JOptionPane.showMessageDialog(this, "Bundle saved!");
             } catch (IOException ex) {
-                Logger.getLogger(StoreManagerMode.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex); System.exit(1);
             }
         }
     }
@@ -337,30 +337,15 @@ public class StoreManagerMode extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StoreManagerMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex); System.exit(1);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StoreManagerMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex); System.exit(1);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StoreManagerMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex); System.exit(1);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StoreManagerMode.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex); System.exit(1);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -403,9 +388,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
         ZipEntry music = new ZipEntry(jTextFieldMusic.getText());
         zos.putNextEntry(music);
 
-
-
-
+        
         FileInputStream in = new FileInputStream(bundleTitle);
         FileInputStream in2 = new FileInputStream(bundleCoverArt);
         FileInputStream in3 = new FileInputStream(bundleMusic);

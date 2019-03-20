@@ -172,7 +172,7 @@ public class View implements PropertyChangeListener {
             try {
                 image = new JLabel(new ImageIcon(ImageIO.read(new File("assets/currency.png"))));
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e); System.exit(1);
             }
             currency[i].add(image);
             currency[i].setLocation(350 -(i*50), frame.getHeight() - 500);
