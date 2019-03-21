@@ -33,6 +33,7 @@ public class View implements PropertyChangeListener {
     private JTextArea scoreArea;
     private JTextArea multiplierArea;
     private JTextArea streakArea;
+    private JPanel zeroPowerPanel;
 
     private Image whiteNote;
     private Image blackNote;
@@ -149,6 +150,19 @@ public class View implements PropertyChangeListener {
      */
     private void setUpZeroPower() {
         //create icon with visibility set to false/greyed out until it is needed
+        zeroPowerPanel = new JPanel();
+        zeroPowerPanel.setSize(new Dimension(100, 100));
+        zeroPowerPanel.setOpaque(false);
+        JLabel image = new JLabel();
+        try {
+            image = new JLabel(new ImageIcon(ImageIO.read(new File("assets/zeroPowerOn.png"))));
+        } catch (IOException e) {
+            System.out.println(e); System.exit(1);
+        }
+        zeroPowerPanel.add(image);
+        zeroPowerPanel.setLocation(frame.getWidth()-500, frame.getHeight() - 500);
+        zeroPowerPanel.setVisible(false);
+        frame.add(zeroPowerPanel);
     }
 
     /**
@@ -289,10 +303,14 @@ public class View implements PropertyChangeListener {
             frame.revalidate();
             frame.repaint();
             origin.returnToMenu();
-
-
         }
         else {
+            if (model.getState() == Model.InputState.ZERO_POWER){
+                zeroPowerPanel.setVisible(true);
+            }
+            else{
+                zeroPowerPanel.setVisible(false);
+            }
             ArrayList<Pair<Integer, Integer>> newNotes = new ArrayList<>(model.getHighwayNotes());
             for (Pair<Integer, Integer> note : newNotes) {
                 if (displayNotes.contains(note)) {

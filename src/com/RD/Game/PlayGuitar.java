@@ -35,8 +35,6 @@ public class PlayGuitar extends Guitar {
                     vals[i] = cmps[i].getPollData();
                 }
                 if (model.getState() == Model.InputState.NORMAL) {
-                    System.out.println(vals[15]);
-                    System.out.println(vals[13]);
                     if (vals[13] != 0) {
                         String notes = "";
                         if (vals[0] != 0) {
@@ -59,7 +57,16 @@ public class PlayGuitar extends Guitar {
                         }
                         playNote(notes);
                     } else if (model.getState() == Model.InputState.ZERO_POWER) {
-
+                        System.out.println("yes");
+                        if(vals[1] == 0 && vals[2] ==0 && vals[3] ==0
+                            && vals[4] ==0 && vals[5] ==0 && vals[6] ==0
+                            && vals[13] == 0){ //excludes frets and strumming
+                            System.out.println("yes");
+                            if (vals[8] != 0 || vals[17] != 0){//Hero button or whammy bar
+                                System.out.println("got it");
+                                playNote("123456");
+                            }
+                        }
                     }
                 }
             }

@@ -9,7 +9,8 @@ import java.util.Scanner;
  */
 public class CurrencyManager {
 
-    static String file = "Currency/fil.txt";
+    static String file = "Currency/file.txt";
+
 
     public static int readFile() {
         /***
@@ -21,7 +22,7 @@ public class CurrencyManager {
         try {
             scan = new Scanner(new File(file));
         } catch (FileNotFoundException e) {
-            new ErrorWindow("What the hell is going on");
+            new ErrorWindow("Currency file cant be read");
 
         }
         int temp = scan.nextInt();

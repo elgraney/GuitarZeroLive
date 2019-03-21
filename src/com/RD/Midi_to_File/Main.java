@@ -22,7 +22,7 @@ import javax.sound.midi.Sequence;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "Midi/Revolution.mid";
+    final static String FILE = "Midi/GORILLAZ_-_Feel_Good_Inc.mid";
     final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 5;
     /**
      * MinMaxFrequency Written by James
@@ -342,6 +342,20 @@ public class Main {
 
         }
 
+        //Cleanup of file; removing duplicate / too close together notes.
+        for(int i = 1; i < ticksList.size() - 1; i++){
+            if(i + 1> ticksList.size()){
+                break;
+            }
+            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 15 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 15){
+                ticksList.remove(i);
+                zeroPowerList.remove(i);
+                notesList.remove(i);
+            }
+        }
+
+        System.out.println("Duplicates Removed");
+
         int currentNumber;
         int currentNumberCount = 1;
 
@@ -379,26 +393,25 @@ public class Main {
 
         //Adding in a brief period of notes before and after the main zero power mode starts.
         if(maxFreq > MINIMUM_ZERO_POWER_NOTES_FREQUENCY) {
-            zeroPowerList.add(startIndexOfNotes - 10, "START");
-            zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
-            System.out.println("Zero Power mode added");
+            if(startIndexOfNotes - 10 <= 0 && startIndexOfNotes + maxFreq + 12 < zeroPowerList.size()){
+                zeroPowerList.add(0, "START");
+                zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+                System.out.println("Zero Power mode added");
+            }else if(startIndexOfNotes - 10 >= 0 && startIndexOfNotes + maxFreq + 12 > zeroPowerList.size()) {
+                zeroPowerList.add(startIndexOfNotes - 10, "START");
+                zeroPowerList.add(zeroPowerList.size(), "END");
+                System.out.println("Zero Power mode added");
+            }else if(startIndexOfNotes - 10 <= 0 && startIndexOfNotes + maxFreq + 12 > zeroPowerList.size()){
+                System.out.println("Not enough room for zero power mode...");
+            }else{
+                zeroPowerList.add(startIndexOfNotes - 10, "START");
+                zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+                System.out.println("Zero Power mode added");
+            }
         }else{
             System.out.println("Zero Power Mode not added, no high point.");
         }
 
-
-        //Cleanup of file; removing duplicate / too close together notes.
-        for(int i = 1; i < ticksList.size() - 1; i++){
-            if(i + 1> ticksList.size()){
-                break;
-            }
-            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 15 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 15){
-                ticksList.remove(i);
-                zeroPowerList.remove(i);
-            }
-        }
-
-        System.out.println("Duplicates Removed");
 
 
         notesFile.close();

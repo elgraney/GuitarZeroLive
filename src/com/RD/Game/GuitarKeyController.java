@@ -85,6 +85,7 @@ public class GuitarKeyController implements KeyListener {
         }
         else if(model.getState() == Model.InputState.ZERO_POWER){
             //MAKE SURE TO ADD ZERO POWER HERE
+            System.out.println("You were right about one thing master, the negotiations were short");
         }
     }
 
