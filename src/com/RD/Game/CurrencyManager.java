@@ -22,7 +22,7 @@ public class CurrencyManager {
     }
 
 
-    public static void saveFile(int integer) throws IOException{
+    public static void saveFile(int integer) {
         /**
          * Method that gets the int value of currency from model
          * and writes it to the currency text file

@@ -9,9 +9,11 @@ import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 
 
-/*
- * Menu guitar test
-*/
+/**
+ * Main guitar class which is extended by PlayGuitar and MenuGuitar
+ * @ Sophia Wallgren
+ * Edited by Matthew Crane
+ */
 
 
 public class Guitar {
