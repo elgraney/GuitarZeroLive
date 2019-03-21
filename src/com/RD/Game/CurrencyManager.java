@@ -11,7 +11,6 @@ public class CurrencyManager {
 
     static String file = "Currency/file.txt";
 
-
     public static int readFile() {
         /***
          * Method that reads the currency int value of the text file
