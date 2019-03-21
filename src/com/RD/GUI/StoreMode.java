@@ -49,6 +49,8 @@ public class StoreMode extends ModeTemplate {
         ModeTemplate slashMode = new SlashMode(frame, base);
         base.setListener(new GUIControls(this, slashMode));
         frame.revalidate();
+        MenuGuitar slashGuitar = new MenuGuitar(slashMode);
+        base.setGuitar(slashGuitar);
     }
 
     public void onSelect(){
