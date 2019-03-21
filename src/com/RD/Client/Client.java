@@ -32,10 +32,8 @@ class CoverArt {
 public class Client {
     final static String HOST = "localhost";
     final static int PORT = 8888;
-    final static String downloadFilePath = "src\\com\\RD\\Client\\Downloads\\";
+    final static String downloadFilePath = "clientzips";
     final static int BUFFER_SIZE = 1024;
-    static String FILE_TO_DOWNLOAD;
-
 
 
     public static void download(String songTitle) {
@@ -51,65 +49,45 @@ public class Client {
 
             ArrayList<CoverArt> coverArts = new ArrayList<>();
 
-            //Add image files download image files
-            for(int i = 0; i< number;i++){
-                String name = dis.readUTF();
-                System.out.println("Downloading... "+ name);
-                FileOutputStream fos = new FileOutputStream(downloadFilePath + name);
-                coverArts.add(new CoverArt(name.substring(0,name.length()-4)));
-                System.out.println("Check");
-                Long fileSize = dis.readLong();
-                int length = 0;
-                byte[]buff = new byte[BUFFER_SIZE];
-
-                while (fileSize > 0 && (length = dis.read(buff,0, (int)Math.min(buff.length, fileSize))) != -1){
-                    fos.write(buff, 0, length);
-                    fileSize = fileSize - length;
-                }
-
-                fos.flush();
-                fos.close();
-
-            }
-
             getZips(songTitle, coverArts, dos, dis);
 
 
             sck.close();
         } catch (Exception exn) {
-            System.out.println(exn); System.exit(1);
+            System.out.println(exn);
+            System.exit(1);
         }
     }
 
+    public static void getZips(String songTitle, ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis) {
+        try {
+            //Get zips
+            System.out.println(coverArts);
+            String bundleTitle = songTitle;
+            System.out.println(bundleTitle);
 
-    public static  void getZips(String songToDownload, ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis){
+            System.out.println();
+            System.out.println("File to download..." + bundleTitle);
+            dos.writeUTF(bundleTitle);
+            FileOutputStream fout = new FileOutputStream(downloadFilePath + bundleTitle + ".zip");
 
+            Long fileSize = dis.readLong();
+            int length = 0;
+            byte[] buff = new byte[BUFFER_SIZE];
 
-            try{
-                //Get zips
-                String bundleTitle = FILE_TO_DOWNLOAD;
-                //Check if file exists in zips. if not then return error.
-                assert coverArts.contains(bundleTitle): "File does not exist on the server";
-                System.out.println("File to download..."+ bundleTitle);
-                dos.writeUTF(bundleTitle);
-                FileOutputStream fout = new FileOutputStream(downloadFilePath + bundleTitle + ".zip");
-
-                Long fileSize = dis.readLong();
-                int length = 0;
-                byte[]buff = new byte[BUFFER_SIZE];
-
-                while (fileSize > 0 && (length = dis.read(buff,0, (int)Math.min(buff.length, fileSize))) != -1){
-                    fout.write(buff, 0, length);
-                    fileSize = fileSize - length;
-                }
-                fout.flush();
-                fout.close();
-            } catch (Exception exn) {
-                System.out.println(exn); System.exit(1);
+            while (fileSize > 0 && (length = dis.read(buff, 0, (int) Math.min(buff.length, fileSize))) != -1) {
+                fout.write(buff, 0, length);
+                fileSize = fileSize - length;
             }
-
+            System.out.println(bundleTitle + " download complete");
+            fout.flush();
+            fout.close();
+        } catch (Exception exn) {
+            System.out.println(exn);
+            System.exit(1);
         }
 
     }
+}
 
 

@@ -1,6 +1,7 @@
 package com.RD.GUI;
 
 import com.RD.Client.Client;
+import com.RD.Game.CurrencyManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -39,7 +40,7 @@ public class StoreMode extends ModeTemplate {
         try {
             setUpCarousel();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e); System.exit(1);
         }
     }
 
@@ -55,12 +56,19 @@ public class StoreMode extends ModeTemplate {
 
     public void onSelect(){
         MenuItem selectedSong = getViewOptions()[2];
-        String songTitle = selectedSong.getTitle()+".png";
+        String songTitle = selectedSong.getTitle();
 
-        //Check that currency is enough
+        //Check that currency is enough by calling currencyManager's readFile()
+    //CurrencyManager.getFile()
+        if (CurrencyManager.readFile() > cost) {
+            //Call Client download method
+            Client.download(songTitle);
 
-        //Call Client download method
-        Client.download(songTitle);
+            JOptionPane.showMessageDialog(this, songTitle + "Downloaded successfully!");
+            onEscape();
+        } else {
+            JOptionPane.showMessageDialog(this, songTitle + "Unable to download! Not enough currency!");
+        }
     }
 
     public static ArrayList<String> getImages (String path) {
