@@ -1,5 +1,4 @@
 Midi/GORILLAZ_-_Feel_Good_Inc.mid
-2290,1
 3010,1
 3250,1
 3490,1

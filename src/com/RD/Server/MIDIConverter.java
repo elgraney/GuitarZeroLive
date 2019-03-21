@@ -8,10 +8,7 @@ import javax.sound.midi.Transmitter;
 
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.sound.midi.*;
 import javax.sound.midi.Sequence;
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
@@ -23,8 +20,12 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
  * @version 1.00, January 2019.
  *
  * Extended By James To Create the Guitar Button Timings and Selection
- *  Zero Power mode added and general cleanup by Joe
- *  Edited by Jordan to allow Store Manager Mode to Generate Notes files
+ *
+ * Zero Power mode added and general cleanup by Joe
+ *
+ * Duplicate removing by Joe
+ *
+ * Edited by Jordan to allow Store Manager Mode to Generate Notes files
  *
  */
 public class MIDIConverter {
@@ -58,21 +59,27 @@ public class MIDIConverter {
     public static List<Integer> MinMaxFrequency(Track trk){
         int Min = 128;
         int Max = 0;
+        int guitarFirst = 24;
+        int guitarLast = 33;
+
         List<Integer> guitarlist = new ArrayList<>();
         List<Integer> Channellist = new ArrayList<>();
         List<Integer> MinMax = new ArrayList<>();
+
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
             if (msg instanceof ShortMessage) {
+
                 final ShortMessage smsg = (ShortMessage) msg;
                 final int chan = smsg.getChannel();
                 final int cmd = smsg.getCommand();
                 final int dat1 = smsg.getData1();
+
                 switch (cmd) {
                     case ShortMessage.PROGRAM_CHANGE:
                         //the values between 25 and 32 are all guitars
-                        if (dat1 > 24 && dat1 < 33) {
+                        if (dat1 > guitarFirst && dat1 < guitarLast) {
                             guitarlist.add(chan);
 
                         }
@@ -97,14 +104,13 @@ public class MIDIConverter {
             }
         }
 
-
-
-
         MinMax.add(Min);
         MinMax.add(Max);
         MinMax.add(mostFrequent(Channellist));
         return MinMax;
     }
+
+
     public static Integer mostFrequent(List<Integer> list) {
 
         if (list.isEmpty())
@@ -125,6 +131,8 @@ public class MIDIConverter {
         }
         return mostFrequentValue;
     }
+
+
     /**
      * Returns the name of nth instrument in the current MIDI soundbank.
      *
@@ -193,9 +201,9 @@ public class MIDIConverter {
             button =5;
         }
 
-        //return NAMES[ note ] + octave + BUTTONS[ button ];
         return BUTTONS[ button ];
     }
+
 
     /**
      * Display a MIDI track.
@@ -303,6 +311,142 @@ public class MIDIConverter {
         }
     }
 
+    /**
+     * Calculates the Zero Power Mode start and stop times for the notes file.
+     * Also cleans up the file by removing all the duplicates / notes too close together.
+     * Content by Joe
+     * @param MidiTxt
+     * @throws IOException
+     */
+
+    public static void ZeroPowerModeCalculator(File MidiTxt) throws IOException {
+
+        //Amount of concurrent notes required to be eligible for a zero power mode section
+        final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 5;
+
+        BufferedReader notesFile = null;
+        try {
+            notesFile = new BufferedReader(new FileReader(MidiTxt));
+
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+            System.out.println("File is not found!");
+            System.exit(0);
+        }
+
+        List<String> notesList = new ArrayList<String>();
+        List<String> ticksList = new ArrayList<String>();
+        List<String> zeroPowerList = new ArrayList<String>();
+        String line;
+
+        int n =0;
+        String firstLine = notesFile.readLine();
+
+        //Splitting the notes file to find the note being played.
+        while((line=notesFile.readLine())!=null) {
+            if (n!=0) {
+                zeroPowerList.add(line);
+                String[] parts = line.split(",");
+                notesList.add(parts[1]);
+                ticksList.add(parts[0]);
+            }
+            n++;
+
+        }
+
+        //Cleanup of file; removing duplicate / too close together notes.
+        for(int i = 1; i < ticksList.size() - 1; i++){
+            if(i + 1> ticksList.size()){
+                break;
+            }
+            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 15 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 15){
+                ticksList.remove(i);
+                zeroPowerList.remove(i);
+                notesList.remove(i);
+            }
+        }
+
+        System.out.println("Duplicates Removed");
+
+        int currentNumber;
+        int currentNumberCount = 1;
+
+        //Creating a list of notes frequency before changing to another note.
+        List<Integer> frequency = new ArrayList<>();
+        for(int i = 0; i < notesList.size(); i++){
+            currentNumber = Integer.parseInt(notesList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(notesList.get(i - 1))){
+                currentNumberCount += 1;
+            }else{
+                frequency.add(currentNumberCount);
+                currentNumberCount = 1;
+            }
+        }
+        int maxFreq = Collections.max(frequency);
+
+        //If multiple maximum frequencies of the same number, use the last one to occur.
+        int lastIndex = frequency.lastIndexOf(maxFreq);
+
+        int currentIndex = 0;
+        int startIndexOfNotes = 0;
+
+        for(int i = 0; i < notesList.size(); i++){
+            currentNumber = Integer.parseInt(notesList.get(i));
+            if(i == 0 || currentNumber == Integer.parseInt(notesList.get(i - 1))) {
+                //do nothing, needed for i==0 and array out of bounds.
+            }else{
+                currentIndex += 1;
+                if(currentIndex == lastIndex){
+                    startIndexOfNotes = i;
+                    break;
+                }
+            }
+        }
+
+        //Adding in a brief period of notes before and after the main zero power mode starts.
+        if(maxFreq > MINIMUM_ZERO_POWER_NOTES_FREQUENCY) {
+            if(startIndexOfNotes - 10 <= 0 && startIndexOfNotes + maxFreq + 12 < zeroPowerList.size()){
+                zeroPowerList.add(0, "START");
+                zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+                System.out.println("Zero Power mode added");
+            }else if(startIndexOfNotes - 10 >= 0 && startIndexOfNotes + maxFreq + 12 > zeroPowerList.size()) {
+                zeroPowerList.add(startIndexOfNotes - 10, "START");
+                zeroPowerList.add(zeroPowerList.size(), "END");
+                System.out.println("Zero Power mode added");
+            }else if(startIndexOfNotes - 10 <= 0 && startIndexOfNotes + maxFreq + 12 > zeroPowerList.size()){
+                System.out.println("Not enough room for zero power mode...");
+            }else{
+                zeroPowerList.add(startIndexOfNotes - 10, "START");
+                zeroPowerList.add(startIndexOfNotes + maxFreq + 12, "END");
+                System.out.println("Zero Power mode added");
+            }
+        }else{
+            System.out.println("Zero Power Mode not added, no high point.");
+        }
+
+
+
+        notesFile.close();
+
+        //Recreating the file with the new start and stop and cleanup.
+        FileWriter writer = new FileWriter("notes\\file.txt");
+        writer.write(firstLine + "\n");
+
+        int size = zeroPowerList.size();
+
+        for (int i=0;i<size;i++) {
+            String str = zeroPowerList.get(i);
+            writer.write(str);
+            if(i < size-1) {
+                writer.write("\n");
+            }
+        }
+
+        writer.close();
+
+    }
+
     /*
      * MIDIConverter.
      *
@@ -314,6 +458,8 @@ public class MIDIConverter {
         try {
             Sequence seq = MidiSystem.getSequence( new File( midi_file ) );
             displaySequence( seq );
+            File file = new File ("notes\\file.txt");
+            ZeroPowerModeCalculator(file);
 
         } catch ( Exception exn ) {
 
