@@ -21,7 +21,7 @@ public class CurrencyManager {
         try {
             scan = new Scanner(new File(file));
         } catch (FileNotFoundException e) {
-            new ErrorWindow("What the hell is going on");
+            new ErrorWindow("Currency file cant be read");
 
         }
         int temp = scan.nextInt();
