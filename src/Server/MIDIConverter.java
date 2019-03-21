@@ -1,4 +1,4 @@
-package com.RD.Server;
+package Server;
 
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MetaEventListener;
