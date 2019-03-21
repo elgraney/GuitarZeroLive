@@ -66,7 +66,7 @@ public class StoreMode extends ModeTemplate {
 
         //Check that currency is enough by calling currencyManager's readFile()
     //CurrencyManager.getFile()
-        if (currency > cost) {
+        if (currency >= cost) {
             //Call Client download method
             Client.download(songTitle);
             currency --;
