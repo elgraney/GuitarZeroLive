@@ -83,7 +83,7 @@ public class PlayGuitar extends Guitar {
         // either call hitNote or missNote
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
-            if (note.getKey() > model.getTime() - model.getTickPerSecond() * 0.3 && note.getKey() < model.getTime() + model.getTickPerSecond() * 0.1) {
+            if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY / 2 && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
                 if (notes.contains(Integer.toString(note.getValue()))) {
                     model.hitNote(note);
                     return;

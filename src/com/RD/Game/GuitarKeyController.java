@@ -25,6 +25,8 @@ import static java.lang.Thread.sleep;
  */
 public class GuitarKeyController implements KeyListener {
     private Model model;
+    private final double MULTIPLIER = 0.1;
+    private final int PRESSED_SET_MINIMUM = 1;
     private final Set<Integer> pressed = new HashSet<Integer>(); //for multiple buttons (not sure if relevant for guitar or not)
     public GuitarKeyController(Model model){
         this.model = model;
@@ -40,7 +42,7 @@ public class GuitarKeyController implements KeyListener {
         if (model.getState() == Model.InputState.NORMAL) {
             switch (evt.getKeyCode()) {
                 case KeyEvent.VK_SPACE: //stand-in for strum
-                    if (pressed.size() > 1 && (pressed.contains(KeyEvent.VK_1)
+                    if (pressed.size() > PRESSED_SET_MINIMUM && (pressed.contains(KeyEvent.VK_1)
                             || pressed.contains(KeyEvent.VK_2)
                             || pressed.contains(KeyEvent.VK_3)
                             || pressed.contains(KeyEvent.VK_4)
@@ -92,7 +94,7 @@ public class GuitarKeyController implements KeyListener {
         // either call hitNote or missNote
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
-            if (note.getKey() > model.getTime() - model.getTickPerSecond() * 0.1 && note.getKey() < model.getTime() + model.getTickPerSecond() * 0.1) {
+            if (note.getKey() > model.getTime() - model.getTickPerSecond() * MULTIPLIER && note.getKey() < model.getTime() + model.getTickPerSecond() * MULTIPLIER) {
                 if (notes.contains(Integer.toString(note.getValue()))) {
                     model.hitNote(note);
                     return;

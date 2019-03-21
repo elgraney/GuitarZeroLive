@@ -23,6 +23,8 @@ public class ModeTemplate extends JFrame{
     private int startIndex = 0;
     private JPanel container;
 
+    public final int CAROUSEL_SIZE = 5;
+
     public ArrayList<MenuItem> getOptions() {
         return allOptions;
     }
@@ -44,7 +46,7 @@ public class ModeTemplate extends JFrame{
      */
     void innitMenu(ArrayList<MenuItem> options){
         setOptions(options);
-        for(int i=startIndex; i<5; i++){
+        for(int i=startIndex; i<CAROUSEL_SIZE; i++){
             viewOptions[i] = options.get(i);
         }
     }
@@ -57,7 +59,7 @@ public class ModeTemplate extends JFrame{
         if (startIndex<0){
             startIndex = allOptions.size()-1;
         }
-        for(int i=0, j=startIndex; i<5; i++, j++){
+        for(int i=0, j=startIndex; i<CAROUSEL_SIZE; i++, j++){
             viewOptions[i] = allOptions.get(j%allOptions.size());
         }
         frame.remove(container);
@@ -78,7 +80,7 @@ public class ModeTemplate extends JFrame{
         if (startIndex<0){
             startIndex = allOptions.size()-1;
         }
-        for(int i=0, j=startIndex; i<5; i++, j++){
+        for(int i=0, j=startIndex; i<CAROUSEL_SIZE; i++, j++){
             viewOptions[i] = allOptions.get(j%allOptions.size());
         }
         frame.remove(container);

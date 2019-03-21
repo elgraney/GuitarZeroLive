@@ -5,4 +5,5 @@ package com.RD.Game;
  */
 public class Constants {
     public final static int INTERVAL  = 1;
+    public final static double LENIENCY = 0.2;
 }

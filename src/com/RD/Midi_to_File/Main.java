@@ -300,6 +300,7 @@ public class Main {
 
     /**
      * Calculates the Zero Power Mode start and stop times for the notes file.
+     * Also cleans up the file by removing all the duplicates / notes too close together.
      * Content by Joe
      * @param MidiTxt
      * @throws IOException
@@ -391,7 +392,7 @@ public class Main {
             if(i + 1> ticksList.size()){
                 break;
             }
-            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 5 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 5){
+            if(Integer.parseInt(ticksList.get(i + 1)) - Integer.parseInt(ticksList.get(i)) < 15 || Integer.parseInt(ticksList.get(i)) - Integer.parseInt(ticksList.get(i - 1)) < 15){
                 ticksList.remove(i);
                 zeroPowerList.remove(i);
             }
@@ -419,6 +420,7 @@ public class Main {
         writer.close();
 
     }
+
 
     /*
      * Main.

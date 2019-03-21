@@ -46,6 +46,10 @@ public class Model {
     private double tickPerSecond;
     private boolean contentChanged = false;
 
+    private final int MAX_CURRENCY = 5;
+    private final int HIGHWAY_TIME = 3;
+    private final int SCORE_FOR_CURRENCY = 400;
+
     /**
      * Define the state the of the play mode, to determine how inputs are handled
      */
@@ -202,12 +206,12 @@ public class Model {
     private void incrementScore() {
         score += multiplier; //assume notes are worth 1 by default
         currencyCounter += multiplier;
-        if (currencyCounter>=500){
+        if (currencyCounter>=SCORE_FOR_CURRENCY){
             currency+=1;
-            if (currency>5){
-                currency = 5;
+            if (currency>MAX_CURRENCY){
+                currency = MAX_CURRENCY;
             }
-            currencyCounter -=500;
+            currencyCounter -=SCORE_FOR_CURRENCY;
         }
     }
 
@@ -285,7 +289,7 @@ public class Model {
         }
         if (futureNotes.size()>0) {
             Pair<Integer, Integer> note = futureNotes.get(0);
-            while (note.getKey() < time + tickPerSecond * 3) {
+            while (note.getKey() < time + tickPerSecond * HIGHWAY_TIME) {
                 highwayNotes.add(note);
                 futureNotes.remove(0);
                 if (futureNotes.size()>0) {

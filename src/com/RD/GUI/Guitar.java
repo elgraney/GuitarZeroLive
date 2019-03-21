@@ -16,7 +16,7 @@ import net.java.games.input.ControllerEnvironment;
 
 public class Guitar {
     static final String GUITAR_HERO = "Guitar Hero";
-    static final int DELAY = 150;
+    static final int LOADING_TIME = 100;
 
     public void pollForever(Controller ctrl ) throws NullPointerException {
     }
@@ -33,7 +33,7 @@ public class Guitar {
                     public void run(){
                         try {
                             try {
-                                sleep(100);
+                                sleep(LOADING_TIME);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
