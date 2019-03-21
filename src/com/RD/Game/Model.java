@@ -258,7 +258,7 @@ public class Model {
      */
     public void missNote(){
         contentChanged = true;
-        playSound("assets/BruhSoundEffect2.wav");
+        playSound("assets/Break.wav");
         resetStreak();
     }
 

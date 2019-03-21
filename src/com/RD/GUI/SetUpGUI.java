@@ -14,10 +14,10 @@ import static java.awt.Color.white;
 public class SetUpGUI extends JFrame {
 
     KeyListener currentListener;
-    SongMenuItem currentBundle = new SongMenuItem("clientzips/Another One Bites The Dust/AnotherOneBitesTheDust.png",
-                                            "AnotherOneBitesTheDust",
-                                            "clientzips/Another One Bites The Dust/Queen_-_Another_One_Bites_the_Dust.mid",
-                                            "clientzips/Another One Bites The Dust/file.txt");
+    SongMenuItem currentBundle = new SongMenuItem("clientzips/demo/FeelGOodInc.png",
+                                            "demo",
+                                            "clientzips/demo/GORILLAZ_-_Feel_Good_Inc.mid",
+                                            "clientzips/demo/file.txt");
     String backgroundImage = "assets/background1.png";
     String highwayImage = "assets/betterHighway.png";
     Guitar guitar;

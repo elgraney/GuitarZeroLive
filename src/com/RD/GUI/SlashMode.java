@@ -61,8 +61,6 @@ public class SlashMode extends ModeTemplate {
                 PlayGuitar playGuitar = new PlayGuitar(model);
                 base.setGuitar(playGuitar);
 
-                System.out.println("Brave, but foolish my old friend, you're impossibly outnumbered");
-
                 break;
 
             case "Select":
