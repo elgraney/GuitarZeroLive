@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class CurrencyManager {
 
-    static String file = "Currency/fil.txt";
+    static String file = "Currency/file.txt";
 
     public static int readFile() {
         /***

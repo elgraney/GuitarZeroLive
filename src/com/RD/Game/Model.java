@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static com.RD.Game.Model.InputState.NORMAL;
+import static com.RD.Game.Model.InputState.ZERO_POWER;
 import static javafx.scene.input.KeyCode.L;
 import static javax.sound.midi.Sequence.PPQ;
 
@@ -45,6 +46,8 @@ public class Model {
     private long time;
     private double tickPerSecond;
     private boolean contentChanged = false;
+    private long zeroPowerOnTime;
+    private long zeroPowerOffTime;
 
     private final int MAX_CURRENCY = 5;
     private final int HIGHWAY_TIME = 3;
@@ -142,7 +145,18 @@ public class Model {
                     String[] parts = line.split(",");
                     futureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));}
                 catch(NumberFormatException E){
-                    //zero power marker
+
+                    if (line.contains( "START")){
+                        zeroPowerOnTime = futureNotes.get(futureNotes.size()-1).getKey() + 1;
+                    }
+                    else if(line.contains("END")){
+                        zeroPowerOffTime = futureNotes.get(futureNotes.size()-1).getKey() + 1;
+                    }
+                    else{
+                        System.out.println("Critical error in notes files. Problem line:");
+                        System.out.println(line);
+                        System.exit(1);
+                    }
                 }
                 line = reader.readLine();
             }
@@ -265,6 +279,15 @@ public class Model {
 
 
         time = sequencer.getTickPosition();
+
+        time = sequencer.getTickPosition();
+        if(time>zeroPowerOnTime && time<zeroPowerOffTime){
+            state = ZERO_POWER;
+        }
+        else{
+            state = NORMAL;
+        }
+
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
