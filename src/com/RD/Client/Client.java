@@ -42,7 +42,6 @@ public class Client {
             DataInputStream dis = new DataInputStream(sck.getInputStream());
             DataOutputStream dos = new DataOutputStream(sck.getOutputStream());
 
-
             //read the number of files from the client
             int number = dis.readInt();
             System.out.println("Number of Files to be received: " + number);

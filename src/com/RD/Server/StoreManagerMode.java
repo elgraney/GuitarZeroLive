@@ -63,8 +63,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
         } else {
             try {
                 //Convert midi file to notes file, notes file is saved in the notes/file.txt and then add this to a zip
-                String midiFileToConvert = jTextFieldTitle.getText();
-                MIDIConverter.generate("Midi/"+ midiFileToConvert, bundleMusic);
+                MIDIConverter.generate(bundleTitle, bundleMusic);
 
                 addToZip(bundleTitle, bundleCoverArt, bundleMusic);
                 jTextFieldTitle.setText("");
@@ -239,9 +238,9 @@ public class StoreManagerMode extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanelDetailsEntry.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        jLabelTitle.setText("Title:");
-        jLabelCoverArt.setText("Cover art:");
-        jLabelMusic.setText("Music:");
+        jLabelTitle.setText("Midi File:");
+        jLabelCoverArt.setText("Cover Art:");
+        jLabelMusic.setText("Bundle Title:");
         jButtonBrowse_title.setText("Browse");
         jButtonBrowse_title.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

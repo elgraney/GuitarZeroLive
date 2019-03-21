@@ -35,27 +35,7 @@ public class Worker implements Runnable {
             int noFiles = dir.list().length;
             dataOut.writeInt(noFiles);
             dataOut.flush();
-
-            for (String coverArtFile: dir.list()){
-                File coverArt_img = new File(coverArtDir+coverArtFile);
-                dataOut.writeUTF(coverArtFile);
-
-                //Send cover arts to Client
-                DataInputStream dataIS = new DataInputStream(new FileInputStream(coverArt_img));
-
-                Long fileSize = coverArt_img.length();
-                dataOut.writeLong(coverArt_img.length());
-
-                byte[] buf = new byte[Server.BUFFER_SIZE];
-                int length;
-                while (fileSize > 0 && (length = dataIS.read(buf,0, (int)Math.min(buf.length, fileSize))) != -1){
-                    dataOut.write(buf,0,length);
-                    fileSize = fileSize - length;
-                }
-                dataIS.close();
-                dataOut.flush();
-
-            }
+            
 
             //Send zip to Client
             String bundleTitle = dataIn.readUTF();
