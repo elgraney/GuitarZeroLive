@@ -5,6 +5,8 @@
  */
 package com.RD.Server;
 
+import com.RD.Server.ServerCoverArts.MIDIConverter;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -63,7 +65,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
         } else {
             try {
                 //Convert midi file to notes file, notes file is saved in the notes/file.txt and then add this to a zip
-                MIDIConverter.generate(bundleTitle, bundleMusic);
+                MIDIConverter.generate(bundleTitle);
 
                 addToZip(bundleTitle, bundleCoverArt, bundleMusic);
                 jTextFieldTitle.setText("");

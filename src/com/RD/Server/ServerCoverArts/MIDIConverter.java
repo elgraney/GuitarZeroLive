@@ -1,20 +1,14 @@
-package com.RD.Server;
+package com.RD.Server.ServerCoverArts;
 
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Transmitter;
-
-
 import java.io.*;
 import java.util.*;
 import javax.sound.midi.*;
 import javax.sound.midi.Sequence;
-import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
+
 
 /**
- * Display MIDI file.
+ * Display MIDI file and add in Zero Power Mode.
  *
  * @author  David Wakeling
  * @version 1.00, January 2019.
@@ -24,32 +18,12 @@ import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
  * Zero Power mode added and general cleanup by Joe
  *
  * Duplicate removing by Joe
- *
- * Edited by Jordan to allow Store Manager Mode to Generate Notes files
- *
  */
 public class MIDIConverter {
 
     // final static String FILE = "midifile.mid";
-    private static String MIDI_FILE;
-    private static String NOTES_FILE;
-
-    public static String getMidiFile() {
-        return MIDI_FILE;
-    }
-
-    public static void setMidiFile(String midiFile) {
-        MIDI_FILE = midiFile;
-    }
-
-    public static String getNotesFile() {
-        return NOTES_FILE;
-    }
-
-    public static void setNotesFile(String notesFile) {
-        NOTES_FILE = notesFile;
-    }
-
+    static String FILE;
+    final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 5;
     /**
      * MinMaxFrequency Written by James
      * Returns the Lowest frequency and the highest frequency played by a guitar
@@ -67,17 +41,18 @@ public class MIDIConverter {
         List<Integer> MinMax = new ArrayList<>();
 
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
+
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
-            if (msg instanceof ShortMessage) {
 
+            if (msg instanceof ShortMessage) {
                 final ShortMessage smsg = (ShortMessage) msg;
                 final int chan = smsg.getChannel();
                 final int cmd = smsg.getCommand();
                 final int dat1 = smsg.getData1();
-
                 switch (cmd) {
                     case ShortMessage.PROGRAM_CHANGE:
+
                         //the values between 25 and 32 are all guitars
                         if (dat1 > guitarFirst && dat1 < guitarLast) {
                             guitarlist.add(chan);
@@ -107,8 +82,11 @@ public class MIDIConverter {
         MinMax.add(Min);
         MinMax.add(Max);
         MinMax.add(mostFrequent(Channellist));
+
+
         return MinMax;
     }
+
 
 
     public static Integer mostFrequent(List<Integer> list) {
@@ -140,12 +118,15 @@ public class MIDIConverter {
      * @return  the instrument name
      */
     public static String instrumentName( int n ) {
+
         try {
+
             final Synthesizer synth = MidiSystem.getSynthesizer();
             synth.open();
             final Instrument[] instrs = synth.getAvailableInstruments();
             synth.close();
             return instrs[ n ].getName();
+
         } catch ( Exception exn ) {
             System.out.println( exn ); System.exit( 1 ); return "";
         }
@@ -160,6 +141,7 @@ public class MIDIConverter {
      * @return  the note name
      */
     public static String noteName( int n, Track trk) {
+
         final String[] NAMES =
                 { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         final String[] BUTTONS =
@@ -168,8 +150,9 @@ public class MIDIConverter {
         final int note   = n % 12;
         int button = 0;
         Sequence seq = null;
+
         try {
-            seq = MidiSystem.getSequence( new File( MIDI_FILE ) );
+            seq = MidiSystem.getSequence( new File( FILE ) );
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
             System.out.println("invalidMidiData");
@@ -177,7 +160,6 @@ public class MIDIConverter {
             e.printStackTrace();
             System.out.println("IOexception with Midi get sequence");
         }
-        Track[] trks = seq.getTracks();
 
         int Min = MinMaxFrequency(trk).get(0);
         int Max = MinMaxFrequency(trk).get(1);
@@ -211,22 +193,24 @@ public class MIDIConverter {
      * writes into a file the notes to be played next to the ticks
      * @param trk the current track
      */
+
+
     public static void displayTrack( Track trk ){
-        File file = new File (NOTES_FILE);
+        File file = new File ("notes/file.txt");
         PrintWriter printWriter = null;
         List<Integer> guitarlist = new ArrayList<>();
         try {
-            printWriter = new PrintWriter(NOTES_FILE);
+            printWriter = new PrintWriter("notes/file.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File is not Found Try a different file");
         }
-        printWriter.println (MIDI_FILE.toString());
+        printWriter.println (FILE.toString());
 
         Sequence seq = null;
 
         try {
-            seq = MidiSystem.getSequence( new File( MIDI_FILE ) );
+            seq = MidiSystem.getSequence( new File( FILE ) );
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
             System.out.println("The Midi File is invalid. Pick a different File");
@@ -234,14 +218,13 @@ public class MIDIConverter {
             e.printStackTrace();
             System.out.println("IO exception");
         }
-        final int Resolution = seq.getResolution();
 
-        //printWriter.println("TPB "+ Resolution  + " ppq "+ ppq);
         final int MainPart = MinMaxFrequency(trk).get(2);
         for ( int i = 0; i < trk.size(); i = i + 1 ) {
             MidiEvent evt = trk.get(i);
             MidiMessage msg = evt.getMessage();
             if (msg instanceof ShortMessage) {
+
                 final long tick = evt.getTick();
                 final ShortMessage smsg = (ShortMessage) msg;
                 final int chan = smsg.getChannel();
@@ -265,7 +248,6 @@ public class MIDIConverter {
                         break;
                 }
 
-
             }
 
         }
@@ -282,29 +264,35 @@ public class MIDIConverter {
      * makes sure it finds the track the song is on.
      */
     public static void displaySequence( Sequence seq ){
+
         Track[] trks = seq.getTracks();
+
         for ( int i = 0; i < trks.length; i++ ) {
             try {displayTrack( trks[ i ]);}
             catch(NullPointerException e){
                 System.out.println("Track " + i + " Doesnt Exist" );
                 continue;
             }
-            File file = new File (NOTES_FILE);
+
+            File file = new File ("notes/file.txt");
             BufferedReader brTest = null;
+
             try {
                 brTest = new BufferedReader(new FileReader(file));
             } catch (FileNotFoundException e) {
                 e.printStackTrace(); System.exit(1);
             }
+
             String text = null;
+
             try {
                 text = brTest .readLine();
             } catch (IOException e) {
                 e.printStackTrace(); System.exit(1);
             }
 
-            System.out.println("Firstline is : " + text);
-            if(text.contains(MIDI_FILE)){
+            System.out.println("First line is : " + text);
+            if(text.contains(FILE)){
 
                 return;
             }
@@ -447,18 +435,16 @@ public class MIDIConverter {
 
     }
 
+
     /*
-     * MIDIConverter.
+     * Main.
      *
      * @param argv the command line arguments
      */
-    public static void generate( String midi_file, String notes_file ) {
-        setMidiFile(midi_file);
-        setNotesFile(notes_file);
+    public static void generate( String midi) {
+        FILE = midi;
         try {
-            System.out.println(midi_file);
-            System.out.println(notes_file);
-            Sequence seq = MidiSystem.getSequence( new File( midi_file ) );
+            Sequence seq = MidiSystem.getSequence( new File( FILE ) );
             displaySequence( seq );
             File file = new File ("notes\\file.txt");
             ZeroPowerModeCalculator(file);
@@ -469,8 +455,4 @@ public class MIDIConverter {
             exn.printStackTrace(); System.exit( 1 );
         }
     }
-
-//    public static void main(String[] args ){
-//        generate("Midi/MIDIlovania.mid", "notes/file.txt");
-//    }
 }

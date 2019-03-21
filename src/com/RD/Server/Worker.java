@@ -35,7 +35,7 @@ public class Worker implements Runnable {
             int noFiles = dir.list().length;
             dataOut.writeInt(noFiles);
             dataOut.flush();
-            
+
 
             //Send zip to Client
             String bundleTitle = dataIn.readUTF();
