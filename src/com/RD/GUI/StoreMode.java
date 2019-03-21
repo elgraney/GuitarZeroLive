@@ -20,9 +20,11 @@ import java.util.Objects;
 public class StoreMode extends ModeTemplate {
     static String coverArtDirectory = "src/com/RD/Server/ServerCoverArts";
     final static int cost = 1;
+    int currency;
 
     public StoreMode(JFrame frame, SetUpGUI base) {
         super(frame, base);
+        currency = CurrencyManager.readFile();
 
         ArrayList<String> pathList = getImages(coverArtDirectory);
 
@@ -48,6 +50,7 @@ public class StoreMode extends ModeTemplate {
     }
 
     public void onEscape() {
+        CurrencyManager.saveFile(currency);
         System.out.println("Go back to main");
         tearDown();
         ModeTemplate slashMode = new SlashMode(frame, base);
@@ -63,14 +66,13 @@ public class StoreMode extends ModeTemplate {
 
         //Check that currency is enough by calling currencyManager's readFile()
     //CurrencyManager.getFile()
-        if (CurrencyManager.readFile() > cost) {
+        if (currency > cost) {
             //Call Client download method
             Client.download(songTitle);
-
-            JOptionPane.showMessageDialog(this, songTitle + "Downloaded successfully!");
+            currency --;
             onEscape();
         } else {
-            JOptionPane.showMessageDialog(this, songTitle + "Unable to download! Not enough currency!");
+            JOptionPane.showMessageDialog(this,  " Unable to download "+songTitle +"! Not enough currency!");
         }
     }
 
