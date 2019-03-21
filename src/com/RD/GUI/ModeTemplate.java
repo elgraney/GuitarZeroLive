@@ -66,7 +66,9 @@ public class ModeTemplate extends JFrame{
         try {
             setUpCarousel();
         } catch (IOException e) {
-            System.out.println(e); System.exit(1);
+            new ErrorWindow("No files for carousel found! Exiting...");
+            e.printStackTrace();
+            System.exit(1);
         }
         frame.revalidate();
 
@@ -87,7 +89,9 @@ public class ModeTemplate extends JFrame{
         try {
             setUpCarousel();
         } catch (IOException e) {
-            System.out.println(e); System.exit(1);
+            new ErrorWindow("No files for carousel found! Exiting...");
+            e.printStackTrace();
+            System.exit(1);
         }
         frame.revalidate();
     }
@@ -120,7 +124,9 @@ public class ModeTemplate extends JFrame{
         try {
             option.add(new JLabel(new ImageIcon(ImageIO.read(new File(imagePath)))), BorderLayout.CENTER);
         } catch (IOException e) {
-            System.out.println(e); System.exit(1);
+            new ErrorWindow("No files for carousel found! Exiting...");
+            e.printStackTrace();
+            System.exit(1);
         }
         JTextArea textArea = new JTextArea(text);
         textArea.setEditable(false);

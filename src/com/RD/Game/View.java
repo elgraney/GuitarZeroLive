@@ -1,5 +1,6 @@
 package com.RD.Game;
 
+import com.RD.GUI.ErrorWindow;
 import com.RD.GUI.ModeTemplate;
 import com.RD.GUI.SetUpGUI;
 import com.RD.GUI.SlashMode;
@@ -55,6 +56,8 @@ public class View implements PropertyChangeListener {
             blackNote = new ImageIcon(ImageIO.read(new File("assets/blackNote.png"))).getImage();
         } catch (IOException e) {
             System.out.println("Critical error - unable to load assets");
+            new ErrorWindow("Critical error - unable to load assets");
+            e.printStackTrace();
             System.exit(1); //crash horribly
         }
         setUpGraphics();
@@ -186,7 +189,8 @@ public class View implements PropertyChangeListener {
             try {
                 image = new JLabel(new ImageIcon(ImageIO.read(new File("assets/currency.png"))));
             } catch (IOException e) {
-                System.out.println(e); System.exit(1);
+                new ErrorWindow("No currency file found! Exiting...");
+                System.exit(1);
             }
             currency[i].add(image);
             currency[i].setLocation(350 -(i*50), frame.getHeight() - 500);

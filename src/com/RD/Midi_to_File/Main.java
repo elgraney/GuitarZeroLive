@@ -290,7 +290,7 @@ public class Main {
                 e.printStackTrace(); System.exit(1);
             }
 
-            System.out.println("Firstline is : " + text);
+            System.out.println("First line is : " + text);
             if(text.contains(FILE)){
 
                 return;

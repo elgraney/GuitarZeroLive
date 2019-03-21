@@ -13,7 +13,6 @@ public class ErrorWindow extends JFrame{
 
     public ErrorWindow(String error) {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
-        System.exit(1);
     }
 
 

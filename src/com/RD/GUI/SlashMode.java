@@ -32,7 +32,9 @@ public class SlashMode extends ModeTemplate {
         try {
             setUpCarousel();
         } catch (IOException e) {
+            new ErrorWindow("No files for carousel found! Exiting...");
             e.printStackTrace();
+            System.exit(1);
         }
     }
 

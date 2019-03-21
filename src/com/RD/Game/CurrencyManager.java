@@ -22,6 +22,7 @@ public class CurrencyManager {
             scan = new Scanner(new File(file));
         } catch (FileNotFoundException e) {
             new ErrorWindow("Currency file cant be read");
+            e.printStackTrace();
 
         }
         int temp = scan.nextInt();
@@ -41,7 +42,8 @@ public class CurrencyManager {
             writer.close();
         } catch (IOException e){
             System.out.println("IOException" + e);
-            new ErrorWindow("What the hell is going on");
+            new ErrorWindow("Currency file not found! Exiting program...");
+            System.exit(1);
 
         }
 

@@ -2,6 +2,7 @@ package com.RD.Game;
 
 import java.util.ArrayList;
 
+import com.RD.GUI.ErrorWindow;
 import com.RD.GUI.Guitar;
 
 import javafx.util.Pair;
@@ -75,7 +76,7 @@ public class PlayGuitar extends Guitar {
             try { /* delay */
                 Thread.sleep(DELAY);
             } catch (Exception exn) {
-                System.out.println(exn);
+                new ErrorWindow("Guitar polling failed! Exiting...");
                 System.exit(1);
             }
         }

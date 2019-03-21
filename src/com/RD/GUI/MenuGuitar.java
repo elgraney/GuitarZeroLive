@@ -104,7 +104,9 @@ public class MenuGuitar extends Guitar {
             try { /* delay */
                 Thread.sleep( DELAY );
             } catch ( Exception exn ) {
-                System.out.println( exn ); System.exit( 1 );
+                new ErrorWindow("Exception Raised! See stack...");
+                exn.printStackTrace();
+                System.exit(1);
             }
         }   
     }

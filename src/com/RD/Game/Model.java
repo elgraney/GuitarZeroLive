@@ -1,5 +1,6 @@
 package com.RD.Game;
 
+import com.RD.GUI.ErrorWindow;
 import com.RD.GUI.SetUpGUI;
 import javafx.util.Pair;
 import sun.audio.AudioPlayer;
@@ -111,13 +112,17 @@ public class Model {
         try {
             begin();
         } catch (MidiUnavailableException e) {
-            System.out.println(e); System.exit(1);
+            e.printStackTrace();
+            new ErrorWindow("Midi File not available! Going back to main");
+            support.firePropertyChange("end", null, null);
         } catch (IOException e) {
-            System.out.println(e); System.exit(1);
-            //DO SOMETHING
+            e.printStackTrace();
+            new ErrorWindow("File not found! Going back to main");
+            support.firePropertyChange("end", null, null);
         } catch (InvalidMidiDataException e) {
-            System.out.println(e); System.exit(1);
-            //DO SOMETHING ELSE
+            e.printStackTrace();
+            new ErrorWindow("Midi File invalid! Going back to main");
+            support.firePropertyChange("end", null, null);
         }
     }
 

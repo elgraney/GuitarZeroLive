@@ -40,7 +40,10 @@ public class StoreMode extends ModeTemplate {
         try {
             setUpCarousel();
         } catch (IOException e) {
-            System.out.println(e); System.exit(1);
+            e.printStackTrace();
+            new ErrorWindow("File not found! Going back to main...");
+            onEscape();
+
         }
     }
 

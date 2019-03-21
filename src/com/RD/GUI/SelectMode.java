@@ -155,7 +155,7 @@ public class SelectMode extends ModeTemplate {
                         zis.close();
                         }
                 }catch(IOException e) {
-                    System.out.println("File does not exist! Reverting back to main menu");
+                    new ErrorWindow("File does not exist! Going back to main...");
                     onEscape();
                 }
             }
