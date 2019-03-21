@@ -90,13 +90,6 @@ public class Model {
         return currency;
     }
 
-    /**
-     * Get currency from storage and set value in model
-     */
-    private void importCurrency() {
-        //to be filled
-    }
-
 
 
     /**
@@ -170,6 +163,8 @@ public class Model {
      */
     public void begin() throws MidiUnavailableException, IOException, InvalidMidiDataException {
         //NOTE: REMEMBER to implement error handling for these errors ^
+        currency = CurrencyManager.readFile();
+
         state = NORMAL;
         sequencer = MidiSystem.getSequencer();
 
@@ -182,6 +177,11 @@ public class Model {
                 new MetaEventListener() {
                     public void meta(MetaMessage event) {
                         if (event.getType() == 47) {
+                            try {
+                                CurrencyManager.saveFile(currency);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             support.firePropertyChange("end", null, null);
                         }
                     }
@@ -268,7 +268,7 @@ public class Model {
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
-            while(note.getKey() < time - tickPerSecond *0.2){
+            while(note.getKey() < time - tickPerSecond *0.3){
                 passedNotes.add(note);
                 highwayNotes.remove(0);
 
@@ -299,6 +299,9 @@ public class Model {
         if(highwayNotes.size() > 0) {
             support.firePropertyChange(null, null, null);
             contentChanged = false;
+        }
+        else{
+            support.firePropertyChange(null, null, null);
         }
         if(contentChanged){
             System.out.println("contentChanged");
