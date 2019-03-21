@@ -373,7 +373,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTitle;
     // End of variables declaration
 
-    private void addToZip(String bundleTitle, String bundleCoverArt, String bundleMusic) throws FileNotFoundException, IOException{
+    private void addToZip(String bundleTitle, String bundleCoverArt, String bundleMusic) throws IOException{
         byte[] buffer = new byte[1024];
         //The archive bundle is saved as the title of the song.
         String BundlesPath = "assets\\Bundles\\";

@@ -54,7 +54,7 @@ public class View implements PropertyChangeListener {
             blackNote = new ImageIcon(ImageIO.read(new File("assets/blackNote.png"))).getImage();
         } catch (IOException e) {
             System.out.println("Critical error - unable to load assets");
-            //do something else, like crash horribly
+            System.exit(1); //crash horribly
         }
         setUpGraphics();
 
@@ -232,7 +232,7 @@ public class View implements PropertyChangeListener {
         int chanel = note.getChanel();
         JPanel notePanel = note.getPanel();
         long timeUntilPlayed = note.getTime() - model.getTime();
-        //SIZING IS DONE VERY BADLY - REWORK TO USE PROPORTIONS OF BACKGROUND IMAGE
+
         double tps = model.getTickPerSecond();
 
         double y = (frame.getHeight() * 0.54) - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.45);

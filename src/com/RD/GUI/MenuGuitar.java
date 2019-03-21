@@ -17,7 +17,7 @@ import net.java.games.input.ControllerEnvironment;
 
 
 public class MenuGuitar extends Guitar {
-    static final String GUITAR_HERO = "Guitar Hero";
+
     static final int DELAY = 150;
     private ModeTemplate template;
 

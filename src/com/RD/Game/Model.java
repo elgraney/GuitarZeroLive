@@ -181,11 +181,7 @@ public class Model {
                 new MetaEventListener() {
                     public void meta(MetaMessage event) {
                         if (event.getType() == 47) {
-                            try {
-                                CurrencyManager.saveFile(currency);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            CurrencyManager.saveFile(currency);
                             support.firePropertyChange("end", null, null);
                         }
                     }
