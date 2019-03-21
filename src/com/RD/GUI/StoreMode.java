@@ -39,6 +39,8 @@ public class StoreMode extends ModeTemplate {
 
 
         innitMenu(slashModeOptions);
+        System.out.println(pathList.size());
+        System.out.println(pathList.get(0));
         try {
             setUpCarousel();
         } catch (IOException e) {

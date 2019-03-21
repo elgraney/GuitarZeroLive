@@ -1,4 +1,4 @@
-package com.RD.Server.ServerCoverArts;
+package com.RD.Server;
 
 import javax.sound.midi.MidiSystem;
 import java.io.*;
