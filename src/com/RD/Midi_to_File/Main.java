@@ -22,8 +22,8 @@ import javax.sound.midi.Sequence;
 public class Main {
 
     // final static String FILE = "midifile.mid";
-    final static String FILE = "Midi/MIDIlovania.mid";
-    final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 10;
+    final static String FILE = "Midi/Revolution.mid";
+    final int MINIMUM_ZERO_POWER_NOTES_FREQUENCY = 5;
     /**
      * MinMaxFrequency Written by James
      * Returns the Lowest frequency and the highest frequency played by a guitar

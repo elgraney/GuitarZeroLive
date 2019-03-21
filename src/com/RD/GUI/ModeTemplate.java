@@ -143,17 +143,11 @@ public class ModeTemplate extends JFrame{
 
         option1.setBorder( BorderFactory.createLineBorder(Color.WHITE,5));
 
-        Border highlightBorder2 = BorderFactory.createMatteBorder(0,0,0,3, Color.BLUE);
-        Border padding2 = new EmptyBorder(0,0,0,2);
-        option2.setBorder( new CompoundBorder(highlightBorder2, padding2));
+        option2.setBorder( BorderFactory.createLineBorder(Color.WHITE,5));
 
-        Border highlightBorder3 = BorderFactory.createMatteBorder(0,3,0,3, Color.BLUE);
-        Border padding3 = new EmptyBorder(0,2,0,2);
-        option3.setBorder(new CompoundBorder(highlightBorder3, padding3));
+        option3.setBorder(BorderFactory.createMatteBorder(3,3,3,3, Color.BLUE));
 
-        Border highlightBorder4 = BorderFactory.createMatteBorder(0,3,0,0, Color.BLUE);
-        Border padding4 = new EmptyBorder(0,2,0,0);
-        option4.setBorder( new CompoundBorder(highlightBorder4, padding4));
+        option4.setBorder( BorderFactory.createLineBorder(Color.WHITE,5));
 
         option5.setBorder( BorderFactory.createLineBorder(Color.WHITE,5));
 
