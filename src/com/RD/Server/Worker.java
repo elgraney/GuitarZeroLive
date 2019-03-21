@@ -59,7 +59,7 @@ public class Worker implements Runnable {
 
             //Send zip to Client
             String bundleTitle = dataIn.readUTF();
-            String bundlePath = bundlesDir + "\\" + bundleTitle + ".zip";
+            String bundlePath = bundlesDir + bundleTitle + ".zip";
             File bundleZip = new File(bundlePath);
             DataInputStream dataIs = new DataInputStream(new FileInputStream(bundleZip));
 
