@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Zero Power Mode Class
+ *
+ */
 public class ZeroPowerMode {
 
     public static List<String> ZeroPowerModeCalculator(File MidiTxt) throws IOException {

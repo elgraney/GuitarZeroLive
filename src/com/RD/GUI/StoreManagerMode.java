@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
+ * Store Manager Mode Class
  * @author Jordan
  */
 public class StoreManagerMode extends javax.swing.JFrame {
