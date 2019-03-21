@@ -9,28 +9,23 @@ import net.java.games.input.Component;
 import net.java.games.input.Controller;
 
 
-/*
- * Play Guitar class
- *
- * @Sophia Wallgren
- * @ edited March 7th
-
- *
- *   $ CLASSPATH=jinput-2.0.9.jar:.
- *   $ export CLASSPATH
- *   $ javac PlasicGuitar.java
- *   $ java -Djava.library.path=. PlasticGuitar
+/**
+ * Controls gameplay with plastic guitar input
+ * @ Sophia Wallgren
+ * Edited by Matthew Crane
  */
 
-
 public class PlayGuitar extends Guitar {
-    static final String GUITAR_HERO = "Guitar Hero";
     static final int DELAY = 50;
     private Model model;
     public PlayGuitar( Model model ){
         this.model = model;
     }
 
+    /**
+     * Polls for changes in button values to indicate which notes are being pressed
+     * @param ctrl
+     */
     public void pollForever(Controller ctrl) {
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
@@ -78,9 +73,12 @@ public class PlayGuitar extends Guitar {
         }
     }
 
+    /**
+     * Finds out what notes should be played at this time and compare to note played
+     * and either call hitNote or missNote
+     * @param notes
+     */
     private void playNote(String notes) {
-        // find out what notes should be played at this time and compare to note played 12
-        // either call hitNote or missNote
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
             if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY / 2 && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
@@ -90,8 +88,5 @@ public class PlayGuitar extends Guitar {
                 }
             }
         }
-
-
-        //in future put sound in own class using observer pattern
     }
 }

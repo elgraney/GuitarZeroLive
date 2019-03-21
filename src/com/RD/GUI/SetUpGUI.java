@@ -31,6 +31,8 @@ public class SetUpGUI extends JFrame {
         //sets up the carousel and assigns a listener to the frame
         ModeTemplate slashMode = new SlashMode(this, this);
         setListener(new GUIControls(this, slashMode));
+
+        // creates guitar instance which polls for button presses
         guitar = new MenuGuitar(slashMode);
         guitar.run();
     }

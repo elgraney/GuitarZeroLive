@@ -1,4 +1,6 @@
 package com.RD.Game;
+import com.RD.GUI.ErrorWindow;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -7,22 +9,28 @@ import java.util.Scanner;
  */
 public class CurrencyManager {
 
-    static String file = "Currency/file.txt";
+    static String file = "Currency/fil.txt";
 
-    public static int readFile() throws IOException {
+    public static int readFile() {
         /***
          * Method that reads the currency int value of the text file
          * and saves the int to the currency value in model
          */
 
-        Scanner scan = new Scanner(new File(file));
+        Scanner scan = null;
+        try {
+            scan = new Scanner(new File(file));
+        } catch (FileNotFoundException e) {
+            new ErrorWindow("What the hell is going on");
+
+        }
         int temp = scan.nextInt();
         scan.close();
         return temp;
     }
 
 
-    public static void saveFile(int integer) throws IOException{
+    public static void saveFile(int integer) {
         /**
          * Method that gets the int value of currency from model
          * and writes it to the currency text file
@@ -33,6 +41,7 @@ public class CurrencyManager {
             writer.close();
         } catch (IOException e){
             System.out.println("IOException" + e);
+            new ErrorWindow("What the hell is going on");
 
         }
 

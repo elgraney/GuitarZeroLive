@@ -5,10 +5,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-/*
- *   Server
- *
- * @author Jordan assisted by Joe
+/**
+ * Server
+ * @ Jordan
+ * assisted by Joe
  */
 
 class CoverArt {
@@ -80,7 +80,7 @@ public class Client {
         }
     }
 
-    public static  void getZips(ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis){
+    public static void getZips(ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis){
         try{
             //Get zips
             String bundleTitle = coverArts.get(0).getBundleTitle();
