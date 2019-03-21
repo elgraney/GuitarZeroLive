@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server;
+package com.RD.Server;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -94,7 +94,8 @@ public class StoreManagerMode extends javax.swing.JFrame {
 
             } else {
                 JOptionPane.showMessageDialog(this, "Please Choose a MIDI file");
-            }            System.out.println("bundleTitle = " + bundleTitle);
+            }
+            System.out.println("bundleTitle = " + bundleTitle);
 
         }
 

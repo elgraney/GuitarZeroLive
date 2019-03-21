@@ -1,4 +1,4 @@
-package Server;
+package com.RD.Server;
 
 import java.io.*;
 import java.net.Socket;
