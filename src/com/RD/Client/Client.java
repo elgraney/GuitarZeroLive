@@ -5,10 +5,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-/**
- * Server
- * @ Jordan
- * assisted by Joe
+/*
+ *   Server
+ *
+ * @author Jordan assisted by Joe
  */
 
 class CoverArt {
@@ -34,11 +34,10 @@ public class Client {
     final static int PORT = 8888;
     final static String downloadFilePath = "src\\com\\RD\\Client\\Downloads\\";
     final static int BUFFER_SIZE = 1024;
-    static String FILE_TO_DOWNLOAD;
 
 
 
-    public static void download(String songTitle) {
+    public static void main(String[] args) {
         try {
             Socket sck = new Socket(HOST, PORT);
             DataInputStream dis = new DataInputStream(sck.getInputStream());
@@ -72,7 +71,7 @@ public class Client {
 
             }
 
-            getZips(songTitle, coverArts, dos, dis);
+            getZips(coverArts, dos, dis);
 
 
             sck.close();
@@ -81,14 +80,11 @@ public class Client {
         }
     }
 
-    public static  void getZips(String songToDownload, ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis){
-
+    public static  void getZips(ArrayList<CoverArt> coverArts, DataOutputStream dos, DataInputStream dis){
         try{
             //Get zips
-            String bundleTitle = FILE_TO_DOWNLOAD;
-            //Check if file exists in zips. if not then return error.
-            assert coverArts.contains(bundleTitle): "File does not exist on the server";
-            System.out.println("File to download..."+ bundleTitle);
+            String bundleTitle = coverArts.get(0).getBundleTitle();
+            System.out.println(bundleTitle);
             dos.writeUTF(bundleTitle);
             FileOutputStream fout = new FileOutputStream(downloadFilePath + bundleTitle + ".zip");
 

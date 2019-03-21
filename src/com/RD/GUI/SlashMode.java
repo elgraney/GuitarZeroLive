@@ -19,7 +19,6 @@ public class SlashMode extends ModeTemplate {
 
     public SlashMode(JFrame frame, SetUpGUI base) {
         super(frame, base);
-
         //initializing carousel with fixed menu options
         ArrayList<MenuItem> slashModeOptions = new ArrayList<>(Arrays.asList(
                 new MenuItem("assets/Exit.png", "Exit"),

@@ -5,7 +5,6 @@ package com.RD.GUI;
  * All content by Matthew
  */
 public class MenuItem {
-
     private String folder;
     private String imagePath;
     private String title;

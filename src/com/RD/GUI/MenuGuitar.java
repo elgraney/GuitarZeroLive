@@ -8,16 +8,24 @@ import net.java.games.input.Component;
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 
-/**
- * Controls menu selection with the plastic guitar
- * @ Sophia Wallgren
+
+/*
+ * Menu guitar test
+ *
+ * @Sophia Wallgren
  * @ edited March 7th
  * Edited by Matthew Crane
+
+ *
+ *   $ CLASSPATH=jinput-2.0.9.jar:.
+ *   $ export CLASSPATH
+ *   $ javac PlasicGuitar.java
+ *   $ java -Djava.library.path=. PlasticGuitar
  */
 
 
 public class MenuGuitar extends Guitar {
-
+    static final String GUITAR_HERO = "Guitar Hero";
     static final int DELAY = 150;
     private ModeTemplate template;
 
@@ -29,13 +37,7 @@ public class MenuGuitar extends Guitar {
         this.template = template;
     }
 
-    /**
-     * Polls for changes in button values on the plastic guitar
-     * @param ctrl
-     * @throws NullPointerException
-     */
     public void pollForever(Controller ctrl ) throws NullPointerException {
-
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
         while( true) {
@@ -90,12 +92,13 @@ public class MenuGuitar extends Guitar {
                         System.out.println("MenuGuitar Strum up");
                         template.left();
                         break;
-
+                        // 0.25 up
                     } else if (vals[13] == 0.625 || vals[13] == 0.75 || vals[13] == 0.875 || vals[13] == 1.0) {
                         System.out.println("MenuGuitar Strum down");
                         template.right();
                         break;
-
+                        // call function for strummming
+                        // 0.75 down
                     }
 
                 }

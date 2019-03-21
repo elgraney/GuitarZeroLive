@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Allows game to be played with keys
  * Created by Matthew on 19/02/2019.
  * All content by Matthew
  */

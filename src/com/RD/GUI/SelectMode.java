@@ -47,10 +47,7 @@ public class SelectMode extends ModeTemplate {
         }
     }
 
-    /**
-     * Returns back to main menu
-     */
-
+    /*Return back to main menu*/
     public void onEscape() {
         System.out.println("Go back to main");
         tearDown();
@@ -61,9 +58,6 @@ public class SelectMode extends ModeTemplate {
         frame.revalidate();
     }
 
-    /**
-     * Select current bundle
-     */
     public void onSelect(){
         System.out.println("play song");
         SongMenuItem currentBundle =(SongMenuItem)getViewOptions()[2];
