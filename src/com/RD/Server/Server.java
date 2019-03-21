@@ -17,7 +17,7 @@ public class Server {
     static String bundlesDir = "src\\com\\RD\\Server\\Bundles\\";
     static String coverArtDir = "src\\com\\RD\\Server\\ServerCoverArts\\";
 
-    public static void main( String[] argv ) throws FileNotFoundException {
+    public static void main() throws FileNotFoundException {
         /**
          * Unizips all the image files so that all images are available for store,
          * then when a connection is successful wth a client, starts a worker thread to send the files required for download

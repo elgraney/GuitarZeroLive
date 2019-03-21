@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7868c78d-8426-4b25-9176-189ed17333ab" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/ErrorWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/ErrorWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/MenuGuitar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/MenuGuitar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/ModeTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/ModeTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/SelectMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/SelectMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/SlashMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/SlashMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/StoreMode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/GUI/StoreMode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/CurrencyManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/CurrencyManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/Model$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/Model$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/PlayGuitar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/PlayGuitar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/RD/Game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/Game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/RD/Game/PlayGuitar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/Game/PlayGuitar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Game/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Midi_to_File/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Midi_to_File/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GuitarZeroLive/com/RD/Server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/RD/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/RD/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/RD/Server/Server.java" afterDir="false" />
     </list>
     <ignored path="GuitarZeroLive.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +38,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+            <state relative-caret-position="399">
+              <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+              <folding>
+                <element signature="e#179#316#0" expanded="true" />
+                <element signature="e#315#316#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/Server/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -37,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4377">
-              <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
+            <state relative-caret-position="-4088">
+              <caret line="38" column="78" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -47,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -67,12 +102,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/PlayGuitar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" column="63" lean-forward="true" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+            <state relative-caret-position="90">
+              <caret line="92" column="96" selection-start-line="92" selection-start-column="96" selection-end-line="92" selection-end-column="96" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#423#424#0" expanded="true" />
-                <element signature="e#457#458#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,25 +115,16 @@
         <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SlashMode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1071">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/ErrorWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/RD/Game/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-213">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state relative-caret-position="-196">
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,22 +133,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/ModeTemplate.java">
+        <entry file="file://$PROJECT_DIR$/src/com/RD/Game/GuitarKeyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/MenuItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="272">
+              <caret line="96" column="178" selection-start-line="96" selection-start-column="178" selection-end-line="96" selection-end-column="178" />
             </state>
           </provider>
         </entry>
@@ -149,6 +161,7 @@
       <find>Menu</find>
       <find>begin</find>
       <find>run</find>
+      <find>main</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,7 +187,6 @@
         <option value="$PROJECT_DIR$/src/com/RD/GUI/GuitarController.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/BackgroundImage.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Server/Worker.java" />
-        <option value="$PROJECT_DIR$/src/com/RD/Server/Server.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/SongMenuItem.java" />
         <option value="$PROJECT_DIR$/clientzips/MoneyForNothing/test.txt" />
         <option value="$PROJECT_DIR$/clientzips/LucyInTheSkyWithDiamonds/file.txt" />
@@ -183,7 +195,6 @@
         <option value="$PROJECT_DIR$/notes/file.txt" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/PlayGuitar.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Game/GuitarController.java" />
-        <option value="$PROJECT_DIR$/src/com/RD/Main.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Game/GuitarKeyController.java" />
         <option value="$PROJECT_DIR$/src/com/RD/GUI/ModeTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Game/CurrencyToFile.java" />
@@ -205,9 +216,11 @@
         <option value="$PROJECT_DIR$/src/com/RD/Server/MIDIConverter.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Server/StoreManagerMode.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Client/Client.java" />
-        <option value="$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Game/PlayGuitar.java" />
         <option value="$PROJECT_DIR$/src/com/RD/Game/Model.java" />
+        <option value="$PROJECT_DIR$/src/com/RD/Server/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/RD/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java" />
       </list>
     </option>
   </component>
@@ -216,6 +229,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="60" />
@@ -316,7 +335,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553183716925" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553189566089" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -604,7 +623,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21052632" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21052632" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -614,7 +633,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.11900533" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.074600354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="6" weight="0.3289256" />
@@ -625,13 +644,13 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Maven" order="9" weight="0.32955465" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,14 +728,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/RD/Midi_to_File/Main.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RD/Server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="47" column="37" lean-forward="true" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/BackgroundImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
@@ -726,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/GuitarKeyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        <state relative-caret-position="272">
+          <caret line="96" column="178" selection-start-line="96" selection-start-column="178" selection-end-line="96" selection-end-column="178" />
         </state>
       </provider>
     </entry>
@@ -736,14 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="12" column="34" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/RD/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -903,21 +906,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../GAAAAAME/Working/GuitarZeroLive/src/com/RD/Client/Client.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/PlayGuitar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="63" lean-forward="true" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+        <state relative-caret-position="90">
+          <caret line="92" column="96" selection-start-line="92" selection-start-column="96" selection-end-line="92" selection-end-column="96" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -925,31 +919,56 @@
     <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/SlashMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4377">
-          <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
+        <state relative-caret-position="-4088">
+          <caret line="38" column="78" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/RD/Game/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        <state relative-caret-position="-196">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/Server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#179#316#0" expanded="true" />
+            <element signature="e#315#316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/RD/GUI/StoreMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
         </state>
       </provider>
     </entry>
