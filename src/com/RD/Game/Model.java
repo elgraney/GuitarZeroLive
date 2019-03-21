@@ -141,8 +141,12 @@ public class Model {
             line = reader.readLine();//skip first line (it doesn't contain useful information)
             while (line != null) {
                 System.out.println(line);
-                String[] parts = line.split(",");
-                futureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));
+                try {
+                    String[] parts = line.split(",");
+                    futureNotes.add(new Pair<>(Integer.parseInt(parts[0]), Integer.parseInt(parts[1])));}
+                catch(NumberFormatException E){
+                    //zero power marker
+                }
                 line = reader.readLine();
             }
             reader.close();
@@ -178,7 +182,6 @@ public class Model {
                 new MetaEventListener() {
                     public void meta(MetaMessage event) {
                         if (event.getType() == 47) {
-                            System.out.println("this party's over");
                             support.firePropertyChange("end", null, null);
                         }
                     }

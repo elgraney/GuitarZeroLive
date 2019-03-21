@@ -3,6 +3,7 @@ package com.RD.Game;
 import java.awt.*;
 import java.util.ArrayList;
 
+import com.RD.GUI.Guitar;
 import com.RD.GUI.ModeTemplate;
 import com.RD.GUI.SelectMode;
 import javafx.util.Pair;
@@ -25,7 +26,7 @@ import net.java.games.input.ControllerEnvironment;
  */
 
 
-public class PlayGuitar {
+public class PlayGuitar extends Guitar {
     static final String GUITAR_HERO = "Guitar Hero";
     static final int DELAY = 150;
     private Model model;
@@ -33,7 +34,7 @@ public class PlayGuitar {
         this.model = model;
     }
 
-    public void pollForeverPlay(Controller ctrl) {
+    public void pollForever(Controller ctrl) {
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
         while( true) {
@@ -42,7 +43,6 @@ public class PlayGuitar {
                     vals[ i ] = cmps[ i ].getPollData();
                 }
                 if (model.getState() == Model.InputState.NORMAL) {
-
                     if ( vals[15] != 0 || vals [13] != 0){
                         String notes = "";
                         if (vals[0] != 0 ){
@@ -137,36 +137,8 @@ public class PlayGuitar {
                     return;
                 }
             }
-
-
         }
         model.missNote();
         //in future put sound in own class using observer pattern
-    }
-
-    public void run() {
-        ControllerEnvironment cenv  = ControllerEnvironment.getDefaultEnvironment();
-        Controller[]          ctrls = cenv.getControllers();
-
-        for ( Controller ctrl : ctrls ) {
-            if ( ctrl.getName().contains( GUITAR_HERO ) ) {
-
-                Thread thread = new Thread("New Thread") {
-                    public void run(){
-                        pollForeverPlay( ctrl );
-                    }
-                };
-
-                thread.start();
-                System.out.println(thread.getName());
-                break;
-            }
-            else {
-                System.out.println( " controller not found" );
-            }
-        }
-
-
-
     }
 }

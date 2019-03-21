@@ -1,9 +1,6 @@
 package com.RD.GUI;
 
-import com.RD.Game.GuitarKeyController;
-import com.RD.Game.Model;
-import com.RD.Game.TimeController;
-import com.RD.Game.View;
+import com.RD.Game.*;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -50,7 +47,7 @@ public class SlashMode extends ModeTemplate {
 
             case "Play":
                 tearDown();
-                base.nullMenuGuitar();
+                base.nullGuitar();
                 String midiPath = base.getCurrentBundle().getMidiFilePath();
                 String notesPath = base.getCurrentBundle().getNotesFilePath();
                 model = new Model(frame, midiPath, notesPath);
@@ -58,6 +55,8 @@ public class SlashMode extends ModeTemplate {
                 base.setListener(guitarKeyController);
                 timeController = new TimeController(model);
                 view = new View(model, this);
+                PlayGuitar playGuitar = new PlayGuitar(model);
+                base.setGuitar(playGuitar);
 
                 System.out.println("Brave, but foolish my old friend, you're impossibly outnumbered");
 
@@ -68,7 +67,7 @@ public class SlashMode extends ModeTemplate {
                 ModeTemplate selectMode = new SelectMode(frame, base);
                 base.setListener(new GUIControls(frame, selectMode));
                 MenuGuitar selectGuitar = new MenuGuitar(selectMode);
-                base.setMenuGuitar(selectGuitar);
+                base.setGuitar(selectGuitar);
                 break;
 
             case "Store":
@@ -76,7 +75,7 @@ public class SlashMode extends ModeTemplate {
                 ModeTemplate storeMode = new StoreMode(frame, base);
                 base.setListener(new GUIControls(frame, storeMode));
                 MenuGuitar storeGuitar = new MenuGuitar(storeMode);
-                base.setMenuGuitar(storeGuitar);
+                base.setGuitar(storeGuitar);
                 break;
 
             case "Tutorial":
@@ -99,6 +98,8 @@ public class SlashMode extends ModeTemplate {
 
         ModeTemplate selectMode = new SlashMode(frame, base);
         base.setListener(new GUIControls(frame, selectMode));
+        MenuGuitar menuGuitar = new MenuGuitar(selectMode);
+        base.setGuitar(menuGuitar);
         frame.revalidate();
         frame.repaint();
     }

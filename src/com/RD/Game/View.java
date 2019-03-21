@@ -235,7 +235,7 @@ public class View implements PropertyChangeListener {
         //SIZING IS DONE VERY BADLY - REWORK TO USE PROPORTIONS OF BACKGROUND IMAGE
         double tps = model.getTickPerSecond();
 
-        double y = (frame.getHeight() * 0.54) - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.45);
+        double y = (frame.getHeight() * 0.55) - ((double) timeUntilPlayed / (tps * 2)) * (frame.getHeight() * 0.45);
         double x = frame.getWidth() / 2 - notePanel.getComponent(0).getWidth() / 2;
 
         switch (chanel) {

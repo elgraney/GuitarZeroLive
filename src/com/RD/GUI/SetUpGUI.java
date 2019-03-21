@@ -14,13 +14,13 @@ import static java.awt.Color.white;
 public class SetUpGUI extends JFrame {
 
     KeyListener currentListener;
-    SongMenuItem currentBundle = new SongMenuItem("clientzips/AnotherOneBitesTheDust/AnotherOneBitesTheDust.png",
+    SongMenuItem currentBundle = new SongMenuItem("clientzips/Another One Bites The Dust/AnotherOneBitesTheDust.png",
                                             "AnotherOneBitesTheDust",
-                                            "clientzips/AnotherOneBitesTheDust/Queen_-_Another_One_Bites_the_Dust.mid",
-                                            "clientzips/AnotherOneBitesTheDust/file.txt");
+                                            "clientzips/Another One Bites The Dust/Queen_-_Another_One_Bites_the_Dust.mid",
+                                            "clientzips/Another One Bites The Dust/file.txt");
     String backgroundImage = "assets/background1.png";
     String highwayImage = "assets/betterHighway.png";
-    MenuGuitar menuGuitar;
+    Guitar guitar;
 
     public SetUpGUI(){
         setTitle( "Guitar Zero Live" );
@@ -31,21 +31,21 @@ public class SetUpGUI extends JFrame {
         //sets up the carousel and assigns a listener to the frame
         ModeTemplate slashMode = new SlashMode(this, this);
         setListener(new GUIControls(this, slashMode));
-        menuGuitar = new MenuGuitar(slashMode);
-        menuGuitar.run();
+        guitar = new MenuGuitar(slashMode);
+        guitar.run();
     }
 
-    public void nullMenuGuitar() {
-        menuGuitar =null;
+    public void nullGuitar() {
+        guitar =null;
     }
 
-    public void setMenuGuitar(MenuGuitar menuGuitar) {
-        this.menuGuitar = menuGuitar;
-        menuGuitar.run();
+    public void setGuitar(Guitar guitar) {
+        this.guitar = guitar;
+        guitar.run();
     }
 
-    public MenuGuitar getMenuGuitar() {
-        return menuGuitar;
+    public Guitar getGuitar() {
+        return guitar;
     }
 
     public SongMenuItem getCurrentBundle() {

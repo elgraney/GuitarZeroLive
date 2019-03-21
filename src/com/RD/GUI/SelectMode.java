@@ -54,7 +54,7 @@ public class SelectMode extends ModeTemplate {
         ModeTemplate slashMode = new SlashMode(frame, base);
         base.setListener(new GUIControls(this, slashMode));
         MenuGuitar slashGuitar = new MenuGuitar(slashMode);
-        base.setMenuGuitar(slashGuitar);
+        base.setGuitar(slashGuitar);
         frame.revalidate();
     }
 

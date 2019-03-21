@@ -24,7 +24,7 @@ import net.java.games.input.ControllerEnvironment;
  */
 
 
-public class MenuGuitar {
+public class MenuGuitar extends Guitar {
     static final String GUITAR_HERO = "Guitar Hero";
     static final int DELAY = 150;
     private ModeTemplate template;
@@ -37,7 +37,7 @@ public class MenuGuitar {
         this.template = template;
     }
 
-    public void pollForeverMenu(Controller ctrl ) throws NullPointerException {
+    public void pollForever(Controller ctrl ) throws NullPointerException {
         Component[] cmps = ctrl.getComponents();
         float[] vals = new float[cmps.length];
         while( true) {
@@ -111,43 +111,7 @@ public class MenuGuitar {
             }
         }   
     }
-    
-    public void run() {
-        ControllerEnvironment cenv  = ControllerEnvironment.getDefaultEnvironment();
-        Controller[]          ctrls = cenv.getControllers();
-        
-        for ( Controller ctrl : ctrls ) {
-            if ( ctrl.getName().contains( GUITAR_HERO ) ) {
 
-
-                Thread thread = new Thread("New Thread") {
-                    public void run(){
-                        try {
-                            try {
-                                sleep(100);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            pollForeverMenu(ctrl);
-                        }
-                        catch (NullPointerException e){
-                            System.out.println("loading new menu");
-                            //continue, as its not a serious problem
-                        }
-                    }
-                };
-
-                thread.start();
-                System.out.println(thread.getName());
-                break;
-            }
-            else {
-                System.out.println( " controller not found" );
-            }
-        }
-
-
-    }
     public void disconnect(){
         this.template = null;
     }
