@@ -36,7 +36,6 @@ public class Model {
     private ArrayList<Pair<Integer, Integer>> futureNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>();
     private ArrayList<Pair<Integer, Integer>> passedNotes = new ArrayList<>();
-    private ArrayList<Pair<Integer, Integer>> removeQueueNotes = new ArrayList<>();
     private PropertyChangeSupport support;
     private int streak =0;
     private int score;
@@ -291,7 +290,7 @@ public class Model {
 
         if (highwayNotes.size()>0){
             Pair<Integer, Integer> note = highwayNotes.get(0);
-            while(note.getKey() < time - tickPerSecond *0.3){
+            while(note.getKey() < time - tickPerSecond *Constants.LENIENCY){
                 passedNotes.add(note);
                 highwayNotes.remove(0);
 

@@ -25,7 +25,6 @@ import static java.lang.Thread.sleep;
  */
 public class GuitarKeyController implements KeyListener {
     private Model model;
-    private final double MULTIPLIER = 0.1;
     private final int PRESSED_SET_MINIMUM = 1;
     private final Set<Integer> pressed = new HashSet<Integer>(); //for multiple buttons (not sure if relevant for guitar or not)
     public GuitarKeyController(Model model){
@@ -95,7 +94,7 @@ public class GuitarKeyController implements KeyListener {
         // either call hitNote or missNote
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
-            if (note.getKey() > model.getTime() - model.getTickPerSecond() * MULTIPLIER && note.getKey() < model.getTime() + model.getTickPerSecond() * MULTIPLIER) {
+            if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
                 if (notes.contains(Integer.toString(note.getValue()))) {
                     model.hitNote(note);
                     return;
@@ -105,6 +104,5 @@ public class GuitarKeyController implements KeyListener {
 
         }
         model.missNote();
-        //in future put sound in own class using observer pattern
     }
 }

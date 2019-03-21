@@ -56,20 +56,21 @@ public class PlayGuitar extends Guitar {
                             notes += "3";
                         }
                         playNote(notes);
-                    } else if (model.getState() == Model.InputState.ZERO_POWER) {
+                    }
+                } else if (model.getState() == Model.InputState.ZERO_POWER) {
+                    System.out.println("yes");
+                    if (vals[1] == 0 && vals[2] == 0 && vals[3] == 0
+                            && vals[4] == 0 && vals[5] == 0 && vals[6] == 0
+                            && vals[13] == 0) { //excludes frets and strumming
                         System.out.println("yes");
-                        if(vals[1] == 0 && vals[2] ==0 && vals[3] ==0
-                            && vals[4] ==0 && vals[5] ==0 && vals[6] ==0
-                            && vals[13] == 0){ //excludes frets and strumming
-                            System.out.println("yes");
-                            if (vals[8] != 0 || vals[17] != 0){//Hero button or whammy bar
-                                System.out.println("got it");
-                                playNote("123456");
-                            }
+                        if (vals[8] != 0 || vals[17] != 0) {//Hero button or whammy bar
+                            System.out.println("got it");
+                            playNote("123456");
                         }
                     }
                 }
             }
+
 
             try { /* delay */
                 Thread.sleep(DELAY);
@@ -88,7 +89,7 @@ public class PlayGuitar extends Guitar {
     private void playNote(String notes) {
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
-            if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY / 2 && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
+            if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
                 if (notes.contains(Integer.toString(note.getValue()))) {
                     model.hitNote(note);
                     return;
