@@ -170,6 +170,9 @@ public class Model {
 
     }
 
+    /**
+     * Calculate the ticks per second.
+     */
     private void calculateTPS(){
         double ticks = sequencer.getTickLength();
         double microseconds = sequencer.getMicrosecondLength();
@@ -229,6 +232,9 @@ public class Model {
         }
     }
 
+    /**
+     * Calclating the multipler for the game.
+     */
     private void calculateMultiplier(){
         int power = (int) ((double) streak / 10);
         multiplier = (int) Math.pow(2, power);
@@ -256,6 +262,10 @@ public class Model {
         resetStreak();
     }
 
+    /**
+     * Play the sound from the file.
+     * @param filename
+     */
     private void playSound(String filename){
         InputStream in = null;
         try {

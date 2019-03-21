@@ -226,6 +226,12 @@ public class View implements PropertyChangeListener {
         return (note % 3);
     }
 
+    /**
+     * Renders note on the screen.
+     * @param white
+     * @param note
+     * @param time
+     */
     private void drawNote(boolean white, int note, int time) {
         Image noteIcon;
         int channel = mapChannel(note);
@@ -245,6 +251,10 @@ public class View implements PropertyChangeListener {
         imageReferences.put(Integer.toString(time) + Integer.toString(note), new NoteObject(time, channel, notePane));
     }
 
+    /**
+     * Setting the location for the note.
+     * @param note
+     */
     private void setLocation(NoteObject note) {
 
         int chanel = note.getChanel();
@@ -281,12 +291,20 @@ public class View implements PropertyChangeListener {
         return (tick - model.getTime());
     }
 
+    /**
+     * Redraw the notes.
+     * @param note
+     */
     public void redraw(Pair<Integer, Integer> note) {
         String key = Integer.toString(note.getKey()) + Integer.toString(note.getValue());
         NoteObject noteObject = imageReferences.get(key);
         setLocation(noteObject);
     }
 
+    /**
+     * Remove the notes from the display.
+     * @param note
+     */
     private void removeNotes(Pair<Integer, Integer> note) {
         displayNotes.remove(note);
         String key = Integer.toString(note.getKey()) + Integer.toString(note.getValue());
@@ -295,6 +313,11 @@ public class View implements PropertyChangeListener {
         imageReferences.remove(key);
     }
 
+    /**
+     * What to do when the game has been completed.
+     * Remove everything from the slash mode and relaunch the main home screen.
+     * @param evt
+     */
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName() == "end"){
             frame.remove(scoreArea);

@@ -10,6 +10,12 @@ public class NoteObject {
     private int chanel;
     private JPanel panel;
 
+    /**
+     * Note object constructor.
+     * @param time timing.
+     * @param chanel the channel it is in.
+     * @param panel the panel it appears.
+     */
     public NoteObject(int time,  int chanel, JPanel panel) {
         this.time = time;
 

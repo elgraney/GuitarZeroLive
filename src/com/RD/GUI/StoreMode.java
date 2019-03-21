@@ -49,6 +49,10 @@ public class StoreMode extends ModeTemplate {
         }
     }
 
+    /**
+     * Backup to the slash mode and save the currency to the file,
+     * as may have been altered by buying songs.
+     */
     public void onEscape() {
         CurrencyManager.saveFile(currency);
         System.out.println("Go back to main");
@@ -60,6 +64,10 @@ public class StoreMode extends ModeTemplate {
         base.setGuitar(slashGuitar);
     }
 
+    /**
+     * Method for attempting to buy songs, including if the user
+     * has enough currency.
+     */
     public void onSelect(){
         MenuItem selectedSong = getViewOptions()[2];
         String songTitle = selectedSong.getTitle();
@@ -76,6 +84,11 @@ public class StoreMode extends ModeTemplate {
         }
     }
 
+    /**
+     * Navigate to the server folder to get the pictures for the carousel
+     * @param path
+     * @return
+     */
     public static ArrayList<String> getImages (String path) {
         final File folder = new File(path);
 

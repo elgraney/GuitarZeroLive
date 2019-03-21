@@ -39,7 +39,7 @@ public class SlashMode extends ModeTemplate {
     }
 
     /**
-     * controls action taken when select is pressed for each menu item
+     * Controls action taken when select is pressed for each menu item
      */
     public void onSelect(){
         MenuItem selected = getViewOptions()[2];
@@ -87,12 +87,18 @@ public class SlashMode extends ModeTemplate {
         frame.revalidate();
     }
 
+    /**
+     * End the program through the previously implemented onEscape instead of going to main.
+     */
     public void onEscape() {
         System.out.println("End Program");
         frame.dispose();
         System.exit(1);
     }
 
+    /**
+     * Recreate the menu.
+     */
     public void returnToMenu(){
         base.removeListener();
         model = null;

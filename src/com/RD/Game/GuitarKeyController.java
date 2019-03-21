@@ -75,23 +75,18 @@ public class GuitarKeyController implements KeyListener {
                     }
                     break;
                 case KeyEvent.VK_ESCAPE:
-                    //pause music
-                    //pause menu
-                    //set state paused
                     model.setState(Model.InputState.PAUSED);
                     break;
             }
         }
         else if(model.getState() == Model.InputState.ZERO_POWER){
-            //MAKE SURE TO ADD ZERO POWER HERE
             System.out.println("You were right about one thing master, the negotiations were short");
         }
     }
 
 
     private void playNote(String notes) {
-        // find out what notes should be played at this time and compare to note played 12
-        // either call hitNote or missNote
+
         ArrayList<Pair<Integer, Integer>> highwayNotes = new ArrayList<>(model.getHighwayNotes());
         for (Pair<Integer, Integer> note : highwayNotes) {
             if (note.getKey() > model.getTime() - model.getTickPerSecond() * Constants.LENIENCY && note.getKey() < model.getTime() + model.getTickPerSecond() * Constants.LENIENCY) {
