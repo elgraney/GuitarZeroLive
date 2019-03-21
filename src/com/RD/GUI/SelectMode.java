@@ -136,17 +136,20 @@ public class SelectMode extends ModeTemplate {
                         byte[] buffer = new byte[BUFFER];
                         ZipInputStream zis = new ZipInputStream(new FileInputStream(fileEntry));
                         ZipEntry ze = zis.getNextEntry();
+                        System.out.println("1");
 
                         while (ze != null) {
                             String fileName = ze.getName();
                             File newFile = new File("clientzips/" + directory + File.separator + fileName);
                             new File(newFile.getParent()).mkdirs();
+                            System.out.println("2");
                             FileOutputStream fos = new FileOutputStream(newFile);
 
                             int length;
 
                             while ((length = zis.read(buffer)) > 0) {
                                 fos.write(buffer, 0, length);
+                                System.out.println("3");
                             }
                             fos.close();
                             ze = zis.getNextEntry();

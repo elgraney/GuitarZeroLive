@@ -128,24 +128,24 @@ public class StoreManagerMode extends javax.swing.JFrame {
      * Se
      * @param evt
      */
-//    private void jButtonBrowse_MusicActionPerformed(java.awt.event.ActionEvent evt) {
-//
-//        //FInd Notes files saved in txt files
-//        JFileChooser fileChooser = new JFileChooser();
-//
-//        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-//            File chosenFile = fileChooser.getSelectedFile();
-//            //Check that it is a MIDI file
-//            if (chosenFile.toString().endsWith(".txt")){
-//                bundleMusic = chosenFile.toString();
-//                jTextFieldMusic.setText(bundleMusic.substring(chosenFile.toString().lastIndexOf("\\") + 1));
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Please Choose a text file");
-//            }
-//            System.out.println("bundleMusic = " + bundleMusic);
-//
-//        }
-//    }
+    private void jButtonBrowse_MusicActionPerformed(java.awt.event.ActionEvent evt) {
+
+        //FInd Notes files saved in txt files
+        JFileChooser fileChooser = new JFileChooser();
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            File chosenFile = fileChooser.getSelectedFile();
+            //Check that it is a MIDI file
+            if (chosenFile.toString().endsWith(".txt")){
+                bundleMusic = chosenFile.toString();
+                jTextFieldMusic.setText(bundleMusic.substring(chosenFile.toString().lastIndexOf("\\") + 1));
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Choose a txt file");
+            }
+            System.out.println("bundleMusic = " + bundleMusic);
+
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -184,7 +184,7 @@ public class StoreManagerMode extends javax.swing.JFrame {
     private void addToZip(String bundleTitle, String bundleCoverArt, String bundleMusic) throws FileNotFoundException, IOException{
         byte[] buffer = new byte[1024];
         //The archive bundle is saved as the title of the song.
-        String BundlesPath = "src\\com\\RD\\Server\\Bundles";
+        String BundlesPath = "src\\com\\RD\\Server\\Bundles\\";
         FileOutputStream fos = new FileOutputStream(BundlesPath + bundleTitle.substring(bundleTitle.lastIndexOf("\\") + 1, bundleTitle.lastIndexOf(".mid"))+".zip");
         ZipOutputStream zos = new ZipOutputStream(fos);
 
@@ -254,6 +254,10 @@ public class StoreManagerMode extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBrowse_CoverArtActionPerformed(evt);
             }
+        });
+        jButtonBrowse_Music.setText("Browse");
+        jButtonBrowse_Music.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) { jButtonBrowse_MusicActionPerformed(evt);}
         });
 
 

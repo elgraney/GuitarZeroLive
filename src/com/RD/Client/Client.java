@@ -32,7 +32,7 @@ class CoverArt {
 public class Client {
     final static String HOST = "localhost";
     final static int PORT = 8888;
-    final static String downloadFilePath = "clientzips";
+    final static String downloadFilePath = "clientzips/";
     final static int BUFFER_SIZE = 1024;
 
 

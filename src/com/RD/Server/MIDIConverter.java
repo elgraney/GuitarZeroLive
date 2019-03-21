@@ -456,6 +456,8 @@ public class MIDIConverter {
         setMidiFile(midi_file);
         setNotesFile(notes_file);
         try {
+            System.out.println(midi_file);
+            System.out.println(notes_file);
             Sequence seq = MidiSystem.getSequence( new File( midi_file ) );
             displaySequence( seq );
             File file = new File ("notes\\file.txt");
