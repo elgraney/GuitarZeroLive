@@ -14,8 +14,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.util.ArrayList;
 
-import static com.RD.Game.Model.InputState.NORMAL;
-import static com.RD.Game.Model.InputState.ZERO_POWER;
+import static com.RD.Game.Model.InputState.*;
 import static javafx.scene.input.KeyCode.L;
 import static javax.sound.midi.Sequence.PPQ;
 
@@ -200,6 +199,7 @@ public class Model {
                     public void meta(MetaMessage event) {
                         if (event.getType() == 47) {
                             CurrencyManager.saveFile(currency);
+                            state = PAUSED;
                             support.firePropertyChange("end", null, null);
                         }
                     }

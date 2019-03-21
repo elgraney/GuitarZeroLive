@@ -297,7 +297,6 @@ public class View implements PropertyChangeListener {
 
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName() == "end"){
-            System.out.println("This party IS over.");
             frame.remove(scoreArea);
             frame.remove(streakArea);
             frame.remove(multiplierArea);
